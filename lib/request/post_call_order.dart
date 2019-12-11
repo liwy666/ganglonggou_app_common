@@ -1,0 +1,18 @@
+import 'package:crypto/crypto.dart';
+import 'package:flutter_app/common_import.dart';
+import 'dart:convert';
+
+import 'package:flutter_app/models/addressItem.dart';
+
+const String FETCH_INDEX_INFO_URL = "/user_call_order";
+
+class PostCallOrder {
+  static Future<bool> post(
+      {@required String userToken, @required String orderSn}) async {
+    final response = await dio.post(FETCH_INDEX_INFO_URL, queryParameters: {
+      "user_token": userToken,
+      "order_sn": orderSn,
+    });
+    return true;
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "bystages_id": 300,
+  "pay_id": 3,
+  "pay_code": "WxJsApiPayment",
+  "bystages_val": "不分期",
+  "bystages_fee": "1.00",
+  "bystages_stage": 0,
+  "bystages_code": null,
+  "bystages_cat_id": 0,
+  "is_choice": true
+}

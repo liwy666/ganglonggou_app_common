@@ -1,0 +1,7 @@
+{
+  "pay_code": "WxJsApiPayment",
+  "pay_name": "微信支付",
+  "pay_id": 8,
+  "ByStages": "$[]byStagesItem",
+  "is_choice": true
+}

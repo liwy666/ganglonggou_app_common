@@ -1,0 +1,36 @@
+{
+  "coupon_id": 5,
+  "coupon_name": "分类测试券",
+  "coupon_desc": "分类测试券！！分类测试券！！分类测试券！！分类测试券！！分类测试券！！",
+  "start_grant_time": "2019-06-24 00:00:00",
+  "end_grant_time": "2019-07-31 00:00:00",
+  "start_use_time": "2019-06-24 00:00:00",
+  "end_use_time": "2019-10-31 00:00:00",
+  "classify": [
+    171,
+    172,
+    177,
+    176,
+    178,
+    179,
+    180,
+    181,
+    182
+  ],
+  "solo": [
+    171,
+    172,
+    177,
+    176,
+    178,
+    179,
+    180,
+    181,
+    182
+  ],
+  "found_sum": "5.00",
+  "cut_sum": "1.00",
+  "coupon_number": 100,
+  "coupon_remainder_number": 0,
+  "grant_type": "classify"
+}

@@ -1,0 +1,6 @@
+{
+  "goods_gallery": "$[]goodsGalleryItem",
+  "goods_sku": "$[]goodsSkuItem",
+  "coupon_list": "$[]goodsCouponItem",
+  "supplier_preview_info": "$supplierPreviewInfo"
+}

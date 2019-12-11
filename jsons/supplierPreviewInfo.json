@@ -1,0 +1,15 @@
+{
+  "id": 1,
+  "supplier_name": "岗隆数码专营店",
+  "company_name": "江苏岗隆数码科技有限公司",
+  "service_tel": "4008282323",
+  "after_sale_tel": "0510-80336188-8002",
+  "describe_rate": "5.0",
+  "service_rate": "5.0",
+  "logistics_rate": "5.0",
+  "follow_number": 20000,
+  "colour": "#EB1912",
+  "logo_img": "https://img-api.ganglonggou.com/20190618/fd421f170fd4506ad3b9eb6f23dc8fca.png",
+  "head_img": "https://img-api.ganglonggou.com/20190618/b5991dcfa6b2ad65594dfb745e37629e.jpg",
+  "goods_list": "$[]goodsItem"
+}

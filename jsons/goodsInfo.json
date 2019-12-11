@@ -1,0 +1,27 @@
+{
+  "goodsImg": "",
+  "goodsNumber": 1,
+  "goodsSn": "",
+  "goodsName": "",
+  "goodsId": 0,
+  "catId": 0,
+  "goodsHeadName": "",
+  "goodsPrice": 0.00,
+  "oneGoodsPrice": 0.00,
+  "marketPrice": 0.00,
+  "goodsStock": 0,
+  "goodsSalesVolume": 0,
+  "goodsAttributeImg": "",
+  "skuId": 0,
+  "attrDesc": "",
+  "isPromote": 0,
+  "promoteNumber": 0,
+  "promoteStartDate": 0,
+  "promoteEndDate": 0,
+  "giveIntegral": 0,
+  "integral": 0,
+  "oneGiveIntegral": 0,
+  "oneIntegral": 0,
+  "integralDesc": ""
+}
+

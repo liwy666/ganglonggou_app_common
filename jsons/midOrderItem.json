@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "goods_id": 606,
+  "goods_name": "测试商品（勿拍）",
+  "sku_desc": "蓝牙耳机二代有线版",
+  "mid_order_price": "1299.00",
+  "goods_number": 1,
+  "give_integral": 0,
+  "is_evaluate": 0,
+  "img_url": "http://192.168.0.158:8005/20190814/ed9b65ccaec4c49700bea7b18c318380.jpg"
+}

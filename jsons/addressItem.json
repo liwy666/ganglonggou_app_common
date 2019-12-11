@@ -1,0 +1,12 @@
+{
+  "address_id": 7,
+  "user_id": 2,
+  "name": "测试地址1",
+  "tel": "13890605917",
+  "province": "内蒙古自治区",
+  "city": "赤峰市",
+  "county": "阿鲁科尔沁旗",
+  "area_code": "150421",
+  "address_detail": "阿斯顿撒大所多啥啊",
+  "is_default": 0
+}

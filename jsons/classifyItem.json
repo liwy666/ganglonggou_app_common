@@ -1,0 +1,13 @@
+{
+  "id": 819,
+  "classify_name": "手机",
+  "into_type": "wx",
+  "click_type": "商品ID",
+  "parent_id": 0,
+  "sort_order": 10,
+  "key_word": "",
+  "goods_id": 317,
+  "logo_img": "https://img-api.ganglonggou.com/20190812/e943a1cc752662907fa5f07a76ea6646.png",
+  "bar_img": "https://img-api.ganglonggou.com/20190812/2c821643fd6291b25e0009a7ca2416ba.png",
+  "children": "$[]classifyItem"
+}

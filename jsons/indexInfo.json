@@ -1,0 +1,5 @@
+{
+  "ad_list": "$[]indexAdItem",
+  "cat_list": "$[]categoryItem",
+  "goods_list": "$[]goodsItem"
+}
