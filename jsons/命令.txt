@@ -1,1 +1,3 @@
 flutter packages pub run json_model或 pub run json_model
+flutter pub cache repair
+flutter channel

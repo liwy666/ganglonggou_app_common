@@ -3,7 +3,6 @@ import 'package:flutter_app/data_model/start_model.dart';
 import 'package:flutter_app/models/getVersionInfo.dart';
 import 'package:flutter_app/page/components/my_loading.dart';
 import 'package:flutter_app/request/fetch_version_info.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
@@ -29,8 +28,6 @@ class _StartPage extends State<StartPage> {
       ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
       //检查版本更新
       bool needUpdateApp = await _checkVersion(context);
-      //初始化下载
-      await FlutterDownloader.initialize();
       //等待
       await Future.delayed(Duration(seconds: 2));
       //跳转

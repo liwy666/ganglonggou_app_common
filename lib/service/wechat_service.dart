@@ -13,6 +13,7 @@ class WeChatService {
   final Wechat weChat = Wechat()
     ..registerApp(
       appId: WECHAT_APPID,
+      universalLink: "",
     );
 
   WeChatService({

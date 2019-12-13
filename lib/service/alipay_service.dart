@@ -53,7 +53,7 @@ class AliPayService {
   }
 
   void _listenAuth(AlipayResp resp) {
-    /*print(jsonEncode(res));
+ /*   print(jsonEncode(res));
     {"success":"true",
     "result_code":"200",
     "app_id":"2017110609764829",
@@ -107,3 +107,4 @@ class AliPayService {
     }
   }
 }
+

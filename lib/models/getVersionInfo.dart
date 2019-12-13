@@ -12,6 +12,7 @@ class GetVersionInfo {
     String app_version;
     String download_url;
     String describe;
+    String file_size;
     String result_code;
     
     factory GetVersionInfo.fromJson(Map<String,dynamic> json) => _$GetVersionInfoFromJson(json);

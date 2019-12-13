@@ -12,15 +12,16 @@ import 'package:flutter_app/data_model/user_info_model.dart';
 import 'package:flutter_app/routes/application.dart';
 import 'package:flutter_app/routes/routes.dart';
 import 'package:flutter_app/sqflite_model/base_sqflite.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_app/common_import.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   _runApp();
 }
 
 Future<Null> _runApp() async {
+
   /*初始化http*/
   initHttp();
   /*初始化数据库*/
@@ -42,7 +43,6 @@ Future<Null> _runApp() async {
   themeModel.init(themeMode);
   /*start_model*/
   StartModel startModel = StartModel();
-
   /*注册model*/
   runApp(MultiProvider(
     providers: [
