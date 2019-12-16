@@ -1,3 +1,5 @@
 flutter packages pub run json_model或 pub run json_model
 flutter pub cache repair
 flutter channel
+flutter doctor --android-license
+C:\Users\administrator_liwy\AppData\Local\Android\sdk\tools\bin\sdkmanager --update

@@ -2,6 +2,7 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter_app/common_import.dart';
 import 'package:flutter_app/data_model/cart_data_model.dart';
 import 'package:flutter_app/data_model/goods_model.dart';
+import 'package:flutter_app/data_model/theme_model.dart';
 import 'package:flutter_app/models/attributeValueItem.dart';
 import 'package:flutter_app/models/goodsInfo.dart';
 import 'package:flutter_app/models/goodsSkuOptionsItem.dart';
@@ -23,6 +24,7 @@ class GoodsSkuDiaLog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _themeModel = Provider.of<ThemeModel>(context);
     // TODO: implement build
     return Container(
       child: Consumer<GoodsModel>(
@@ -58,13 +60,13 @@ class GoodsSkuDiaLog extends StatelessWidget {
                           "商品编号：${goodsModel.goodsInfo.goodsSn}",
                           style: TextStyle(
                               fontSize: SO_SMALL_FONT_SIZE,
-                              color: Colors.black),
+                              color: _themeModel.fontColor1),
                         ),
                         Text(
                           "库存：${goodsModel.goodsInfo.goodsStock.toString()}",
                           style: TextStyle(
                               fontSize: SO_SMALL_FONT_SIZE,
-                              color: Colors.black),
+                              color: _themeModel.fontColor1),
                         ),
                       ],
                     ),
@@ -91,7 +93,7 @@ class GoodsSkuDiaLog extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       "数量:",
-                      style: TextStyle(fontSize: COMMON_FONT_SIZE),
+                      style: TextStyle(fontSize: COMMON_FONT_SIZE,color: _themeModel.fontColor1),
                     ),
                     MyStepper(
                       value: goodsModel.goodsInfo.goodsNumber,

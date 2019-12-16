@@ -1,5 +1,7 @@
 import 'package:flutter_app/common_import.dart';
+import 'package:flutter_app/data_model/theme_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 /*分组*/
 class MyOptionsAlign extends StatelessWidget {
@@ -13,6 +15,7 @@ class MyOptionsAlign extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _themeModel = Provider.of<ThemeModel>(context);
     // TODO: implement build
     return Container(
       padding: EdgeInsets.only(
@@ -27,7 +30,7 @@ class MyOptionsAlign extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 5),
             child: Text(
               title,
-              style: TextStyle(fontSize: SMALL_FONT_SIZE),
+              style: TextStyle(fontSize: SMALL_FONT_SIZE, color: _themeModel.fontColor1),
             ),
           ), //分组名称
           Wrap(
@@ -58,6 +61,7 @@ class MyOptionsAlignItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _themeModel = Provider.of<ThemeModel>(context);
     // TODO: implement build
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
@@ -71,9 +75,9 @@ class MyOptionsAlignItem extends StatelessWidget {
                 )
               : child,
           disabledColor: Theme.of(context).accentColor,
-          disabledTextColor: Colors.white,
+          disabledTextColor:_themeModel.pageBackgroundColor2,
           color: Color.fromRGBO(0, 0, 0, .1),
-          textColor: Colors.black87,
+          textColor:_themeModel.fontColor1,
           shape: new StadiumBorder(
               side: new BorderSide(
             style: BorderStyle.none,

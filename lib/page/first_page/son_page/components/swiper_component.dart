@@ -22,8 +22,10 @@ class SwiperComponent extends StatelessWidget {
           return Swiper(
             itemCount: indexAdListModel.swiperList.length,
             autoplay: true,
-            onTap: (int index){
-              FirstPageModel.toControl(indexAdItem: indexAdListModel.swiperList[index],context: context);
+            onTap: (int index) {
+              FirstPageModel.toControl(
+                  indexAdItem: indexAdListModel.swiperList[index],
+                  context: context);
             },
             itemBuilder: (BuildContext context, int index) {
               return Center(

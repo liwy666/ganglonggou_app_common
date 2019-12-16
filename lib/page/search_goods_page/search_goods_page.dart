@@ -1,5 +1,6 @@
 import 'package:flutter_app/common_import.dart';
 import 'package:flutter_app/data_model/search_goods_page_model.dart';
+import 'package:flutter_app/data_model/theme_model.dart';
 import 'package:flutter_app/models/searchKeywordItem.dart';
 import 'package:flutter_app/page/components/my_options_align.dart';
 import 'package:flutter_app/provider/provider_widget.dart';
@@ -10,9 +11,11 @@ import 'package:provider/provider.dart';
 class SearchGoodsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final _themeModel = Provider.of<ThemeModel>(context);
     // TODO: implement build
     return ProviderWidget<SearchGoodsPageModel>(
       child: Scaffold(
+        backgroundColor: _themeModel.pageBackgroundColor1,
           primary: true,
           appBar: AppBar(
             primary: false,

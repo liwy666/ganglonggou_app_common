@@ -38,7 +38,7 @@ Handler rootHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
   int currentIndex = int.parse(
       params["currentIndex"] != null ? params["currentIndex"].first : "0");
-  bool needUpdateApp = params["needUpdateApp"].first == 'true' ? true : false;
+  bool needUpdateApp = params["needUpdateApp"] != null && params["needUpdateApp"].first == 'true' ? true : false;
   return MainPage(
     currentIndex: currentIndex,
     needUpdateApp: needUpdateApp,

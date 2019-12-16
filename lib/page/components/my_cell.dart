@@ -1,5 +1,7 @@
 import 'package:flutter_app/common_import.dart';
+import 'package:flutter_app/data_model/theme_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class MyCell extends StatelessWidget {
   final String title;
@@ -10,6 +12,7 @@ class MyCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _themeModel = Provider.of<ThemeModel>(context);
     // TODO: implement build
     return Container(
       padding: EdgeInsets.symmetric(
@@ -31,7 +34,7 @@ class MyCell extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                    color: Colors.black, fontSize: COMMON_FONT_SIZE),
+                    color: _themeModel.fontColor1, fontSize: COMMON_FONT_SIZE),
               )
             ],
           ),
@@ -40,7 +43,7 @@ class MyCell extends StatelessWidget {
             child: Text(
               label,
               style: TextStyle(
-                  color: Colors.black54, fontSize: SMALL_FONT_SIZE),
+                  color: _themeModel.fontColor2, fontSize: SMALL_FONT_SIZE),
               textAlign: TextAlign.start,
             ),
           ),

@@ -2,6 +2,7 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter_app/common_import.dart';
 import 'package:flutter_app/data_model/goods_list_data_model.dart';
 import 'package:flutter_app/data_model/page_position_model.dart';
+import 'package:flutter_app/data_model/theme_model.dart';
 import 'package:flutter_app/models/index.dart';
 import 'package:flutter_app/page/components/my_extended_image.dart';
 import 'package:flutter_app/provider/provider_widget.dart';
@@ -34,6 +35,7 @@ class _SonClassifyPage extends State<SonClassifyPage> {
 
   @override
   Widget build(BuildContext context) {
+    final _themeModel = Provider.of<ThemeModel>(context);
     goodsListDataModel = Provider.of<GoodsListDataModel>(context);
     if (ifInitGoodsList) {
       this._goodsList = goodsListDataModel.getGoodsListByKeyWord(
@@ -56,6 +58,7 @@ class _SonClassifyPage extends State<SonClassifyPage> {
       builder: (BuildContext context, PagePositionModel pagePositionModel,
           Widget _child) {
         return Scaffold(
+          backgroundColor: _themeModel.pageBackgroundColor1,
           body: CustomScrollView(
             controller: pagePositionModel.controller,
             slivers: <Widget>[
@@ -63,6 +66,7 @@ class _SonClassifyPage extends State<SonClassifyPage> {
               SliverList(
                 delegate: SliverChildListDelegate([
                   Card(
+                    color: _themeModel.pageBackgroundColor2,
                     child: Wrap(
                       //alignment: WrapAlignment.start,
                       spacing: 10, // 主轴(水平)方向间距
@@ -153,6 +157,7 @@ class _ClassifyPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _themeModel = Provider.of<ThemeModel>(context);
     // TODO: implement build
     return FlatButton(
       padding: EdgeInsets.all(8.0),
@@ -168,7 +173,7 @@ class _ClassifyPreview extends StatelessWidget {
             child: Text(
               classifyPreviewName,
               style:
-                  TextStyle(fontSize: SMALL_FONT_SIZE, color: Colors.black54),
+                  TextStyle(fontSize: SMALL_FONT_SIZE, color: _themeModel.fontColor2),
             ),
           )
         ],

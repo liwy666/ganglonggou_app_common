@@ -1,7 +1,9 @@
 import 'package:flutter_app/common_import.dart';
+import 'package:flutter_app/data_model/theme_model.dart';
 import 'package:flutter_app/page/goods_page/goods_page.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class MyDialog {
   /*底部弹出窗*/
@@ -13,13 +15,14 @@ class MyDialog {
       context: context,
       backgroundColor: Color.fromRGBO(0, 0, 0, 0.0),
       builder: (BuildContext context) {
+        final _themeModel = Provider.of<ThemeModel>(context);
         return Stack(
           children: <Widget>[
             Positioned(
               bottom: 0,
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: _themeModel.pageBackgroundColor2,
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black54,

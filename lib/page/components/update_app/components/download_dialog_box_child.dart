@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_app/common_import.dart';
 import 'package:flutter_app/data_model/theme_model.dart';
 import 'package:flutter_app/models/getVersionInfo.dart';
+import 'package:open_file/open_file.dart';
 import 'package:provider/provider.dart';
 
 class DownloadDialogBoxChild extends StatefulWidget {
@@ -22,7 +23,6 @@ class DownloadDialogBoxChild extends StatefulWidget {
 
 class _DownloadDialogBoxChild extends State<DownloadDialogBoxChild> {
   int _progressValue = 0;
-  Timer _timer;
 
   @override
   void initState() {
@@ -39,19 +39,13 @@ class _DownloadDialogBoxChild extends State<DownloadDialogBoxChild> {
         _progressValue = count;
       });
     });
-    if(response.statusCode == 200){
-      //InstallPlugin.installApk(widget.storagePath, '');
+    if (response.statusCode == 200) {
+      OpenFile.open(widget.storagePath);
     }
-
-
-    //await open(widget.storagePath);
   }
 
   @override
   void dispose() {
-    if (_timer != null) {
-      _timer.cancel();
-    }
     // TODO: implement dispose
     super.dispose();
   }

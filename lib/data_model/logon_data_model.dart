@@ -39,13 +39,20 @@ class LogonDataModel with ChangeNotifier {
   /*登录成功*/
   Future<void> _logonSuccess(String userToken) async {
     if (userToken.length == USER_TOKEN_LENGTH) {
-      //请求用户信息
-      UserInfo userInfo = await FetchUserInfo.fetch(userToken: userToken);
-      //更新全局UserModel
-      await userInfoModel.userLogonSuccess(userInfo: userInfo);
-      //跳转主页
-      Navigator.of(pageContext).pushNamedAndRemoveUntil(
-          '/main?currentIndex=$HOME_INDEX', ModalRoute.withName('/'));
+      MyLoading.eject();
+      try {
+        //请求用户信息
+        UserInfo userInfo = await FetchUserInfo.fetch(userToken: userToken);
+        //更新全局UserModel
+        await userInfoModel.userLogonSuccess(userInfo: userInfo);
+      } catch (e) {
+        print(e);
+      } finally {
+        MyLoading.shut();
+        //跳转主页
+        Navigator.of(pageContext)
+            .pushReplacementNamed('/main?currentIndex=$HOME_INDEX');
+      }
     }
   }
 
@@ -83,13 +90,14 @@ class LogonDataModel with ChangeNotifier {
     _weChatService = WeChatService(
         weChatSignInAuthorizeSuccess: (WechatAuthResp resp) async {
       MyLoading.eject();
+      String userToken;
       try {
-        String userToken = await PostUserWeChatLogon.post(code: resp.code);
-        await _logonSuccess(userToken);
+        userToken = await PostUserWeChatLogon.post(code: resp.code);
       } catch (e) {
         print(e);
       } finally {
         MyLoading.shut();
+        _logonSuccess(userToken);
       }
     });
 
@@ -110,14 +118,15 @@ class LogonDataModel with ChangeNotifier {
     _aliPayService = AliPayService(aliPaySignInAuthorizeSuccess:
         (AliPayAuthRespInfo aliPayAuthRespInfo) async {
       MyLoading.eject();
+      String userToken;
       try {
-        String userToken =
+        userToken =
             await PostUserAliPayLogon.post(code: aliPayAuthRespInfo.auth_code);
-        await _logonSuccess(userToken);
       } catch (e) {
         print(e);
       } finally {
         MyLoading.shut();
+        _logonSuccess(userToken);
       }
     });
 
@@ -145,6 +154,11 @@ class LogonDataModel with ChangeNotifier {
     } finally {
       MyLoading.shut();
     }
+  }
+
+  test() {
+    Navigator.of(pageContext)
+        .pushReplacementNamed('/main?currentIndex=$HOME_INDEX');
   }
 
   @override

@@ -1,9 +1,11 @@
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter_app/common_import.dart';
+import 'package:flutter_app/data_model/theme_model.dart';
 import 'package:flutter_app/models/goodsItem.dart';
 import 'package:flutter_app/page/components/my_extended_image.dart';
 import 'package:flutter_app/routes/application.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class GoodsItemComponent extends StatelessWidget {
   final GoodsItem item;
@@ -12,6 +14,7 @@ class GoodsItemComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _themeModel = Provider.of<ThemeModel>(context);
     // TODO: implement build
     return GestureDetector(
       child: Card(
@@ -19,7 +22,7 @@ class GoodsItemComponent extends StatelessWidget {
           padding: EdgeInsets.symmetric(
               vertical: ScreenUtil().setWidth(10),
               horizontal: ScreenUtil().setWidth(20)),
-          color: Colors.white,
+          color: _themeModel.pageBackgroundColor2,
           child: Column(
             children: <Widget>[
               MyExtendedImage.network(
@@ -39,6 +42,7 @@ class GoodsItemComponent extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
+                    color: _themeModel.fontColor1,
                     fontSize: SMALL_FONT_SIZE,
                   ),
                 ),
@@ -65,7 +69,7 @@ class GoodsItemComponent extends StatelessWidget {
                     "￥${item.market_price}",
                     textAlign: TextAlign.start,
                     style: TextStyle(
-                        color: Colors.grey,
+                        color: _themeModel.fontColor2,
                         fontSize: SMALL_FONT_SIZE,
                         decoration: TextDecoration.lineThrough),
                   )),

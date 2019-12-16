@@ -62,6 +62,12 @@ class LogonPage extends StatelessWidget {
                       },
                     ),
                     _LogonButton(),
+                    FlatButton(
+                      child: Text("测试"),
+                      onPressed: () {
+                        logonDataModel.test();
+                      },
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -138,22 +144,6 @@ class LogonPage extends StatelessWidget {
                               logonDataModel.aliApyLogon();
                             },
                           ), //支付宝
-                        /*  FlatButton(
-                            child: Container(
-                              width: ScreenUtil().setWidth(80),
-                              height: ScreenUtil().setWidth(80),
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                  color: Colors.black12,
-                                  borderRadius: BorderRadius.circular(40)),
-                              child: ExtendedImage.asset(
-                                "static_images/qq_logo_black.png",
-                                width: ScreenUtil().setWidth(80),
-                                fit: BoxFit.fitWidth,
-                              ),
-                            ),
-                            onPressed: () {}, // ,
-                          ) //qq*/
                         ],
                       ),
                     ),
@@ -198,8 +188,8 @@ class _LogonButton extends StatelessWidget {
                 await userInfoModel.userLogonSuccess(userInfo: userInfo);
                 MyLoading.shut();
                 //跳转主页
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                    '/main?currentIndex=$HOME_INDEX', (route) => route == null);
+                Navigator.of(context)
+                    .pushReplacementNamed('/main?currentIndex=$HOME_INDEX');
               } else {
                 MyLoading.shut();
               }
