@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'common_import.dart';
@@ -10,8 +9,9 @@ Dio dio = new Dio();
 void initHttp() {
   //配置
   dio.options.receiveTimeout = 5000; //超时时间ms
-  //dio.options.baseUrl = 'https://api.ganglonggou.com/api/v1';
-  dio.options.baseUrl = 'https://test-api.ganglonggou.com/api/v1';
+  dio.options.baseUrl = DEBUG
+      ? 'https://test-api.ganglonggou.com/api/v1'
+      : 'https://api.ganglonggou.com/api/v1';
   //拦截器
   dio.interceptors.add(InterceptorsWrapper(onRequest: (RequestOptions options) {
     // 在请求被发送之前做一些事情
@@ -32,9 +32,9 @@ void initHttp() {
     }
     return response; // continue
   }, onError: (DioError e) {
-    Fluttertoast.showToast(msg: "未知错误${e.toString()}",timeInSecForIos:3); //短提示
+    Fluttertoast.showToast(
+        msg: "未知错误${e.toString()}", timeInSecForIos: 3); //短提示
     // 当请求失败时做一些预处理
     throw Exception(e); //continue
   }));
 }
-

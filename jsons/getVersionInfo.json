@@ -1,10 +1,11 @@
 {
-  "id": 3,
+  "id": 9,
   "platform": "android",
-  "add_time": "2019-12-10 13:45:45",
+  "add_time": "2019-12-17 09:48:19",
   "app_version": "1.0.2",
-  "download_url": null,
-  "describe": "第三次测试更新",
-  "file_size": "1810957",
+  "build_number": 2,
+  "file_size": "0",
+  "download_url": "https://test-api.ganglonggou.com/download/20191212/c0771fa898310fb4bab1c53f3ee51ab2.apk",
+  "describe": "第三次测试更新第一行第三次测试更新第一行第三次测试更新第一行第三次测试更新第一行第三次测试更新第一行第三次测试|第三次测试更新第二行|第三次测试更新第三个行",
   "result_code": "success"
 }

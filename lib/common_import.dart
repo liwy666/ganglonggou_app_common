@@ -3,6 +3,8 @@ export 'package:flutter_app/http.dart';
 
 //入口名称
 import 'package:fluttertoast/fluttertoast.dart';
+
+const bool DEBUG = true;
 const String INTO_TYPE = 'wx';
 const String SON_INTO_TYPE = 'android';
 //首页头部背景图地址
@@ -14,25 +16,14 @@ const String SON_FIRST_PAGE_SWIPER_BACKGROUND_IMG_URL =
 //首页其他店铺单个背景图
 const String SON_FIRST_PAGE_OTHER_SHOP_ITEM_BACKGROUND_IMG_URL =
     'static_images/ketlle_goods_b1.png';
-//积分名称
-const String INTEGRAL_NAME = "岗隆积分";
-//数据库名称
-const String SQL_FILE_NAME = "gl_sqflite_db.sql";
-//数据库config表名称
-const String CONFIG_TABLE_NAME = "gl_config";
-//创建config表sql语句
-const String CREATE_CONFIG_TABLE_SQL_CODE = '''create table $CONFIG_TABLE_NAME (
-id INTEGER primary key AUTOINCREMENT not null,
-config_key varchar(100) not null,
-config_value text(0) not null)''';
-//数据库版本
-const int SQL_VERSION = 1;
 //常规数据缓存时效(ms)(6小时)
 const int COMMON_SQL_DATA_INVALID_TIME = 21600000;
+//积分名称
+const String INTEGRAL_NAME = "岗隆积分";
 //userToken长度
 const int USER_TOKEN_LENGTH = 32;
 //个人中心序号
-const int HOME_INDEX = 3;
+const int HOME_INDEX = 4;
 //订单号长度
 const int ORDER_SN_LENGTH = 16;
 //底部栏高度

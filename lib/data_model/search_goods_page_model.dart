@@ -4,7 +4,6 @@ import 'package:flutter_app/common_import.dart';
 import 'package:flutter_app/models/index.dart';
 import 'package:flutter_app/request/fetch_search_log.dart';
 import 'package:flutter_app/request/post_add_search_keyword.dart';
-import 'package:flutter_app/routes/application.dart';
 
 class SearchGoodsPageModel with ChangeNotifier {
   List<SearchKeywordItem> _searchKeywordList = [];
@@ -28,11 +27,18 @@ class SearchGoodsPageModel with ChangeNotifier {
     });
   }
 
+  Future<void> init() async {
+    SearchKeywordList searchKeywordList = await FetchSearchLog.fetch();
+    _searchKeywordList = searchKeywordList.data;
+    notifyListeners();
+  }
+
   void cleanSearchKeyword() {
     _searchKeyword = "";
     notifyListeners();
   }
 
+  ///开始搜索
   void startSearch(BuildContext context) {
     if (_searchKeyword.isEmpty) return;
     PostAddSearchKeyword.post(searchKeyword: _searchKeyword);

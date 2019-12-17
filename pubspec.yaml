@@ -51,6 +51,7 @@ dependencies:
   permission_handler: ^4.0.0
   open: '1.1.0'
   open_file: ^2.1.1
+  package_info: ^0.4.0+12
 
 dev_dependencies:
   json_model: ^0.0.2
@@ -108,6 +109,7 @@ flutter:
     - static_images/start_img.jpg
     - static_images/update_img.png
     - static_images/update_loading.png
+    - static_images/hot_goods_head.png
     - static_jsons/address_options.json
 
 

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/common_import.dart';
@@ -11,6 +13,7 @@ import 'package:flutter_app/page/components/update_app/update_app.dart';
 import 'package:flutter_app/page/first_page/first_page.dart';
 import 'package:flutter_app/page/home_page/home_page.dart';
 import 'package:flutter_app/provider/provider_widget.dart';
+import 'package:flutter_app/routes/application.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
@@ -85,6 +88,7 @@ class _MainPage extends State<MainPage> {
               children: <Widget>[
                 child,
                 ClassifyPage(),
+                Container(),
                 CartsPageMain(
                   showHead: true,
                 ),
@@ -129,6 +133,8 @@ class _MainPage extends State<MainPage> {
                                 : Theme.of(context).accentColor),
                       )),
                   BottomNavigationBarItem(
+                      icon: Icon(Icons.whatshot), title: Text("捡漏")),
+                  BottomNavigationBarItem(
                       icon: Icon(Icons.shopping_cart,
                           color: _themeModel.fontColor2),
                       activeIcon: Icon(Icons.shopping_cart,
@@ -137,7 +143,7 @@ class _MainPage extends State<MainPage> {
                         '购物车',
                         style: TextStyle(
                             fontSize: mainPageModel.defaultFontSize,
-                            color: mainPageModel.currentIndex != 2
+                            color: mainPageModel.currentIndex != 3
                                 ? _themeModel.fontColor2
                                 : Theme.of(context).accentColor),
                       )),
@@ -149,11 +155,34 @@ class _MainPage extends State<MainPage> {
                         '我的',
                         style: TextStyle(
                             fontSize: mainPageModel.defaultFontSize,
-                            color: mainPageModel.currentIndex != 3
+                            color: mainPageModel.currentIndex != 4
                                 ? _themeModel.fontColor2
                                 : Theme.of(context).accentColor),
                       )),
                 ]),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerDocked,
+            floatingActionButton: Container(
+              height: 80,
+              width: 80,
+              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.only(top: 20),
+              decoration: BoxDecoration(
+                  color: _themeModel.pageBackgroundColor2,
+                  borderRadius: BorderRadius.circular(40),
+                  border: Border.all(
+                      color: Color.fromRGBO(0, 0, 0, 0.1), width: 0.1)),
+              child: FloatingActionButton(
+                heroTag: "main_page",
+                child: Icon(Icons.whatshot),
+                foregroundColor: _themeModel.pageBackgroundColor2,
+                hoverElevation: 300,
+                onPressed: () {
+                  Application.router.navigateTo(context,
+                      'search_goods_complete?keyword=${base64UrlEncode(utf8.encode("特价"))}&showKeyword=false');
+                },
+              ),
+            ),
           ),
         );
       }),

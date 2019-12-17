@@ -12,6 +12,7 @@ import 'package:flutter_app/data_model/user_info_model.dart';
 import 'package:flutter_app/routes/application.dart';
 import 'package:flutter_app/routes/routes.dart';
 import 'package:flutter_app/sqflite_model/base_sqflite.dart';
+import 'package:flutter_app/sqflite_model/sqlfite_config.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_app/common_import.dart';
 

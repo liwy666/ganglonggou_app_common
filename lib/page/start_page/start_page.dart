@@ -4,6 +4,7 @@ import 'package:flutter_app/models/getVersionInfo.dart';
 import 'package:flutter_app/page/components/my_loading.dart';
 import 'package:flutter_app/request/fetch_version_info.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
 
 class StartPage extends StatefulWidget {
@@ -53,9 +54,11 @@ class _StartPage extends State<StartPage> {
   ///检查是否需要更新版本
   Future<bool> _checkVersion(BuildContext context) async {
     GetVersionInfo getVersionInfo = await FetchVersionInfo.fetch();
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    int buildNumber = int.parse(packageInfo.buildNumber);
     _startModel.getVersionInfo = getVersionInfo;
     if (getVersionInfo.result_code == "success" &&
-        getVersionInfo.app_version != VERSION) return true;
+        getVersionInfo.build_number > buildNumber) return true;
     return false;
   }
 }

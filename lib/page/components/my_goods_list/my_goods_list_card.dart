@@ -26,17 +26,25 @@ class MyGoodsListCard extends StatelessWidget {
           color: _themeModel.pageBackgroundColor2,
           child: Column(
             children: <Widget>[
-              MyExtendedImage.network(
-                item.goods_img,
-                fit: BoxFit.fitWidth,
-                width: ScreenUtil().setWidth(300),
-                height: ScreenUtil().setWidth(300),
+              Stack(
+                children: <Widget>[
+                  MyExtendedImage.network(
+                    item.goods_img,
+                    fit: BoxFit.fitWidth,
+                    width: ScreenUtil().setWidth(300),
+                    height: ScreenUtil().setWidth(300),
+                  ),
+                  item.goods_name.startsWith("特价捡漏")?
+                  Image.asset(
+                    'static_images/hot_goods_head.png',
+                    fit: BoxFit.fitWidth,
+                    width: ScreenUtil().setWidth(300),
+                    height: ScreenUtil().setWidth(300),
+                  ):Container(),
+                ],
               ),
               Container(
-                margin: EdgeInsets.only(top: ScreenUtil().setHeight(10)),
-                constraints: BoxConstraints(
-                  minWidth: double.infinity,
-                ),
+                margin: EdgeInsets.only(top: 2),
                 child: Text(
                   item.goods_name,
                   textAlign: TextAlign.start,

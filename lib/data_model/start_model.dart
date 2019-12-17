@@ -16,6 +16,7 @@ import 'package:flutter_app/sqflite_model/cart_sqflite.dart';
 import 'package:flutter_app/sqflite_model/classify_sqflite.dart';
 import 'package:flutter_app/sqflite_model/goods_sqflite.dart';
 import 'package:flutter_app/sqflite_model/index_ad_sqflite.dart';
+import 'package:flutter_app/sqflite_model/sqlfite_config.dart';
 import 'package:flutter_app/sqflite_model/user_sqflite.dart';
 import 'cart_data_model.dart';
 import 'classify_list_ad_model.dart';

@@ -12,6 +12,7 @@ import 'package:flutter_app/request/fetch_version_info.dart';
 import 'package:flutter_app/routes/application.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
 
 class ConfigPage extends StatelessWidget {
@@ -114,8 +115,10 @@ class ConfigPage extends StatelessWidget {
               } finally {
                 MyLoading.shut();
               }
+              PackageInfo packageInfo = await PackageInfo.fromPlatform();
+              int buildNumber = int.parse(packageInfo.buildNumber);
               if (_getVersionInfo.result_code == "success" &&
-                  _getVersionInfo.app_version != VERSION) {
+                  _getVersionInfo.build_number > buildNumber) {
                 UpdateApp(context: context, getVersionInfo: _getVersionInfo);
               } else {
                 Fluttertoast.showToast(msg: "您的应用为最新版本"); //短提示

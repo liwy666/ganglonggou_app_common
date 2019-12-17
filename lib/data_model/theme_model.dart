@@ -1,5 +1,6 @@
 import 'package:flutter_app/common_import.dart';
 import 'package:flutter_app/sqflite_model/base_sqflite.dart';
+import 'package:flutter_app/sqflite_model/sqlfite_config.dart';
 
 class ThemeModel with ChangeNotifier {
   AppThemeMode _appThemeMode = AppThemeMode.defaultMode;
