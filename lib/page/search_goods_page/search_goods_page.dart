@@ -1,7 +1,10 @@
 import 'package:flutter_app/common_import.dart';
 import 'package:flutter_app/data_model/search_goods_page_model.dart';
 import 'package:flutter_app/data_model/theme_model.dart';
+import 'package:flutter_app/data_model/user_info_model.dart';
 import 'package:flutter_app/models/searchKeywordItem.dart';
+import 'package:flutter_app/models/searchLogItem.dart';
+import 'package:flutter_app/page/components/my_dialog.dart';
 import 'package:flutter_app/page/components/my_loading.dart';
 import 'package:flutter_app/page/components/my_options_align.dart';
 import 'package:flutter_app/provider/provider_widget.dart';
@@ -14,35 +17,42 @@ class SearchGoodsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final _themeModel = Provider.of<ThemeModel>(context);
     // TODO: implement build
-    return ProviderWidget<SearchGoodsPageModel>(
-      child: Scaffold(
-          backgroundColor: _themeModel.pageBackgroundColor1,
-          primary: true,
-          appBar: AppBar(
-            primary: false,
-            automaticallyImplyLeading: false,
-            elevation: 0,
-            bottom: _SearchBox(),
-          ),
-          body: ListView(
-            children: <Widget>[
-              _HotSearchAlign(),
-            ],
-          )),
-      onWidgetReady: (SearchGoodsPageModel searchGoodsPageModel) async {
-        MyLoading.eject();
-        try {
-          searchGoodsPageModel.init();
-        } catch (e) {
-          print(e);
-        } finally {
-          MyLoading.shut();
-        }
-      },
-      model: SearchGoodsPageModel(),
-      builder: (BuildContext context, SearchGoodsPageModel searchGoodsPageModel,
-          Widget _child) {
-        return _child;
+    return Consumer<UserInfoModel>(
+      builder: (BuildContext context, UserInfoModel userInfoModel, _) {
+        return ProviderWidget<SearchGoodsPageModel>(
+          child: Scaffold(
+              backgroundColor: _themeModel.pageBackgroundColor1,
+              primary: true,
+              appBar: AppBar(
+                primary: false,
+                automaticallyImplyLeading: false,
+                elevation: 0,
+                bottom: _SearchBox(),
+              ),
+              body: ListView(
+                children: <Widget>[
+                  _HotSearchAlign(),
+                  _LogSearchAlign(),
+                ],
+              )),
+          onWidgetReady: (SearchGoodsPageModel searchGoodsPageModel) async {
+            MyLoading.eject();
+            try {
+              searchGoodsPageModel.init();
+            } catch (e) {
+              print(e);
+            } finally {
+              MyLoading.shut();
+            }
+          },
+          model: SearchGoodsPageModel(
+              userId:
+                  userInfoModel.isLogon ? userInfoModel.userInfo.user_id : 0),
+          builder: (BuildContext context,
+              SearchGoodsPageModel searchGoodsPageModel, Widget _child) {
+            return _child;
+          },
+        );
       },
     );
   }
@@ -156,31 +166,82 @@ class _HotSearchAlign extends StatelessWidget {
     // TODO: implement build
     return Container(
       //padding: EdgeInsets.symmetric(vertical: 15,horizontal: 15),
-      height: ScreenUtil().setWidth(650),
       child: Consumer<SearchGoodsPageModel>(
         builder: (BuildContext context,
             SearchGoodsPageModel searchGoodsPageModel, _) {
-          return ListView(
-            children: <Widget>[
-              MyOptionsAlign(
-                itemList: searchGoodsPageModel.searchKeywordList
-                    .map((SearchKeywordItem searchKeywordItem) {
-                  return MyOptionsAlignItem(
-                    itemValue: searchKeywordItem.search_keyword,
-                    onTap: () {
-                      searchGoodsPageModel.setSearchKeyWord =
-                          searchKeywordItem.search_keyword;
-                      searchGoodsPageModel.startSearch(context);
-                    },
-                    isChoice: false,
-                  );
-                }).toList(),
-                title: "热门推荐",
-              )
-            ],
+          return MyOptionsAlign(
+            itemList: searchGoodsPageModel.searchKeywordList
+                .map((SearchKeywordItem searchKeywordItem) {
+              return MyOptionsAlignItem(
+                itemValue: searchKeywordItem.search_keyword,
+                onTap: () {
+                  searchGoodsPageModel.setSearchKeyWord =
+                      searchKeywordItem.search_keyword;
+                  searchGoodsPageModel.startSearch(context);
+                },
+                isChoice: false,
+              );
+            }).toList(),
+            title: "热门推荐",
           );
         },
       ),
+    );
+  }
+}
+
+class _LogSearchAlign extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final _themeModel = Provider.of<ThemeModel>(context);
+    // TODO: implement build
+    return Consumer<SearchGoodsPageModel>(
+      builder:
+          (BuildContext context, SearchGoodsPageModel searchGoodsPageModel, _) {
+        return Column(
+          //padding: EdgeInsets.symmetric(vertical: 15,horizontal: 15),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            MyOptionsAlign(
+              itemList: searchGoodsPageModel.searchLogItemList
+                  .map((SearchLogItem searchLogItem) {
+                return MyOptionsAlignItem(
+                  itemValue: searchLogItem.search_keyword,
+                  onTap: () {
+                    searchGoodsPageModel.setSearchKeyWord =
+                        searchLogItem.search_keyword;
+                    searchGoodsPageModel.startSearch(context);
+                  },
+                  isChoice: false,
+                );
+              }).toList(),
+              title: "搜索历史",
+            ),
+           searchGoodsPageModel.searchLogItemList.length>0?Row(
+             mainAxisAlignment: MainAxisAlignment.end,
+             children: <Widget>[
+               FlatButton(
+                 child: Text(
+                   "清空搜索历史",
+                   style: TextStyle(
+                       fontSize: SMALL_FONT_SIZE, color: _themeModel.fontColor2),
+                 ),
+                 onPressed: () {
+                   MyDialog().showConfirmDialog(
+                       context: context,
+                       title:
+                       "确认清除全部历史记录吗？",
+                       clickFun: searchGoodsPageModel.cleanSearchLog,
+                       cancelButtonText: "取消",
+                       confirmButtonText: "删除");
+
+                 },
+               )
+             ],
+           ):Container(),
+          ],
+        );
+      },
     );
   }
 }

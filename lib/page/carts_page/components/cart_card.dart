@@ -26,8 +26,7 @@ class CartCard extends StatelessWidget {
               Container(
                 child: Checkbox(
                   onChanged: (bool value) {
-                    cartDataModel.switchCartChoiceState(
-                        choiceState: value, cartInfo: cartItem);
+                    cartDataModel.switchCartChoiceState(cartId: cartItem.cartId);
                   },
                   value: cartItem.isChoice == 1 ? true : false,
                 ),
@@ -58,7 +57,7 @@ class CartCard extends StatelessWidget {
                           child: MyStepper(
                             changeFunction: (int number) {
                               cartDataModel.updCartNumber(
-                                  cartNumber: number, cartInfo: cartItem);
+                                  cartNumber: number, cartId: cartItem.cartId);
                             },
                             max: cartItem.goodsStock,
                             min: 1,

@@ -52,7 +52,9 @@ abstract class BaseSqflite {
       Database db, int oldVersion, int newVersion, String sqlDbPath) async {
     print("执行：_onUpgrade更新数据库，旧版本：$oldVersion,新版本：$newVersion");
     //删除所有表
-     await db.execute("DROP TABLE");
+    SQL_TABLE_NAME_LIST.forEach((String tableName) async {
+      await db.execute("DROP TABLE $tableName");
+    });
     //重新创建数据库
     await _onCreate(db, newVersion);
   }

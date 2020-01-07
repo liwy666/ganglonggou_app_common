@@ -156,11 +156,6 @@ class LogonDataModel with ChangeNotifier {
     }
   }
 
-  test() {
-    Navigator.of(pageContext)
-        .pushReplacementNamed('/main?currentIndex=$HOME_INDEX');
-  }
-
   @override
   void dispose() {
     if (_weChatService != null) {

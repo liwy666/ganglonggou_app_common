@@ -63,14 +63,21 @@ const String YZXB_LOGISTICS_QUERY_URL = 'https://m.ickd.cn/result.html#no=';
 //其它快递查询
 const String COMMON_LOGISTICS_QUERY_URL =
     'https://m.kuaidi100.com/result.jsp?nu=';
-//版本号
-const String VERSION = '1.0.0';
 //app名称
 const String APP_NAME = '岗隆数码';
 //用户协议地址
-const String USER_AGREEMENT_URL = 'https://mate.ganglonggou.com/app_web_extend/agreement/userAgreement.html';
+const String USER_AGREEMENT_URL =
+    'https://mate.ganglonggou.com/app_web_extend/agreement/userAgreement.html';
 //隐私协议
-const String PRIVACY_AGREEMENT_URL = 'https://mate.ganglonggou.com/app_web_extend/agreement/privacyAgreement.html';
+const String PRIVACY_AGREEMENT_URL =
+    'https://mate.ganglonggou.com/app_web_extend/agreement/privacyAgreement.html';
+//关于我们
+const String ABOUT_WE_URL =
+    'https://mate.ganglonggou.com/app_web_extend/#/about';
+//反馈
+const String FEED_BACK_URL =
+    'https://mate.ganglonggou.com/app_web_extend/#/feedback';
+
 List<T> listDeepCopy<T>(List list) {
   if (list.length == 0 || list == null) return [];
   List<T> _tempList = [];

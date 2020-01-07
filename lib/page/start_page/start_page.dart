@@ -54,11 +54,9 @@ class _StartPage extends State<StartPage> {
   ///检查是否需要更新版本
   Future<bool> _checkVersion(BuildContext context) async {
     GetVersionInfo getVersionInfo = await FetchVersionInfo.fetch();
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    int buildNumber = int.parse(packageInfo.buildNumber);
     _startModel.getVersionInfo = getVersionInfo;
     if (getVersionInfo.result_code == "success" &&
-        getVersionInfo.build_number > buildNumber) return true;
+        getVersionInfo.build_number > _startModel.appBuildNumber) return true;
     return false;
   }
 }

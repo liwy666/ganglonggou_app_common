@@ -7,6 +7,7 @@ import 'package:flutter_app/page/address_list_page/address_list_page.dart';
 import 'package:flutter_app/page/ask_after_service_page/ask_after_service_page.dart';
 import 'package:flutter_app/page/carts_page/carts_page.dart';
 import 'package:flutter_app/page/config_page/config_page.dart';
+import 'package:flutter_app/page/coupon_list_page/coupon_list_page.dart';
 import 'package:flutter_app/page/edit_address_page/edit_address_page.dart';
 import 'package:flutter_app/page/edit_user_info_page/edit_user_info_page.dart';
 import 'package:flutter_app/page/evaluate_list_page/evaluate_list_page.dart';
@@ -38,7 +39,10 @@ Handler rootHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
   int currentIndex = int.parse(
       params["currentIndex"] != null ? params["currentIndex"].first : "0");
-  bool needUpdateApp = params["needUpdateApp"] != null && params["needUpdateApp"].first == 'true' ? true : false;
+  bool needUpdateApp =
+      params["needUpdateApp"] != null && params["needUpdateApp"].first == 'true'
+          ? true
+          : false;
   return MainPage(
     currentIndex: currentIndex,
     needUpdateApp: needUpdateApp,
@@ -239,4 +243,10 @@ Handler supplierHandler = Handler(
   return SupplierPage(
     supplierPreviewInfo: supplierPreviewInfo,
   );
+});
+
+/*设置中心*/
+Handler couponListHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  return CouponListPage();
 });

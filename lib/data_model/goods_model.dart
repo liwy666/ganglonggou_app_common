@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_app/common_import.dart';
+import 'package:flutter_app/data_model/user_info_model.dart';
 import 'package:flutter_app/models/attributeValueItem.dart';
 import 'package:flutter_app/models/extraGoodsInfo.dart';
 import 'package:flutter_app/models/goodsAttribute.dart';
@@ -13,14 +14,18 @@ import 'package:flutter_app/models/goodsSkuItem.dart';
 import 'package:flutter_app/models/goodsSkuOptionsItem.dart';
 import 'package:flutter_app/page/components/my_loading.dart';
 import 'package:flutter_app/request/fetch_extra_goods_info.dart';
+import 'package:flutter_app/request/post_user_get_coupon.dart';
+import 'package:flutter_app/routes/application.dart';
 import 'package:flutter_app/service/wechat_service.dart';
 import 'package:flutter_des/flutter_des.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image/image.dart' as Image2;
 
 class GoodsModel extends ChangeNotifier {
-  List<GoodsItem> goodsList;
-  int goodsId;
+  final List<GoodsItem> goodsList;
+  final int goodsId;
+  final UserInfoModel userInfoModel;
+  final BuildContext pageContext;
   GoodsItem _goodsItem;
   GoodsInfo _goodsInfo;
   ExtraGoodsInfo _extraGoodsInfo;
@@ -44,7 +49,7 @@ class GoodsModel extends ChangeNotifier {
 
   List<GoodsSkuOptionsItem> get goodsSkuOptions => _goodsSkuOptions;
 
-  GoodsModel({@required this.goodsList, @required this.goodsId}) {
+  GoodsModel({@required this.goodsList, @required this.goodsId,@required this.userInfoModel,@required this.pageContext }) {
     this._goodsItem = this.goodsList.firstWhere(
         (element) => (element.goods_id == this.goodsId),
         orElse: () => null);
@@ -221,6 +226,17 @@ class GoodsModel extends ChangeNotifier {
           title: _goodsInfo.goodsName,
           thumbData: Image2.encodeJpg(thumbnail));
     MyLoading.shut();
+  }
+
+  ///领取优惠券
+  Future<void> userGetCoupon(int couponId) async{
+    if(!userInfoModel.isLogon){
+      Application.router.navigateTo(pageContext, "/logon?showBar=true");
+      return;
+    }
+    String result = await PostUserGetCoupon.post(userToken:userInfoModel.userInfo.user_token, couponId: couponId);
+    Fluttertoast.showToast(msg: result);
+
   }
 
   @override

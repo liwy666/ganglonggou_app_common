@@ -33,6 +33,7 @@ export 'payTypeItem.dart' ;
 export 'payTypeList.dart' ; 
 export 'searchKeywordItem.dart' ; 
 export 'searchKeywordList.dart' ; 
+export 'searchLogItem.dart' ; 
 export 'supplierPreviewInfo.dart' ; 
 export 'userInfo.dart' ; 
 export 'weChatPrepayInfo.dart' ; 

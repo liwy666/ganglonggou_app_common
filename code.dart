@@ -4,18 +4,15 @@ import 'package:flutter_app/common_import.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
-
 class _CODE {
-   ///关于ios
-   /// fake_wechat
-   /// flutter_webview_plugin
-
+  ///关于ios
+  /// fake_wechat
+  /// flutter_webview_plugin
 
   BuildContext get context => null;
+
   /*常用组件*/
   _CODE() {
-
-
     final _themeModel = Provider.of<ThemeModel>(context);
     var editAddressPageModel;
     List<dynamic> codeWidget = [
@@ -86,8 +83,7 @@ class _CODE {
       Navigator.of(context).pushNamedAndRemoveUntil(
           '/write_order', ModalRoute.withName('/')), //返回指定页面
 
-    Navigator.popAndPushNamed(context,
-    '/read_order'),//注销当前页面跳转
+      Navigator.popAndPushNamed(context, '/read_order'), //注销当前页面跳转
 
       TextField(
         controller: TextEditingController.fromValue(TextEditingValue(
@@ -112,7 +108,6 @@ class _CODE {
           clickFun: cartDataModel.delCart,
           cancelButtonText: "我再想想",
           confirmButtonText: "删除"), */
-
     ];
   }
 
@@ -146,8 +141,7 @@ class _CODE {
   }
 }
 
-class ThemeModel {
-}
+class ThemeModel {}
 
 class ProviderWidget<T> {
   final Widget Function(BuildContext context, T model, Widget child) builder;

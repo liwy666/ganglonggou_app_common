@@ -12,6 +12,7 @@ class UserCouponListPageModel with ChangeNotifier {
     CouponList couponList =
         await FetchUserHaveCouponList.fetch(userToken: userToken);
     _couponItemList = couponList.data;
+    print(_couponItemList.length);
     notifyListeners();
   }
 }

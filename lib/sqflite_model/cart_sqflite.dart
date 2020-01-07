@@ -18,16 +18,47 @@ class CartSqFlite extends BaseSqflite {
   }
 
   @override
-  Future insertData(Map<String, dynamic> mapDate) {
+  Future insertData(Map<String, dynamic> mapDate) async {
     // TODO: implement insertData
-    return null;
+    await BaseSqflite.db.insert(_tableName, mapDate);
   }
 
   @override
   Future<List<Map<String, dynamic>>> queryAll() async {
     // TODO: implement queryAll
-//    await BaseSqflite.db.execute("DELETE FROM $_tableName");
     List<Map<String, dynamic>> list = await BaseSqflite.db.query(_tableName);
+    return list;
+  }
+
+  ///更新购物车数量
+  Future updateCartNumber(
+      {@required int cartId,
+      @required int cartNumber,
+      @required double cartPrice}) async {
+    await BaseSqflite.db.execute(
+        "UPDATE $_tableName SET goodsNumber = $cartNumber, goodsPrice = $cartPrice WHERE cartId = $cartId");
+  }
+
+  ///切换购物车选中状态
+  Future switchCartChoiceState(
+      {@required int cartId, @required int isChoice}) async {
+    await BaseSqflite.db.execute(
+        "UPDATE $_tableName SET isChoice = $isChoice WHERE cartId = $cartId");
+  }
+
+  ///删除购物车
+  Future delCart(
+      {@required int cartId}) async {
+    await BaseSqflite.db.execute(
+        "DELETE FROM $_tableName WHERE cartId = $cartId");
+  }
+
+  ///获取用户所有购物车
+  Future<List<Map<String, dynamic>>> queryUserAllCart(
+      {@required int userId}) async {
+    // TODO: implement queryAll
+    List<Map<String, dynamic>> list =
+        await BaseSqflite.db.query(_tableName, where: "userId = $userId");
     return list;
   }
 }

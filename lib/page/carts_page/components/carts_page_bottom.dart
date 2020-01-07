@@ -3,9 +3,7 @@ import 'package:flutter_app/data_model/cart_data_model.dart';
 import 'package:flutter_app/data_model/user_info_model.dart';
 import 'package:flutter_app/page/components/my_bottom_button.dart';
 import 'package:flutter_app/page/components/my_dialog.dart';
-import 'package:flutter_app/provider/provider_widget.dart';
 import 'package:flutter_app/routes/application.dart';
-import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 

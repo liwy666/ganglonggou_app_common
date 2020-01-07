@@ -8,7 +8,7 @@ class OrderInfo {
     OrderInfo();
 
     String order_sn;
-    String user_id;
+    num user_id;
     String user_name;
     num order_state;
     String original_order_price;

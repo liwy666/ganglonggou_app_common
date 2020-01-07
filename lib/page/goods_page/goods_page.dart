@@ -4,6 +4,7 @@ import 'package:flutter_app/data_model/goods_list_data_model.dart';
 import 'package:flutter_app/data_model/goods_model.dart';
 import 'package:flutter_app/data_model/page_position_model.dart';
 import 'package:flutter_app/data_model/theme_model.dart';
+import 'package:flutter_app/data_model/user_info_model.dart';
 import 'package:flutter_app/page/components/my_extended_image.dart';
 import 'package:flutter_app/page/goods_page/components/bottm_button.dart';
 import 'package:flutter_app/page/goods_page/components/goods_top_swiper.dart';
@@ -31,150 +32,161 @@ class GoodsPage extends StatelessWidget {
     GoodsListDataModel goodsListModel =
         Provider.of<GoodsListDataModel>(context);
     // TODO: implement build
-    return ProviderWidget2<GoodsModel, PagePositionModel>(
-      model1: GoodsModel(
-          goodsList: goodsListModel.goodsList, goodsId: this.goodsId),
-      model2: PagePositionModel(monitoringPageHeightPositionMaxPosition: 300),
-      child: GoodsDetails(), //商品详情,
-      builder: ((BuildContext context, GoodsModel goodsModel,
-          PagePositionModel pagePositionModel, Widget _child) {
-        return Scaffold(
-          backgroundColor: _themeModel.pageBackgroundColor1,
-          body: Stack(
-            children: <Widget>[
-              CustomScrollView(
-                controller: pagePositionModel.controller,
-                slivers: <Widget>[
-                  SliverAppBar(
-                    pinned: true,
-                    backgroundColor: _themeModel.pageBackgroundColor2,
-                    leading: _LeftIcon(),
-                    actions: [
-                      _RightIcon(),
-                    ],
-                    title: Text(
-                      "商品详情",
-                      style: TextStyle(
-                          fontSize: COMMON_FONT_SIZE,
-                          color: _themeModel.fontColor1),
-                    ),
-                    centerTitle: true,
-                    expandedHeight: MediaQuery.of(context).size.width -
-                        MediaQuery.of(context).padding.top,
-                    flexibleSpace: FlexibleSpaceBar(
-                      background: Container(
-                        height: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.all(0),
-                        color: Colors.white,
-                        child: goodsModel.loadFinish
-                            ? GoodsTopSwiper()
-                            : MyExtendedImage.network(
-                                goodsModel.goodsInfo.goodsImg,
-                                fit: BoxFit.fitWidth,
-                              ),
-                      ),
-                    ),
-                  ),
-                  SliverList(
-                    delegate: SliverChildListDelegate([
-                      Container(
-                        child: Text(
-                          "￥${goodsModel.goodsInfo.goodsPrice.toStringAsFixed(2)}",
+    return Consumer<UserInfoModel>(
+      builder: (BuildContext context, UserInfoModel userInfoModel, _) {
+        return ProviderWidget2<GoodsModel, PagePositionModel>(
+          model1: GoodsModel(
+              goodsList: goodsListModel.goodsList,
+              goodsId: this.goodsId,
+              userInfoModel: userInfoModel,
+              pageContext: context),
+          model2:
+              PagePositionModel(monitoringPageHeightPositionMaxPosition: 300),
+          child: GoodsDetails(), //商品详情,
+          builder: ((BuildContext context, GoodsModel goodsModel,
+              PagePositionModel pagePositionModel, Widget _child) {
+            return Scaffold(
+              backgroundColor: _themeModel.pageBackgroundColor1,
+              body: Stack(
+                children: <Widget>[
+                  CustomScrollView(
+                    controller: pagePositionModel.controller,
+                    slivers: <Widget>[
+                      SliverAppBar(
+                        pinned: true,
+                        backgroundColor: _themeModel.pageBackgroundColor2,
+                        leading: _LeftIcon(),
+                        actions: [
+                          _RightIcon(),
+                        ],
+                        title: Text(
+                          "商品详情",
                           style: TextStyle(
-                              fontSize: BEST_LARGE_FONT_SIZE,
-                              color: Colors.red,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        color: _themeModel.pageBackgroundColor2,
-                      ), //商品价格
-                      Container(
-                        child: Text(
-                          goodsModel.goodsInfo.goodsName,
-                          style: TextStyle(
-                              fontSize: LARGE_FONT_SIZE,
-                              fontWeight: FontWeight.w800,
+                              fontSize: COMMON_FONT_SIZE,
                               color: _themeModel.fontColor1),
                         ),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                        color: _themeModel.pageBackgroundColor2,
-                      ), //商品名称
-                      DefaultTextStyle(
-                        style: TextStyle(fontSize: COMMON_FONT_SIZE),
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 15),
-                          color: _themeModel.pageBackgroundColor2,
-                          child: DefaultTextStyle(
-                            style: TextStyle(
-                                color: _themeModel.fontColor2,
-                                fontSize: SMALL_FONT_SIZE),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  "快递：免邮费",
-                                ),
-                                Text("库存：${goodsModel.goodsInfo.goodsStock}"),
-                                Text(
-                                    "销量：${goodsModel.goodsInfo.goodsSalesVolume}"),
-                              ],
-                            ),
+                        centerTitle: true,
+                        expandedHeight: MediaQuery.of(context).size.width -
+                            MediaQuery.of(context).padding.top,
+                        flexibleSpace: FlexibleSpaceBar(
+                          background: Container(
+                            height: MediaQuery.of(context).size.width,
+                            padding: EdgeInsets.all(0),
+                            color: Colors.white,
+                            child: goodsModel.loadFinish
+                                ? GoodsTopSwiper()
+                                : MyExtendedImage.network(
+                                    goodsModel.goodsInfo.goodsImg,
+                                    fit: BoxFit.fitWidth,
+                                  ),
                           ),
                         ),
-                      ), //商品销量
-                      CouponPreview(
-                        goodsModel: goodsModel,
-                      ), //优惠券
-                      GoodsSkuPreview(
-                        goodsModel: goodsModel,
-                      ), //规格选择
-                      ShopPromisePreview(), //购物保证
-                      EvaluatePreview(
-                        goodsModel: goodsModel,
-                      ), //评价缩略,
-                      PreviewSupplier(goodsModel: goodsModel), //供应商预览
-                      Container(
-                        color: _themeModel.pageBackgroundColor2,
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        margin: EdgeInsets.only(top: 20),
-                        child: Text(
-                          "图文介绍",
-                          style: TextStyle(
-                              fontSize: COMMON_FONT_SIZE, color: Colors.blue),
-                          textAlign: TextAlign.center,
-                        ),
-                      ) //商品详情框
-                    ]),
+                      ),
+                      SliverList(
+                        delegate: SliverChildListDelegate([
+                          Container(
+                            child: Text(
+                              "￥${goodsModel.goodsInfo.goodsPrice.toStringAsFixed(2)}",
+                              style: TextStyle(
+                                  fontSize: BEST_LARGE_FONT_SIZE,
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 10),
+                            color: _themeModel.pageBackgroundColor2,
+                          ), //商品价格
+                          Container(
+                            child: Text(
+                              goodsModel.goodsInfo.goodsName,
+                              style: TextStyle(
+                                  fontSize: LARGE_FONT_SIZE,
+                                  fontWeight: FontWeight.w800,
+                                  color: _themeModel.fontColor1),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 0),
+                            color: _themeModel.pageBackgroundColor2,
+                          ), //商品名称
+                          DefaultTextStyle(
+                            style: TextStyle(fontSize: COMMON_FONT_SIZE),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 15),
+                              color: _themeModel.pageBackgroundColor2,
+                              child: DefaultTextStyle(
+                                style: TextStyle(
+                                    color: _themeModel.fontColor2,
+                                    fontSize: SMALL_FONT_SIZE),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Text(
+                                      "快递：免邮费",
+                                    ),
+                                    Text(
+                                        "库存：${goodsModel.goodsInfo.goodsStock}"),
+                                    Text(
+                                        "销量：${goodsModel.goodsInfo.goodsSalesVolume}"),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ), //商品销量
+                          CouponPreview(
+                            goodsModel: goodsModel,
+                          ), //优惠券
+                          GoodsSkuPreview(
+                            goodsModel: goodsModel,
+                          ), //规格选择
+                          ShopPromisePreview(), //购物保证
+                          EvaluatePreview(
+                            goodsModel: goodsModel,
+                          ), //评价缩略,
+                          PreviewSupplier(goodsModel: goodsModel), //供应商预览
+                          Container(
+                            color: _themeModel.pageBackgroundColor2,
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            margin: EdgeInsets.only(top: 20),
+                            child: Text(
+                              "图文介绍",
+                              style: TextStyle(
+                                  fontSize: COMMON_FONT_SIZE,
+                                  color: Colors.blue),
+                              textAlign: TextAlign.center,
+                            ),
+                          ) //商品详情框
+                        ]),
+                      ),
+                      _child,
+                    ],
                   ),
-                  _child,
+                  //GoodsTabBar(),
+                  goodsModel.loadFinish
+                      ? Positioned(
+                          bottom: 0,
+                          child: BottomButton(),
+                        )
+                      : Container(),
                 ],
               ),
-              //GoodsTabBar(),
-              goodsModel.loadFinish
-                  ? Positioned(
-                      bottom: 0,
-                      child: BottomButton(),
+              floatingActionButtonLocation: _MyFloatingActionButtonLocation(),
+              floatingActionButton: pagePositionModel.showToTopBtn
+                  ? FloatingActionButton(
+                      heroTag: "goods_page",
+                      child: pagePositionModel.floatingActionButtonChild,
+                      foregroundColor: _themeModel.pageBackgroundColor2,
+                      hoverElevation: 300,
+                      onPressed: () {
+                        pagePositionModel.toTop();
+                      },
                     )
-                  : Container(),
-            ],
-          ),
-          floatingActionButtonLocation: _MyFloatingActionButtonLocation(),
-          floatingActionButton: pagePositionModel.showToTopBtn
-              ? FloatingActionButton(
-                  heroTag: "goods_page",
-                  child: pagePositionModel.floatingActionButtonChild,
-                  foregroundColor: _themeModel.pageBackgroundColor2,
-                  hoverElevation: 300,
-                  onPressed: () {
-                    pagePositionModel.toTop();
-                  },
-                )
-              : null,
+                  : null,
+            );
+          }),
         );
-      }),
+      },
     );
   }
 }

@@ -196,7 +196,6 @@ class _PicSwiperState extends State<PicSwiper>
             )
           ],
         ));
-
     result = ExtendedImageSlidePage(
       key: slidePagekey,
       child: result,
@@ -219,7 +218,6 @@ class _PicSwiperState extends State<PicSwiper>
         }
       },
     );
-
     return result;
   }
 }

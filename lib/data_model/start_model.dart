@@ -18,6 +18,7 @@ import 'package:flutter_app/sqflite_model/goods_sqflite.dart';
 import 'package:flutter_app/sqflite_model/index_ad_sqflite.dart';
 import 'package:flutter_app/sqflite_model/sqlfite_config.dart';
 import 'package:flutter_app/sqflite_model/user_sqflite.dart';
+import 'package:package_info/package_info.dart';
 import 'cart_data_model.dart';
 import 'classify_list_ad_model.dart';
 import 'goods_list_data_model.dart';
@@ -32,6 +33,9 @@ class StartModel with ChangeNotifier {
   final UserInfoModel _userInfoData = UserInfoModel();
   GetVersionInfo _getVersionInfo;
 
+  String _appVersion = "1.0.0";
+  int _appBuildNumber = 1;
+
   GoodsListDataModel get goodsListData => _goodsListData;
 
   IndexAdListDataModel get indexAdListData => _indexAdListData;
@@ -44,15 +48,19 @@ class StartModel with ChangeNotifier {
 
   GetVersionInfo get getVersionInfo => _getVersionInfo;
 
+  String get appVersion => _appVersion;
+
+  int get appBuildNumber => _appBuildNumber;
+
   set getVersionInfo(GetVersionInfo getVersionInfo) {
     if (getVersionInfo.result_code == "success" &&
-        getVersionInfo.app_version != VERSION) {
+        getVersionInfo.app_version != _appVersion) {
       _getVersionInfo = getVersionInfo;
     }
   }
 
   Future<void> init() async {
-    /*配置文件*/
+    ///配置文件
     List<Map<String, dynamic>> configSqlQueryAll =
         await BaseSqflite.db.query(CONFIG_TABLE_NAME);
     int nowDateTime = DateTime.now().millisecondsSinceEpoch; //当前
@@ -71,25 +79,17 @@ class StartModel with ChangeNotifier {
       });
     }
 
-    /*获取数据库信息*/
-    //商品数据库
+    ///初始化商品、首页、分类
+    //获取商品数据
     List<Map<String, dynamic>> goodsSqlQueryAll =
         await GoodsSqflite().queryAll();
-    //首页广告数据库
+    //获取首页广告数据
     List<Map<String, dynamic>> indexAdSqlQueryAll =
         await IndexAdSqflite().queryAll();
-    //分类数据库
+    //获取分类数据
     List<Map<String, dynamic>> classifySqlQueryAll =
         await ClassifySqflite().queryAll();
-    //购物车数据库
-    List<Map<String, dynamic>> cartSqlQueryAll = await CartSqFlite().queryAll();
-    //用户信息
-    List<Map<String, dynamic>> _userInfoSqlQueryAll =
-        await UserSqflite().queryAll();
-    Map<String, dynamic> userInfoSqlQueryAll =
-        _userInfoSqlQueryAll.length > 0 ? _userInfoSqlQueryAll[0] : {};
-
-    /*初始化商品列表和首页广告*/
+    //初始化商品列表和首页广告
     if (goodsSqlQueryAll.length == 0 ||
         indexAdSqlQueryAll.length == 0 ||
         indexInfoInvalidTime <= nowDateTime) {
@@ -110,8 +110,7 @@ class StartModel with ChangeNotifier {
         return IndexAdItem.fromJson(map);
       }).toList());
     }
-
-    /*初始化展示分类*/
+    //初始化展示分类
     if (classifySqlQueryAll.length == 0 ||
         classifyListInvalidTime <= nowDateTime) {
       ClassifyList classifyList = await FetchClassifyList.fetch();
@@ -126,16 +125,29 @@ class StartModel with ChangeNotifier {
       final Map<String, dynamic> data = {"data": classifySqlQueryAll};
       _classifyListData.init(ClassifyList.fromJson(data));
     }
-    /*初始化购物车*/
-    List<CartItem> cartList =
-        cartSqlQueryAll.map((Map<String, dynamic> mapItem) {
-      return CartItem.fromJson(mapItem);
-    }).toList();
-    _cartData.init(cartList: cartList);
 
-    /*初始化用户信息*/
+    ///初始化用户信息
+    //获取用户数据
+    List<Map<String, dynamic>> _userInfoSqlQueryAll =
+        await UserSqflite().queryAll();
+    Map<String, dynamic> userInfoSqlQueryAll =
+        _userInfoSqlQueryAll.length > 0 ? _userInfoSqlQueryAll[0] : {};
+    //初始化用户信息
     if (userInfoSqlQueryAll.length > 0) {
       _userInfoData.init(UserInfo.fromJson(userInfoSqlQueryAll));
+    }
+    userInfoData.cartDataModel = _cartData;
+
+    ///初始化购物车
+    await _cartData.init(userInfoModel: userInfoData);
+
+    ///获取版本信息
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    if (packageInfo.buildNumber != null) {
+      _appBuildNumber = int.parse(packageInfo.buildNumber);
+    }
+    if (packageInfo.version != null) {
+      _appVersion = packageInfo.version;
     }
   }
 }

@@ -4,18 +4,20 @@ import 'package:flutter_app/models/addressList.dart';
 import 'package:flutter_app/request/fetch_user_address.dart';
 
 class AddressListModel with ChangeNotifier {
-  AddressList _addressList = AddressList();
+  List<AddressItem> _addressList = [];
 
-  AddressItem get defaultAddress => _addressList != null
-      ? _addressList.data
-          .firstWhere((AddressItem item) => (item.is_default == 1),orElse: ()=>null)
-      : null;
+  AddressItem get defaultAddress =>
+      _addressList.firstWhere((AddressItem item) => (item.is_default == 1),
+          orElse: () => null);
 
-  AddressList get addressList => _addressList;
+  List<AddressItem> get addressList => _addressList;
 
   /*初始化*/
   Future init({@required String userToken}) async {
-    _addressList = await FetchUserAddress.fetch(userToken: userToken);
+    AddressList _addressListTemp =
+        await FetchUserAddress.fetch(userToken: userToken)
+          ..data;
+    _addressList = _addressListTemp.data;
     notifyListeners();
   }
 }

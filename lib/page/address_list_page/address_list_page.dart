@@ -46,7 +46,7 @@ class AddressListPage extends StatelessWidget {
             model: AddressListPageModel(),
             builder: (BuildContext context,
                 AddressListPageModel addressListPageModel, _) {
-              return addressListModel.addressList.data!= null&&addressListModel.addressList.data.length > 0
+              return addressListModel.addressList.length > 0
                   ? ListView(
                       children: _getAddressList(addressListModel,
                           (AddressItem addressItem) async {
@@ -115,7 +115,7 @@ class AddressListPage extends StatelessWidget {
 
   List<Widget> _getAddressList(
       AddressListModel addressListModel, Function switchDefaultFunction) {
-    return addressListModel.addressList.data
+    return addressListModel.addressList
         .map<Widget>((AddressItem addressItem) {
       return Container(
         child: AddressCard(

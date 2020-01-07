@@ -3,12 +3,14 @@ import 'package:flutter_app/common_import.dart';
 import 'package:flutter_app/data_model/cart_data_model.dart';
 import 'package:flutter_app/data_model/goods_model.dart';
 import 'package:flutter_app/data_model/theme_model.dart';
+import 'package:flutter_app/data_model/user_info_model.dart';
 import 'package:flutter_app/models/attributeValueItem.dart';
 import 'package:flutter_app/models/goodsInfo.dart';
 import 'package:flutter_app/models/goodsSkuOptionsItem.dart';
 import 'package:flutter_app/page/components/my_extended_image.dart';
 import 'package:flutter_app/page/components/my_options_align.dart';
 import 'package:flutter_app/page/components/my_stepper.dart';
+import 'package:flutter_app/routes/application.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
@@ -93,7 +95,9 @@ class GoodsSkuDiaLog extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       "数量:",
-                      style: TextStyle(fontSize: COMMON_FONT_SIZE,color: _themeModel.fontColor1),
+                      style: TextStyle(
+                          fontSize: COMMON_FONT_SIZE,
+                          color: _themeModel.fontColor1),
                     ),
                     MyStepper(
                       value: goodsModel.goodsInfo.goodsNumber,
@@ -105,7 +109,7 @@ class GoodsSkuDiaLog extends StatelessWidget {
                 ),
               ), //数量
               Container(
-                child: Consumer<CartDataModel>(
+                child: Consumer2<CartDataModel, UserInfoModel>(
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: Text(
@@ -121,7 +125,7 @@ class GoodsSkuDiaLog extends StatelessWidget {
                     ),
                   ),
                   builder: (BuildContext context, CartDataModel cartDataModel,
-                      Widget child) {
+                      UserInfoModel userInfoModel, Widget child) {
                     return RaisedButton(
                       onPressed: goodsModel.goodsInfo.goodsStock <
                               goodsModel.goodsInfo.goodsNumber
@@ -130,8 +134,10 @@ class GoodsSkuDiaLog extends StatelessWidget {
                               buttonOnClick(
                                   goodsInfo: goodsModel.goodsInfo,
                                   cartDataModel: cartDataModel,
+                                  userInfoModel: userInfoModel,
+                                  goodsPageContext: goodsModel.pageContext,
                                   context: context);
-                              Navigator.of(context).pop();
+                              //Navigator.of(context).pop();
                             },
                       color: Colors.red,
                       shape: StadiumBorder(
@@ -154,23 +160,35 @@ class GoodsSkuDiaLog extends StatelessWidget {
   void buttonOnClick(
       {@required GoodsInfo goodsInfo,
       @required CartDataModel cartDataModel,
+      @required UserInfoModel userInfoModel,
+      @required BuildContext goodsPageContext,
       @required BuildContext context}) {
+    Navigator.of(context).pop();
+    if (!userInfoModel.isLogon) {
+      Application.router.navigateTo(goodsPageContext, '/logon?showBar=true');
+      return;
+    }
+
     if (this.clickType == SkuButtonClickType.addShoppingCart) {
       this.addShoppingCart(goodsInfo: goodsInfo, cartDataModel: cartDataModel);
     } else if (this.clickType == SkuButtonClickType.immediateBuy) {
-      this.immediateBuy();
+      this.immediateBuy(
+          goodsInfo: goodsInfo, cartDataModel: cartDataModel, context: context);
     }
   }
 
-/*加入购物车事件*/
+  ///加入购物车事件
   void addShoppingCart(
       {@required GoodsInfo goodsInfo, @required CartDataModel cartDataModel}) {
     cartDataModel.addCart(goodsInfo: goodsInfo);
   }
 
-/*立即购买事件*/
-  void immediateBuy() {
-    print("点击立即购买");
+  ///立即购买事件
+  void immediateBuy(
+      {@required GoodsInfo goodsInfo,
+      @required CartDataModel cartDataModel,
+      @required BuildContext context}) {
+    cartDataModel.immediateBuy(goodsInfo: goodsInfo, context: context);
   }
 }
 

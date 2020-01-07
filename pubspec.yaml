@@ -41,7 +41,7 @@ dependencies:
   image_picker: ^0.6.1+10
   fake_wechat: ^0.3.3
   image: ^2.1.8
-  flutter_webview_plugin: ^0.3.8
+  flutter_webview_plugin: "0.3.10"
   url_launcher: ^5.2.5
   curved_navigation_bar: ^0.3.1
   flutter_staggered_animations: ^0.1.2
@@ -52,7 +52,7 @@ dependencies:
   open: '1.1.0'
   open_file: ^2.1.1
   package_info: ^0.4.0+12
-
+  flutter_web_view: ^0.0.6
 dev_dependencies:
   json_model: ^0.0.2
   build_runner: ^1.0.0
@@ -110,6 +110,8 @@ flutter:
     - static_images/update_img.png
     - static_images/update_loading.png
     - static_images/hot_goods_head.png
+    - static_images/middle_button.png
+    - static_images/without_coupon.png
     - static_jsons/address_options.json
 
 

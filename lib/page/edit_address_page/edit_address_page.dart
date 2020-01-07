@@ -334,7 +334,7 @@ class _DeleteButton extends StatelessWidget {
             try {
               bool result = await editAddressPageModel.deleteAddress(
                   userToken: userInfoModel.userInfo.user_token,
-                  addressItemList: addressListModel.addressList.data);
+                  addressItemList: addressListModel.addressList);
               MyLoading.shut();
               if (result) {
                 MyLoading.eject();

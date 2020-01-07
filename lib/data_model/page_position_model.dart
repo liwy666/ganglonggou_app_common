@@ -5,7 +5,7 @@ class PagePositionModel extends ChangeNotifier {
   final double monitoringPageHeightPositionMaxPosition;
   ScrollController _controller = new ScrollController();
   bool showToTopBtn = false; //是否显示“返回到顶部”按钮
-  final Widget _floatingActionButtonChild = Icon(Icons.arrow_upward);
+  final Widget _floatingActionButtonChild = Icon(Icons.arrow_upward,size: 15,);
 
   ScrollController get controller => _controller;
 

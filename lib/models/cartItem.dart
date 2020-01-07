@@ -6,6 +6,8 @@ part 'cartItem.g.dart';
 class CartItem {
     CartItem();
 
+    num cartId;
+    num userId;
     num goodsNumber;
     String goodsSn;
     String goodsName;

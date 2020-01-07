@@ -97,6 +97,7 @@ class _MainPage extends State<MainPage> {
               physics: NeverScrollableScrollPhysics(), //关闭滑动
             ),
             bottomNavigationBar: BottomNavigationBar(
+                elevation: 5,
                 backgroundColor: _themeModel.pageBackgroundColor2,
                 currentIndex: mainPageModel.currentIndex,
                 //高亮项数（int）
@@ -133,7 +134,7 @@ class _MainPage extends State<MainPage> {
                                 : Theme.of(context).accentColor),
                       )),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.whatshot), title: Text("捡漏")),
+                      icon: Icon(Icons.whatshot), title: Text("")),
                   BottomNavigationBarItem(
                       icon: Icon(Icons.shopping_cart,
                           color: _themeModel.fontColor2),
@@ -162,26 +163,25 @@ class _MainPage extends State<MainPage> {
                 ]),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
-            floatingActionButton: Container(
-              height: 80,
-              width: 80,
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(
+            floatingActionButton: GestureDetector(
+              child: Container(
+                height: 60,
+                width: 60,
+                padding: EdgeInsets.all(0),
+                margin: EdgeInsets.only(top: 20),
+                decoration: BoxDecoration(
                   color: _themeModel.pageBackgroundColor2,
-                  borderRadius: BorderRadius.circular(40),
-                  border: Border.all(
-                      color: Color.fromRGBO(0, 0, 0, 0.1), width: 0.1)),
-              child: FloatingActionButton(
-                heroTag: "main_page",
-                child: Icon(Icons.whatshot),
-                foregroundColor: _themeModel.pageBackgroundColor2,
-                hoverElevation: 300,
-                onPressed: () {
-                  Application.router.navigateTo(context,
-                      'search_goods_complete?keyword=${base64UrlEncode(utf8.encode("特价"))}&showKeyword=false');
-                },
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Image.asset(
+                  'static_images/middle_button.png',
+                  fit: BoxFit.fitWidth,
+                ),
               ),
+              onTap: () {
+                Application.router.navigateTo(context,
+                    'search_goods_complete?keyword=${base64UrlEncode(utf8.encode("特价捡漏"))}&showKeyword=false');
+              },
             ),
           ),
         );

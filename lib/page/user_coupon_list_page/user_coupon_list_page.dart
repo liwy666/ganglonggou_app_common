@@ -8,6 +8,7 @@ import 'package:flutter_app/page/components/my_loading.dart';
 import 'package:flutter_app/page/components/my_page_tips.dart';
 import 'package:flutter_app/page/components/my_tab_bar.dart';
 import 'package:flutter_app/provider/provider_widget.dart';
+import 'package:flutter_app/routes/application.dart';
 import 'package:provider/provider.dart';
 
 class UserCouponListPage extends StatelessWidget {
@@ -62,7 +63,9 @@ class UserCouponListPage extends StatelessWidget {
                               style: BorderStyle.none,
                             )),
                             color: Theme.of(context).accentColor,
-                            onPressed: () {},
+                            onPressed: () {
+                              Application.router.navigateTo(context, "/coupon_list");
+                            },
                           ), //操场按钮
                         ],
                       ),

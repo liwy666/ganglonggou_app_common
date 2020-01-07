@@ -62,12 +62,6 @@ class LogonPage extends StatelessWidget {
                       },
                     ),
                     _LogonButton(),
-                    FlatButton(
-                      child: Text("测试"),
-                      onPressed: () {
-                        logonDataModel.test();
-                      },
-                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[

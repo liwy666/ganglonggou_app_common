@@ -27,6 +27,7 @@ class Routes {
   static String submitEvaluate = '/submit_evaluate';
   static String config = '/config';
   static String supplier = '/supplier';
+  static String couponList = '/coupon_list';
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = Handler(
@@ -124,5 +125,9 @@ class Routes {
     router.define(supplier,
         handler: supplierHandler,
         transitionType: TransitionType.inFromRight); //供应商
+
+    router.define(couponList,
+        handler: couponListHandler,
+        transitionType: TransitionType.inFromRight); //优惠券列表
   }
 }

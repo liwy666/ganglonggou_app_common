@@ -3,7 +3,7 @@ const bool SQL_DEBUG = false;
 //数据库名称
 const String SQL_FILE_NAME = "gl_sqflite_db.sql";
 //数据库版本
-const int SQL_VERSION = 7;
+const int SQL_VERSION = 2;
 
 //数据库config表名称
 const String CONFIG_TABLE_NAME = "gl_config";
@@ -105,7 +105,8 @@ const String CART_TABLE_NAME = 'gl_cart';
 //创建物车表sql语句
 const String CREATE_CART_TABLE_SQL_CODE = '''
   create table $CART_TABLE_NAME (
-  id INTEGER primary key AUTOINCREMENT not null,
+  cartId INTEGER primary key AUTOINCREMENT not null,
+  userId int(10),
   goodsNumber int(10),
   goodsSn varchar(60),
   goodsName varchar(120),
@@ -133,6 +134,15 @@ const String CREATE_CART_TABLE_SQL_CODE = '''
   isValid int(1),
   isChoice int(1))''';
 
+//搜索历史表
+const String SEARCH_LOG_TABLE_NAME = "gl_search_log";
+//创建搜索历史表
+const String CREATE_SEARCH_LOG_SQL_CODE = '''
+  create table $SEARCH_LOG_TABLE_NAME (
+  id INTEGER primary key AUTOINCREMENT not null,
+  user_id int(10),
+  search_keyword text(0))''';
+
 //创建表语句集合
 const List<String> CREATE_SQL_CODE_LIST = [
   CREATE_CONFIG_TABLE_SQL_CODE,
@@ -141,6 +151,7 @@ const List<String> CREATE_SQL_CODE_LIST = [
   CREATE_GOODS_TABLE_SQL_CODE,
   CREATE_CLASSIFY_TABLE_SQL_CODE,
   CREATE_CART_TABLE_SQL_CODE,
+  CREATE_SEARCH_LOG_SQL_CODE,
 ];
 
 //表名合集
@@ -151,4 +162,5 @@ const List<String> SQL_TABLE_NAME_LIST = [
   GOODS_TABLE_NAME,
   CLASSIFY_TABLE_NAME,
   CART_TABLE_NAME,
+  SEARCH_LOG_TABLE_NAME,
 ];

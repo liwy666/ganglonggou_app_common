@@ -2,14 +2,23 @@ import 'dart:convert';
 
 import 'package:flutter_app/common_import.dart';
 import 'package:flutter_app/models/index.dart';
+import 'package:flutter_app/models/searchLogItem.dart';
+import 'package:flutter_app/page/components/my_loading.dart';
 import 'package:flutter_app/request/fetch_search_log.dart';
 import 'package:flutter_app/request/post_add_search_keyword.dart';
+import 'package:flutter_app/sqflite_model/search_log_sqflite.dart';
 
 class SearchGoodsPageModel with ChangeNotifier {
   List<SearchKeywordItem> _searchKeywordList = [];
+  List<SearchLogItem> _searchLogItemList = [];
   String _searchKeyword = "";
+  final int userId;
+
+  SearchGoodsPageModel({@required this.userId});
 
   List<SearchKeywordItem> get searchKeywordList => _searchKeywordList;
+
+  List<SearchLogItem> get searchLogItemList => _searchLogItemList;
 
   String get searchKeyword => _searchKeyword;
 
@@ -20,16 +29,14 @@ class SearchGoodsPageModel with ChangeNotifier {
     notifyListeners();
   }
 
-  SearchGoodsPageModel() {
-    FetchSearchLog.fetch().then((SearchKeywordList searchKeywordList) {
-      _searchKeywordList = searchKeywordList.data;
-      notifyListeners();
-    });
-  }
-
   Future<void> init() async {
     SearchKeywordList searchKeywordList = await FetchSearchLog.fetch();
     _searchKeywordList = searchKeywordList.data;
+    List<Map<String, dynamic>> searchLogMap =
+        await SearchLogSqFlite().queryUserAllSearchLog(userId);
+    _searchLogItemList = searchLogMap.map((Map<String, dynamic> map) {
+      return SearchLogItem.fromJson(map);
+    }).toList();
     notifyListeners();
   }
 
@@ -39,11 +46,33 @@ class SearchGoodsPageModel with ChangeNotifier {
   }
 
   ///开始搜索
-  void startSearch(BuildContext context) {
+  Future<void> startSearch(BuildContext context) async {
     if (_searchKeyword.isEmpty) return;
-    PostAddSearchKeyword.post(searchKeyword: _searchKeyword);
+    MyLoading.eject();
+    try {
+      await PostAddSearchKeyword.post(searchKeyword: _searchKeyword);
+      await SearchLogSqFlite()
+          .insertUserSearchLog(searchWord: _searchKeyword, userId: userId);
+    } catch (e) {
+      print(e);
+    } finally {
+      MyLoading.shut();
+      Navigator.popAndPushNamed(context,
+          'search_goods_complete?keyword=${base64UrlEncode(utf8.encode(_searchKeyword))}');
+    }
+  }
 
-    Navigator.popAndPushNamed(context,
-        'search_goods_complete?keyword=${base64UrlEncode(utf8.encode(_searchKeyword))}');
+  ///清空搜索记录
+  Future<void> cleanSearchLog() async {
+    MyLoading.eject();
+    try {
+      await SearchLogSqFlite().cleanUserSearchLog(userId);
+      _searchLogItemList.clear();
+      notifyListeners();
+    } catch (e) {
+      print(e);
+    } finally {
+      MyLoading.shut();
+    }
   }
 }

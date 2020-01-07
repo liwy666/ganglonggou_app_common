@@ -9,7 +9,7 @@ part of 'orderInfo.dart';
 OrderInfo _$OrderInfoFromJson(Map<String, dynamic> json) {
   return OrderInfo()
     ..order_sn = json['order_sn'] as String
-    ..user_id = json['user_id'] as String
+    ..user_id = json['user_id'] as num
     ..user_name = json['user_name'] as String
     ..order_state = json['order_state'] as num
     ..original_order_price = json['original_order_price'] as String
