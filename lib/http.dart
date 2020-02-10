@@ -8,7 +8,7 @@ Dio dio = new Dio();
 //初始化Http
 void initHttp() {
   //配置
-  dio.options.receiveTimeout = 5000; //超时时间ms
+  dio.options.receiveTimeout = 3000; //超时时间ms
   dio.options.baseUrl = DEBUG
       ? 'https://test-api.ganglonggou.com/api/v1'
       : 'https://api.ganglonggou.com/api/v1';
