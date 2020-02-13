@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/index.dart';
-import 'package:flutter_app/page/components/horizontal_goods_card.dart';
-import 'package:flutter_app/routes/application.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/index.dart';
+import 'package:ganglong_shop_app/page/components/horizontal_goods_card.dart';
+import 'package:ganglong_shop_app/routes/application.dart';
 
 class WaitEvaluateGoodsCard extends StatelessWidget {
   final MidOrderItem midOrderItem;

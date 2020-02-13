@@ -1,5 +1,5 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/theme_model.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/theme_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 

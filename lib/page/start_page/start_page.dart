@@ -1,8 +1,10 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/start_model.dart';
-import 'package:flutter_app/models/getVersionInfo.dart';
-import 'package:flutter_app/page/components/my_loading.dart';
-import 'package:flutter_app/request/fetch_version_info.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/start_model.dart';
+import 'package:ganglong_shop_app/data_model/theme_model.dart';
+import 'package:ganglong_shop_app/models/getVersionInfo.dart';
+import 'package:ganglong_shop_app/page/components/my_loading.dart';
+import 'package:ganglong_shop_app/request/fetch_version_info.dart';
+import 'package:flutter_ios_dark_mode/flutter_ios_dark_mode.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
@@ -28,9 +30,12 @@ class _StartPage extends State<StartPage> {
       //初始化页面高宽
       ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
       //检查版本更新
-      bool needUpdateApp = await _checkVersion(context);
+      //bool needUpdateApp = await _checkVersion();
+      bool needUpdateApp = false;
+      //检测主题模式
+      _checkDarkModel();
       //等待
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(Duration(seconds: 1));
       //跳转
       Navigator.popAndPushNamed(context, '/main?needUpdateApp=$needUpdateApp');
     });
@@ -52,11 +57,36 @@ class _StartPage extends State<StartPage> {
   }
 
   ///检查是否需要更新版本
-  Future<bool> _checkVersion(BuildContext context) async {
+  Future<bool> _checkVersion() async {
     GetVersionInfo getVersionInfo = await FetchVersionInfo.fetch();
     _startModel.getVersionInfo = getVersionInfo;
     if (getVersionInfo.result_code == "success" &&
         getVersionInfo.build_number > _startModel.appBuildNumber) return true;
     return false;
+  }
+
+  //检测是否开启暗夜模式
+  void _checkDarkModel() async {
+    //检测
+    final bool darkModeEnabled = await FlutterIosDarkMode().darkModeEnabled;
+    _switchDarkTheme(darkModeEnabled);
+
+    //添加监听
+    FlutterIosDarkMode()
+        .onDarkModeStateChanged
+        .listen((bool listenDarkModeEnabled) {
+          print("暗夜模式：$listenDarkModeEnabled");
+      _switchDarkTheme(listenDarkModeEnabled);
+    });
+
+  }
+  //切换主题模式
+  void _switchDarkTheme(bool darkModeEnabled) {
+    final _themeModel = Provider.of<ThemeModel>(context);
+    if (darkModeEnabled) {
+      _themeModel.switchNightMode();
+    } else{
+      _themeModel.switchDefaultMode();
+    }
   }
 }

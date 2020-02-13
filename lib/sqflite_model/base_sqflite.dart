@@ -1,5 +1,5 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/sqflite_model/sqlfite_config.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/sqflite_model/sqlfite_config.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 

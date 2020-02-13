@@ -1,6 +1,6 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/theme_model.dart';
-import 'package:flutter_app/page/goods_page/goods_page.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/theme_model.dart';
+import 'package:ganglong_shop_app/page/goods_page/goods_page.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

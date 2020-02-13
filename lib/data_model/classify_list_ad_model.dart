@@ -1,9 +1,9 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/classifyItem.dart';
-import 'package:flutter_app/models/classifyList.dart';
-import 'package:flutter_app/page/first_page/son_page/son_classify_page.dart';
-import 'package:flutter_app/page/first_page/son_page/son_first_page.dart';
-import 'package:flutter_app/request/fetch_classify_list.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/classifyItem.dart';
+import 'package:ganglong_shop_app/models/classifyList.dart';
+import 'package:ganglong_shop_app/page/first_page/son_page/son_classify_page.dart';
+import 'package:ganglong_shop_app/page/first_page/son_page/son_first_page.dart';
+import 'package:ganglong_shop_app/request/fetch_classify_list.dart';
 
 class ClassifyListDataModel with ChangeNotifier {
   List<ClassifyItem> _classifyList;
@@ -15,6 +15,8 @@ class ClassifyListDataModel with ChangeNotifier {
   List<String> get headComponentTabs => _getHeadComponentTabs();
 
   List<Widget> get firstPageClassifyPage => _updateClassifyPage();
+
+  List<ClassifyItem> get navigationClassifyList => _getNavigationClassifyList();
 
   //初始化
   void init(ClassifyList result) {
@@ -46,6 +48,27 @@ class ClassifyListDataModel with ChangeNotifier {
       _headComponentTabs.add(v.classify_name);
     });
     return _headComponentTabs;
+  }
+
+  ///获取首页导航栏图标
+  List<ClassifyItem> _getNavigationClassifyList() {
+    List<ClassifyItem> _tempClassifyItemList = [];
+    this._classifyList.forEach((ClassifyItem classifyItem) {
+      _tempClassifyItemList.add(classifyItem);
+    });
+    //添加工行
+    _tempClassifyItemList.add(ClassifyItem.fromJson({
+      "click_type": "工行活动页",
+      "classify_name": "工行免息",
+      "logo_img": SON_FIRST_PAGE_ICBC_ICON,
+    }));
+    //添加优惠券
+    _tempClassifyItemList.add(ClassifyItem.fromJson({
+      "click_type": "领券活动页",
+      "classify_name": "优惠券",
+      "logo_img": SON_FIRST_PAGE_COUPONS_ICON,
+    }));
+    return _tempClassifyItemList;
   }
 
   /*树状算法*/

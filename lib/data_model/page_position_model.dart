@@ -1,17 +1,23 @@
-import 'package:flutter_app/common_import.dart';
+import 'package:ganglong_shop_app/common_import.dart';
 
 class PagePositionModel extends ChangeNotifier {
   double pageHeightPosition = 0; //页面位置
+  final void Function(double pagePositon) factListenPagePositionFunction;
   final double monitoringPageHeightPositionMaxPosition;
   ScrollController _controller = new ScrollController();
   bool showToTopBtn = false; //是否显示“返回到顶部”按钮
-  final Widget _floatingActionButtonChild = Icon(Icons.arrow_upward,size: 15,);
+  final Widget _floatingActionButtonChild = Icon(
+    Icons.arrow_upward,
+    size: 15,
+  );
 
   ScrollController get controller => _controller;
 
   Widget get floatingActionButtonChild => _floatingActionButtonChild;
 
-  PagePositionModel({this.monitoringPageHeightPositionMaxPosition = 0}) {
+  PagePositionModel(
+      {this.monitoringPageHeightPositionMaxPosition = 0,
+      this.factListenPagePositionFunction}) {
     _controller.addListener(() {
       if (_controller.offset < 1000 && showToTopBtn) {
         showToTopBtn = false;
@@ -23,6 +29,9 @@ class PagePositionModel extends ChangeNotifier {
       if (_controller.offset < monitoringPageHeightPositionMaxPosition) {
         pageHeightPosition = _controller.offset;
         notifyListeners();
+      }
+      if (factListenPagePositionFunction != null) {
+        factListenPagePositionFunction(_controller.offset);
       }
     });
   }

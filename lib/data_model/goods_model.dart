@@ -3,20 +3,20 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/user_info_model.dart';
-import 'package:flutter_app/models/attributeValueItem.dart';
-import 'package:flutter_app/models/extraGoodsInfo.dart';
-import 'package:flutter_app/models/goodsAttribute.dart';
-import 'package:flutter_app/models/goodsInfo.dart';
-import 'package:flutter_app/models/goodsItem.dart';
-import 'package:flutter_app/models/goodsSkuItem.dart';
-import 'package:flutter_app/models/goodsSkuOptionsItem.dart';
-import 'package:flutter_app/page/components/my_loading.dart';
-import 'package:flutter_app/request/fetch_extra_goods_info.dart';
-import 'package:flutter_app/request/post_user_get_coupon.dart';
-import 'package:flutter_app/routes/application.dart';
-import 'package:flutter_app/service/wechat_service.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/user_info_model.dart';
+import 'package:ganglong_shop_app/models/attributeValueItem.dart';
+import 'package:ganglong_shop_app/models/extraGoodsInfo.dart';
+import 'package:ganglong_shop_app/models/goodsAttribute.dart';
+import 'package:ganglong_shop_app/models/goodsInfo.dart';
+import 'package:ganglong_shop_app/models/goodsItem.dart';
+import 'package:ganglong_shop_app/models/goodsSkuItem.dart';
+import 'package:ganglong_shop_app/models/goodsSkuOptionsItem.dart';
+import 'package:ganglong_shop_app/page/components/my_loading.dart';
+import 'package:ganglong_shop_app/request/fetch_extra_goods_info.dart';
+import 'package:ganglong_shop_app/request/post_user_get_coupon.dart';
+import 'package:ganglong_shop_app/routes/application.dart';
+import 'package:ganglong_shop_app/service/wechat_service.dart';
 import 'package:flutter_des/flutter_des.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image/image.dart' as Image2;
@@ -112,7 +112,7 @@ class GoodsModel extends ChangeNotifier {
     const key = "u1BvOHzUOcklgNpn1MaWvdn9DT4LyzSX";
     const iv = "12345678";
     FlutterDes.encryptToBase64(string, key, iv: iv).then((val) {
-      print(val);
+      print("FlutterDes:$val");
     });
   }
 

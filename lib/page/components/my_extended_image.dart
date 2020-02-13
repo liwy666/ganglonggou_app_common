@@ -1,5 +1,5 @@
 import 'package:extended_image/extended_image.dart';
-import 'package:flutter_app/common_import.dart';
+import 'package:ganglong_shop_app/common_import.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
 class MyExtendedImage {
@@ -9,6 +9,7 @@ class MyExtendedImage {
       width: width,
       height: height,
       cache: true,
+      fit: fit,
       loadStateChanged: (ExtendedImageState state) {
         final double loadingWidth = width != null ? width : SO_SMALL_FONT_SIZE;
         switch (state.extendedImageLoadState) {
@@ -55,6 +56,7 @@ class MyExtendedImage {
       url,
       width: width,
       height: height,
+      fit: fit,
       loadStateChanged: (ExtendedImageState state) {
         final double loadingWidth = width != null ? width : SO_SMALL_FONT_SIZE;
         switch (state.extendedImageLoadState) {

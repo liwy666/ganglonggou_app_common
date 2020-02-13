@@ -1,5 +1,8 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/classify_list_ad_model.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/classify_list_ad_model.dart';
+import 'package:ganglong_shop_app/data_model/first_page_model.dart';
+import 'package:ganglong_shop_app/data_model/page_position_model.dart';
+import 'package:ganglong_shop_app/provider/provider_widget.dart';
 import 'package:provider/provider.dart';
 import 'components/head_compont.dart';
 
@@ -39,9 +42,15 @@ class _FirstPage extends State<FirstPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: HeadComponent(tabController: _tabController),
-      body: _barView,
+    return ProviderWidget<FirstPageModel>(
+      model: FirstPageModel(),
+      child: Scaffold(
+        appBar: HeadComponent(tabController: _tabController),
+        body: _barView,
+      ),
+      builder: (BuildContext context, FirstPageModel firstPageModel, Widget child) {
+        return child;
+      },
     );
   }
 

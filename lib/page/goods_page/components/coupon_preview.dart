@@ -1,10 +1,10 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/goods_model.dart';
-import 'package:flutter_app/models/goodsCouponItem.dart';
-import 'package:flutter_app/page/components/my_dialog.dart';
-import 'package:flutter_app/page/components/my_list_tile.dart';
-import 'package:flutter_app/page/goods_page/components/goods_coupon_dialog.dart';
-import 'package:flutter_app/page/goods_page/components/shop_promise_dialog.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/goods_model.dart';
+import 'package:ganglong_shop_app/models/goodsCouponItem.dart';
+import 'package:ganglong_shop_app/page/components/my_dialog.dart';
+import 'package:ganglong_shop_app/page/components/my_list_tile.dart';
+import 'package:ganglong_shop_app/page/goods_page/components/goods_coupon_dialog.dart';
+import 'package:ganglong_shop_app/page/goods_page/components/shop_promise_dialog.dart';
 
 class CouponPreview extends StatelessWidget {
   final GoodsModel goodsModel;

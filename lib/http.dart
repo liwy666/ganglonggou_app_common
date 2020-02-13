@@ -27,13 +27,13 @@ void initHttp() {
       if (response.data.containsKey('error_code')) {
         //打印错误
         Fluttertoast.showToast(msg: response.data['msg']); //短提示
-        throw Exception(response.data['msg']); //continue
+        //throw Exception(response.data['msg']); //continue
       }
     }
     return response; // continue
   }, onError: (DioError e) {
-    Fluttertoast.showToast(
-        msg: "未知错误${e.toString()}", timeInSecForIos: 3); //短提示
+    /*Fluttertoast.showToast(msg: "未知错误${e.toString()}", timeInSecForIos: 3);*/ //短提示
+
     // 当请求失败时做一些预处理
     throw Exception(e); //continue
   }));

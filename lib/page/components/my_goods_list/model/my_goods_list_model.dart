@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/goodsItem.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/goodsItem.dart';
 
 class MyGoodsListModel with ChangeNotifier {
   final ScrollController scrollController;

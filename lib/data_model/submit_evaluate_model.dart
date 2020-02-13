@@ -1,7 +1,7 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/index.dart';
-import 'package:flutter_app/page/components/my_loading.dart';
-import 'package:flutter_app/request/post_submit_evaluate.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/index.dart';
+import 'package:ganglong_shop_app/page/components/my_loading.dart';
+import 'package:ganglong_shop_app/request/post_submit_evaluate.dart';
 
 class SubmitEvaluateModel with ChangeNotifier {
   final MidOrderItem midOrderItem;

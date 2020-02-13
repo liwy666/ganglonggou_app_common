@@ -1,5 +1,5 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/index.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/index.dart';
 
 const FETCH_INDEX_INFO_URL = '/get_index_info';
 

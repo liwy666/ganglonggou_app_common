@@ -1,11 +1,12 @@
 import 'package:extended_image/extended_image.dart';
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/goods_list_data_model.dart';
-import 'package:flutter_app/data_model/page_position_model.dart';
-import 'package:flutter_app/data_model/theme_model.dart';
-import 'package:flutter_app/models/index.dart';
-import 'package:flutter_app/page/components/my_extended_image.dart';
-import 'package:flutter_app/provider/provider_widget.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/first_page_model.dart';
+import 'package:ganglong_shop_app/data_model/goods_list_data_model.dart';
+import 'package:ganglong_shop_app/data_model/page_position_model.dart';
+import 'package:ganglong_shop_app/data_model/theme_model.dart';
+import 'package:ganglong_shop_app/models/index.dart';
+import 'package:ganglong_shop_app/page/components/my_extended_image.dart';
+import 'package:ganglong_shop_app/provider/provider_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
@@ -36,6 +37,7 @@ class _SonClassifyPage extends State<SonClassifyPage> {
   @override
   Widget build(BuildContext context) {
     final _themeModel = Provider.of<ThemeModel>(context);
+    final _firstPageModel = Provider.of<FirstPageModel>(context);
     goodsListDataModel = Provider.of<GoodsListDataModel>(context);
     if (ifInitGoodsList) {
       this._goodsList = goodsListDataModel.getGoodsListByKeyWord(
@@ -45,7 +47,10 @@ class _SonClassifyPage extends State<SonClassifyPage> {
 
     // TODO: implement build
     return ProviderWidget<PagePositionModel>(
-      model: PagePositionModel(),
+      model: PagePositionModel(
+          factListenPagePositionFunction: (double pagePosition) {
+        _firstPageModel.pagePosition = pagePosition;
+      }),
       child: SliverGrid(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, childAspectRatio: 337 / 493),
@@ -95,7 +100,8 @@ class _SonClassifyPage extends State<SonClassifyPage> {
           floatingActionButton: FloatingActionButton(
             child: pagePositionModel.floatingActionButtonChild,
             foregroundColor: Colors.white,
-            heroTag: "son_classify_page_${widget.parentClassifyItem.classify_name}",
+            heroTag:
+                "son_classify_page_${widget.parentClassifyItem.classify_name}",
             onPressed: () {
               pagePositionModel.toTop();
             },
@@ -172,8 +178,8 @@ class _ClassifyPreview extends StatelessWidget {
             margin: EdgeInsets.only(top: 5),
             child: Text(
               classifyPreviewName,
-              style:
-                  TextStyle(fontSize: SMALL_FONT_SIZE, color: _themeModel.fontColor2),
+              style: TextStyle(
+                  fontSize: SMALL_FONT_SIZE, color: _themeModel.fontColor2),
             ),
           )
         ],

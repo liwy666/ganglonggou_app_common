@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter_app/common_import.dart';
+import 'package:ganglong_shop_app/common_import.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 class WebViewPageModel with ChangeNotifier {

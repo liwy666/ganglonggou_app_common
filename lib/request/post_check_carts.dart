@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/cartItem.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/cartItem.dart';
 
 const String FETCH_INDEX_INFO_URL = "/user_get_cart";
 

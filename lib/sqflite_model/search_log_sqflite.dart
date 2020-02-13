@@ -1,7 +1,7 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/cartItem.dart';
-import 'package:flutter_app/sqflite_model/base_sqflite.dart';
-import 'package:flutter_app/sqflite_model/sqlfite_config.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/cartItem.dart';
+import 'package:ganglong_shop_app/sqflite_model/base_sqflite.dart';
+import 'package:ganglong_shop_app/sqflite_model/sqlfite_config.dart';
 
 class SearchLogSqFlite extends BaseSqflite {
   static String _tableName = SEARCH_LOG_TABLE_NAME;

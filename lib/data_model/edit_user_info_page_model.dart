@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/index.dart';
-import 'package:flutter_app/page/components/my_loading.dart';
-import 'package:flutter_app/request/post_update_user_info.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/index.dart';
+import 'package:ganglong_shop_app/page/components/my_loading.dart';
+import 'package:ganglong_shop_app/request/post_update_user_info.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 

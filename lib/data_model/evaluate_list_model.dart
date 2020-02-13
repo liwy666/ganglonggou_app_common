@@ -1,7 +1,7 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/goodsEvaluateItem.dart';
-import 'package:flutter_app/page/evaluate_list_page/components/evaluate_item.dart';
-import 'package:flutter_app/request/fetch_evaluate_list.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/goodsEvaluateItem.dart';
+import 'package:ganglong_shop_app/page/evaluate_list_page/components/evaluate_item.dart';
+import 'package:ganglong_shop_app/request/fetch_evaluate_list.dart';
 
 class EvaluateListModel extends ChangeNotifier {
   List<GoodsEvaluateItem> _goodsEvaluateList = [];

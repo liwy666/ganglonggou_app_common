@@ -1,8 +1,8 @@
 import 'package:extended_image/extended_image.dart';
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/theme_model.dart';
-import 'package:flutter_app/models/goodsItem.dart';
-import 'package:flutter_app/routes/application.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/theme_model.dart';
+import 'package:ganglong_shop_app/models/goodsItem.dart';
+import 'package:ganglong_shop_app/routes/application.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
@@ -10,8 +10,10 @@ import '../my_extended_image.dart';
 
 class MyGoodsListCard extends StatelessWidget {
   final GoodsItem item;
+  final int index;
 
-  MyGoodsListCard({Key key, @required this.item}) : super(key: key);
+  MyGoodsListCard({Key key, @required this.item, @required this.index})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +21,13 @@ class MyGoodsListCard extends StatelessWidget {
     // TODO: implement build
     return GestureDetector(
       child: Card(
+        margin: EdgeInsets.only(
+            left: index % 2 == 0 ? 10 : 0, right: index % 2 == 0 ? 0 : 10),
+        color: _themeModel.pageBackgroundColor2,
         child: Container(
           padding: EdgeInsets.symmetric(
               vertical: ScreenUtil().setWidth(10),
               horizontal: ScreenUtil().setWidth(20)),
-          color: _themeModel.pageBackgroundColor2,
           child: Column(
             children: <Widget>[
               Stack(
@@ -34,13 +38,14 @@ class MyGoodsListCard extends StatelessWidget {
                     width: ScreenUtil().setWidth(300),
                     height: ScreenUtil().setWidth(300),
                   ),
-                  item.goods_name.startsWith("特价捡漏")?
-                  Image.asset(
-                    'static_images/hot_goods_head.png',
-                    fit: BoxFit.fitWidth,
-                    width: ScreenUtil().setWidth(300),
-                    height: ScreenUtil().setWidth(300),
-                  ):Container(),
+                  item.goods_name.startsWith("特价捡漏")
+                      ? Image.asset(
+                          'static_images/hot_goods_head.png',
+                          fit: BoxFit.fitWidth,
+                          width: ScreenUtil().setWidth(300),
+                          height: ScreenUtil().setWidth(300),
+                        )
+                      : Container(),
                 ],
               ),
               Container(

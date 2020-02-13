@@ -1,6 +1,6 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/goodsItem.dart';
-import 'package:flutter_app/page/components/my_goods_list/my_goods_list_card.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/goodsItem.dart';
+import 'package:ganglong_shop_app/page/components/my_goods_list/my_goods_list_card.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 // ignore: must_be_immutable
@@ -28,6 +28,7 @@ class _MyGoodsList extends State<MyGoodsList> {
   List<GoodsItem> _tempGoodsList = [];
   int _initialGoodsListLength;
   int _limit = 8; //每次加载数据条数
+  int waitSecond = 300; //等待时间
   bool _isLoading = false; //是否正在请求新数据
   bool _isFinish = false; //数据是否加载完成
 
@@ -44,8 +45,11 @@ class _MyGoodsList extends State<MyGoodsList> {
   void initState() {
     _initialGoodsListLength = widget.initialGoodsList.length;
     widget.scrollController.addListener(() {
-      if (widget.scrollController.position.pixels ==
-          widget.scrollController.position.maxScrollExtent) {
+//      print(
+//          "当前：${widget.scrollController.position.pixels}，最大：${widget.scrollController.position.maxScrollExtent}");
+      if (widget.scrollController.position.maxScrollExtent -
+              widget.scrollController.position.pixels <=
+          10) {
         _scrollBottomFunction();
       }
     });
@@ -74,7 +78,7 @@ class _MyGoodsList extends State<MyGoodsList> {
     if (!this._isFinish && !this._isLoading) {
       this._isLoading = true;
       setState(() {});
-      await Future.delayed(Duration(milliseconds: 300));
+      await Future.delayed(Duration(milliseconds: waitSecond));
       if (_goodsList.length + _limit >= _initialGoodsListLength) {
         _isFinish = true;
         _goodsList.addAll(_tempGoodsList);
@@ -122,13 +126,19 @@ class _MainGoodsList extends StatelessWidget {
     return AnimationLimiter(
       child: SliverGrid(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, childAspectRatio: 337 / 450),
+            mainAxisSpacing: 8,
+            crossAxisSpacing: 8,
+            crossAxisCount: 2,
+            childAspectRatio: 337 / 450),
         delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
           return AnimationConfiguration.staggeredGrid(
             position: index,
             child: ScaleAnimation(
               //verticalOffset: 80.0,
-              child: MyGoodsListCard(item: goodsList[index]),
+              child: MyGoodsListCard(
+                item: goodsList[index],
+                index: index,
+              ),
             ),
             columnCount: 2,
             duration: const Duration(milliseconds: 600),
@@ -181,3 +191,4 @@ class _LoadFinish extends StatelessWidget {
     );
   }
 }
+

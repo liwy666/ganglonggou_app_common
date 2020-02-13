@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter_app/common_import.dart';
+import 'package:ganglong_shop_app/common_import.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 

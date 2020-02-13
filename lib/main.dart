@@ -1,20 +1,20 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data_model/address_list_model.dart';
-import 'package:flutter_app/data_model/cart_data_model.dart';
-import 'package:flutter_app/data_model/classify_list_ad_model.dart';
-import 'package:flutter_app/data_model/goods_list_data_model.dart';
-import 'package:flutter_app/data_model/index_ad_list_data_model.dart';
-import 'package:flutter_app/data_model/order_data_model.dart';
-import 'package:flutter_app/data_model/start_model.dart';
-import 'package:flutter_app/data_model/theme_model.dart';
-import 'package:flutter_app/data_model/user_info_model.dart';
-import 'package:flutter_app/routes/application.dart';
-import 'package:flutter_app/routes/routes.dart';
-import 'package:flutter_app/sqflite_model/base_sqflite.dart';
-import 'package:flutter_app/sqflite_model/sqlfite_config.dart';
+import 'package:ganglong_shop_app/data_model/address_list_model.dart';
+import 'package:ganglong_shop_app/data_model/cart_data_model.dart';
+import 'package:ganglong_shop_app/data_model/classify_list_ad_model.dart';
+import 'package:ganglong_shop_app/data_model/goods_list_data_model.dart';
+import 'package:ganglong_shop_app/data_model/index_ad_list_data_model.dart';
+import 'package:ganglong_shop_app/data_model/order_data_model.dart';
+import 'package:ganglong_shop_app/data_model/start_model.dart';
+import 'package:ganglong_shop_app/data_model/theme_model.dart';
+import 'package:ganglong_shop_app/data_model/user_info_model.dart';
+import 'package:ganglong_shop_app/routes/application.dart';
+import 'package:ganglong_shop_app/routes/routes.dart';
+import 'package:ganglong_shop_app/sqflite_model/base_sqflite.dart';
+import 'package:ganglong_shop_app/sqflite_model/sqlfite_config.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_app/common_import.dart';
+import 'package:ganglong_shop_app/common_import.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +22,6 @@ void main() {
 }
 
 Future<Null> _runApp() async {
-
   /*初始化http*/
   initHttp();
   /*初始化数据库*/
@@ -80,8 +79,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //home: HomeContent(),
       theme: ThemeData(
-        primarySwatch: _themeModel.themeColor,
-      ),
+          primarySwatch: _themeModel.themeColor,
+          //platform: TargetPlatform.iOS //右滑返回
+          ),
       onGenerateRoute: Application.router.generator,
     );
   }

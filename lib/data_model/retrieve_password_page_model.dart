@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/userInfo.dart';
-import 'package:flutter_app/request/fetch_user_info.dart';
-import 'package:flutter_app/request/post_register_by_email.dart';
-import 'package:flutter_app/request/post_retrieve_password_by_email.dart';
-import 'package:flutter_app/request/post_send_email_verify_code.dart';
-import 'package:flutter_app/request/post_send_retrieve_password_or_login_email_verify_code.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/userInfo.dart';
+import 'package:ganglong_shop_app/request/fetch_user_info.dart';
+import 'package:ganglong_shop_app/request/post_register_by_email.dart';
+import 'package:ganglong_shop_app/request/post_retrieve_password_by_email.dart';
+import 'package:ganglong_shop_app/request/post_send_email_verify_code.dart';
+import 'package:ganglong_shop_app/request/post_send_retrieve_password_or_login_email_verify_code.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class RetrievePasswordPageModel with ChangeNotifier {

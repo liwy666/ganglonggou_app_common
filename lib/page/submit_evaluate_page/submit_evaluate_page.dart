@@ -1,13 +1,13 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/order_data_model.dart';
-import 'package:flutter_app/data_model/submit_evaluate_model.dart';
-import 'package:flutter_app/data_model/user_info_model.dart';
-import 'package:flutter_app/models/index.dart';
-import 'package:flutter_app/page/components/horizontal_goods_card.dart';
-import 'package:flutter_app/page/components/my_tab_bar.dart';
-import 'package:flutter_app/provider/provider_widget.dart';
-import 'package:flutter_app/routes/application.dart';
-import 'package:flutter_app/routes/route_handlers.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/order_data_model.dart';
+import 'package:ganglong_shop_app/data_model/submit_evaluate_model.dart';
+import 'package:ganglong_shop_app/data_model/user_info_model.dart';
+import 'package:ganglong_shop_app/models/index.dart';
+import 'package:ganglong_shop_app/page/components/horizontal_goods_card.dart';
+import 'package:ganglong_shop_app/page/components/my_tab_bar.dart';
+import 'package:ganglong_shop_app/provider/provider_widget.dart';
+import 'package:ganglong_shop_app/routes/application.dart';
+import 'package:ganglong_shop_app/routes/route_handlers.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 

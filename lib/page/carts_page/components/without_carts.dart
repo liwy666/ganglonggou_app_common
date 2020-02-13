@@ -1,5 +1,5 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/page/components/my_page_tips.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/page/components/my_page_tips.dart';
 
 class WithoutCarts extends StatelessWidget {
   @override

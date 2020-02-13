@@ -1,5 +1,5 @@
 import 'dart:collection';
-import 'package:flutter_app/common_import.dart';
+import 'package:ganglong_shop_app/common_import.dart';
 import '../item.dart';
 class CartModel extends ChangeNotifier {
   // 用于保存购物车中商品列表

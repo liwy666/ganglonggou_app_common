@@ -1,7 +1,7 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/addressItem.dart';
-import 'package:flutter_app/models/addressList.dart';
-import 'package:flutter_app/request/fetch_user_address.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/addressItem.dart';
+import 'package:ganglong_shop_app/models/addressList.dart';
+import 'package:ganglong_shop_app/request/fetch_user_address.dart';
 
 class AddressListModel with ChangeNotifier {
   List<AddressItem> _addressList = [];

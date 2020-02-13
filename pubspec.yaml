@@ -1,5 +1,5 @@
-name: flutter_app
-description: A new Flutter application.
+name: ganglong_shop_app
+description: Digital product experts around you
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -41,7 +41,7 @@ dependencies:
   image_picker: ^0.6.1+10
   fake_wechat: ^0.3.3
   image: ^2.1.8
-  flutter_webview_plugin: "0.3.10"
+  flutter_webview_plugin: "0.3.10"#ios:ok
   url_launcher: ^5.2.5
   curved_navigation_bar: ^0.3.1
   flutter_staggered_animations: ^0.1.2
@@ -53,6 +53,7 @@ dependencies:
   open_file: ^2.1.1
   package_info: ^0.4.0+12
   flutter_web_view: ^0.0.6
+  flutter_ios_dark_mode: ^0.0.1
 dev_dependencies:
   json_model: ^0.0.2
   build_runner: ^1.0.0
@@ -93,7 +94,10 @@ flutter:
     - static_images/web_view_loading.png
     - static_images/wx_first_top1_0812.jpg
     - static_images/wx_first_top2_0812.jpg
+    - static_images/wx_first_top1_20200208.jpg
+    - static_images/wx_first_top2_20200208.png
     - static_images/ketlle_goods_b1.png
+    - static_images/ketlle_goods_b1.jpg
     - static_images/without_search_goods.png
     - static_images/order_state_0.png
     - static_images/order_state_2.png
@@ -112,6 +116,8 @@ flutter:
     - static_images/hot_goods_head.png
     - static_images/middle_button.png
     - static_images/without_coupon.png
+    - static_images/wx_icbc_icon_20190813.png
+    - static_images/wx_conpou_icon_20190813.png
     - static_jsons/address_options.json
 
 

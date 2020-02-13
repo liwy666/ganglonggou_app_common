@@ -1,8 +1,8 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/goods_model.dart';
-import 'package:flutter_app/models/goodsCouponItem.dart';
-import 'package:flutter_app/page/components/my_coupon_card.dart';
-import 'package:flutter_app/page/components/my_loading.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/goods_model.dart';
+import 'package:ganglong_shop_app/models/goodsCouponItem.dart';
+import 'package:ganglong_shop_app/page/components/my_coupon_card.dart';
+import 'package:ganglong_shop_app/page/components/my_loading.dart';
 import 'package:provider/provider.dart';
 
 class GoodsCouponDialog extends StatelessWidget {

@@ -1,5 +1,5 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/goodsItem.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/goodsItem.dart';
 
 class GoodsListDataModel with ChangeNotifier {
   List<GoodsItem> _goodsList;

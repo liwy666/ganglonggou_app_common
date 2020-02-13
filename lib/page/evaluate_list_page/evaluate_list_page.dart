@@ -1,10 +1,10 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/evaluate_list_model.dart';
-import 'package:flutter_app/page/components/my_list.dart';
-import 'package:flutter_app/page/components/my_page_tips.dart';
-import 'package:flutter_app/page/components/my_tab_bar.dart';
-import 'package:flutter_app/page/evaluate_list_page/components/evaluate_item.dart';
-import 'package:flutter_app/provider/provider_widget.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/evaluate_list_model.dart';
+import 'package:ganglong_shop_app/page/components/my_list.dart';
+import 'package:ganglong_shop_app/page/components/my_page_tips.dart';
+import 'package:ganglong_shop_app/page/components/my_tab_bar.dart';
+import 'package:ganglong_shop_app/page/evaluate_list_page/components/evaluate_item.dart';
+import 'package:ganglong_shop_app/provider/provider_widget.dart';
 
 class EvaluateListPage extends StatelessWidget {
   final int goodsId;

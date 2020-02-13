@@ -1,10 +1,10 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/index.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/index.dart';
 
 class IndexAdListDataModel with ChangeNotifier {
   List<IndexAdItem> _indexList;
   List<IndexAdItem> _swiperList; //顶部轮播
-  IndexAdItem _lonelyBanner; //孤立通栏
+  List<IndexAdItem> _lonelyBanner; //孤立通栏
   List<IndexAdItem> _newGoodsList; //新品尝鲜
   List<IndexAdItem> _brandTogetherList; //品牌惠聚
   List<IndexAdItem> _otherShopList; //品牌惠聚
@@ -13,7 +13,7 @@ class IndexAdListDataModel with ChangeNotifier {
 
   List<IndexAdItem> get swiperList => _swiperList;
 
-  IndexAdItem get lonelyBanner => _lonelyBanner;
+  List<IndexAdItem> get lonelyBanner => _lonelyBanner;
 
   List<IndexAdItem> get newGoodsList => _newGoodsList;
 
@@ -28,13 +28,14 @@ class IndexAdListDataModel with ChangeNotifier {
     this._newGoodsList = [];
     this._brandTogetherList = [];
     this._otherShopList = [];
+    this._lonelyBanner = [];
     this._indexList.forEach((indexAdItem) {
       switch (indexAdItem.position_type) {
         case "顶部轮播":
           this._swiperList.add(indexAdItem);
           break;
         case "孤立通栏":
-          this._lonelyBanner = indexAdItem;
+          this._lonelyBanner.add(indexAdItem);
           break;
         case "新品尝鲜-商品":
           this._newGoodsList.add(indexAdItem);

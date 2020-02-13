@@ -1,5 +1,5 @@
 export 'package:flutter/material.dart';
-export 'package:flutter_app/http.dart';
+export 'package:ganglong_shop_app/http.dart';
 
 //入口名称
 import 'package:fluttertoast/fluttertoast.dart';
@@ -7,15 +7,21 @@ import 'package:fluttertoast/fluttertoast.dart';
 const bool DEBUG = true;
 const String INTO_TYPE = 'wx';
 const String SON_INTO_TYPE = 'android';
+//工行图标地址
+const String SON_FIRST_PAGE_ICBC_ICON = "https://mate.ganglonggou.com/lib/images/wx_icbc_icon_20190813.png";
+//优惠券图标地址
+const String SON_FIRST_PAGE_COUPONS_ICON = "https://mate.ganglonggou.com/lib/images/wx_conpou_icon_20190813.png";
+//工行地址
+const String ICBC_URL = "https://m.mall.icbc.com.cn/mobile/mobileStroe/index.jhtml?shopId=026386";
 //首页头部背景图地址
 const String SON_FIRST_PAGE_HEAD_BACKGROUND_IMG_URL =
-    'static_images/wx_first_top1_0812.jpg';
+    'static_images/wx_first_top1_20200208.jpg';
 //首页顶部轮播图背景地址
 const String SON_FIRST_PAGE_SWIPER_BACKGROUND_IMG_URL =
-    'static_images/wx_first_top2_0812.jpg';
+    'static_images/wx_first_top2_20200208.png';
 //首页其他店铺单个背景图
 const String SON_FIRST_PAGE_OTHER_SHOP_ITEM_BACKGROUND_IMG_URL =
-    'static_images/ketlle_goods_b1.png';
+    'static_images/ketlle_goods_b1.jpg';
 //常规数据缓存时效(ms)(6小时)
 const int COMMON_SQL_DATA_INVALID_TIME = 21600000;
 //积分名称
@@ -43,6 +49,8 @@ const double LARGE_FONT_SIZE = 16.0;
 const double COMMON_FONT_SIZE = 14.0;
 const double SMALL_FONT_SIZE = 12.0;
 const double SO_SMALL_FONT_SIZE = 10.0;
+//关于圆角大小
+const double RADIUS_COMMON_VALUE = 10;
 //联系客服链接
 const String CONTACT_CUSTOMER_SERVICE_URL =
     "https://p.qiao.baidu.com/cps2/mobileChat?siteId=11040705&userId=24298402&type=1&reqParam=&appId=&referer=";

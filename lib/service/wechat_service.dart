@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:fake_wechat/fake_wechat.dart';
-import 'package:flutter_app/common_import.dart';
+import 'package:ganglong_shop_app/common_import.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class WeChatService {

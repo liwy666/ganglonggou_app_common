@@ -7,7 +7,7 @@
  * See LICENSE for distribution and usage details.
  */
 import 'package:fluro/fluro.dart';
-import 'package:flutter_app/data_model/user_info_model.dart';
+import 'package:ganglong_shop_app/data_model/user_info_model.dart';
 
 class Application {
   static Router router;

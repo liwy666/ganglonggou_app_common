@@ -1,13 +1,13 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/goods_list_data_model.dart';
-import 'package:flutter_app/data_model/page_position_model.dart';
-import 'package:flutter_app/data_model/supplier_page_model.dart';
-import 'package:flutter_app/data_model/theme_model.dart';
-import 'package:flutter_app/models/index.dart';
-import 'package:flutter_app/page/components/contain_head_goods_list.dart';
-import 'package:flutter_app/page/components/my_tab_bar.dart';
-import 'package:flutter_app/page/supplier_page/components/supplier_head.dart';
-import 'package:flutter_app/provider/provider_widget.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/goods_list_data_model.dart';
+import 'package:ganglong_shop_app/data_model/page_position_model.dart';
+import 'package:ganglong_shop_app/data_model/supplier_page_model.dart';
+import 'package:ganglong_shop_app/data_model/theme_model.dart';
+import 'package:ganglong_shop_app/models/index.dart';
+import 'package:ganglong_shop_app/page/components/contain_head_goods_list.dart';
+import 'package:ganglong_shop_app/page/components/my_tab_bar.dart';
+import 'package:ganglong_shop_app/page/supplier_page/components/supplier_head.dart';
+import 'package:ganglong_shop_app/provider/provider_widget.dart';
 import 'package:provider/provider.dart';
 
 class SupplierPage extends StatelessWidget {

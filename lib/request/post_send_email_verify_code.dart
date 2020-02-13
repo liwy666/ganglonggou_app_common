@@ -1,8 +1,8 @@
 import 'package:crypto/crypto.dart';
-import 'package:flutter_app/common_import.dart';
+import 'package:ganglong_shop_app/common_import.dart';
 import 'dart:convert';
 
-import 'package:flutter_app/models/addressItem.dart';
+import 'package:ganglong_shop_app/models/addressItem.dart';
 
 const String FETCH_INDEX_INFO_URL = "/send_register_email_verify_code";
 

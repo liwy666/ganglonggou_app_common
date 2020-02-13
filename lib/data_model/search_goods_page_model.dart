@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/index.dart';
-import 'package:flutter_app/models/searchLogItem.dart';
-import 'package:flutter_app/page/components/my_loading.dart';
-import 'package:flutter_app/request/fetch_search_log.dart';
-import 'package:flutter_app/request/post_add_search_keyword.dart';
-import 'package:flutter_app/sqflite_model/search_log_sqflite.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/index.dart';
+import 'package:ganglong_shop_app/models/searchLogItem.dart';
+import 'package:ganglong_shop_app/page/components/my_loading.dart';
+import 'package:ganglong_shop_app/request/fetch_search_log.dart';
+import 'package:ganglong_shop_app/request/post_add_search_keyword.dart';
+import 'package:ganglong_shop_app/sqflite_model/search_log_sqflite.dart';
 
 class SearchGoodsPageModel with ChangeNotifier {
   List<SearchKeywordItem> _searchKeywordList = [];

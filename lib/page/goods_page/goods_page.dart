@@ -1,16 +1,17 @@
 import 'package:fake_wechat/fake_wechat.dart';
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/goods_list_data_model.dart';
-import 'package:flutter_app/data_model/goods_model.dart';
-import 'package:flutter_app/data_model/page_position_model.dart';
-import 'package:flutter_app/data_model/theme_model.dart';
-import 'package:flutter_app/data_model/user_info_model.dart';
-import 'package:flutter_app/page/components/my_extended_image.dart';
-import 'package:flutter_app/page/goods_page/components/bottm_button.dart';
-import 'package:flutter_app/page/goods_page/components/goods_top_swiper.dart';
-import 'package:flutter_app/page/goods_page/components/preview_supplier.dart';
-import 'package:flutter_app/provider/provider_widget.dart';
-import 'package:flutter_app/routes/application.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/goods_list_data_model.dart';
+import 'package:ganglong_shop_app/data_model/goods_model.dart';
+import 'package:ganglong_shop_app/data_model/page_position_model.dart';
+import 'package:ganglong_shop_app/data_model/theme_model.dart';
+import 'package:ganglong_shop_app/data_model/user_info_model.dart';
+import 'package:ganglong_shop_app/page/components/my_extended_image.dart';
+import 'package:ganglong_shop_app/page/goods_page/components/bottm_button.dart';
+import 'package:ganglong_shop_app/page/goods_page/components/goods_top_swiper.dart';
+import 'package:ganglong_shop_app/page/goods_page/components/preview_supplier.dart';
+import 'package:ganglong_shop_app/provider/provider_widget.dart';
+import 'package:ganglong_shop_app/routes/application.dart';
 import 'package:provider/provider.dart';
 import 'components/coupon_preview.dart';
 import 'components/evaluate_preview.dart';
@@ -66,18 +67,17 @@ class GoodsPage extends StatelessWidget {
                               color: _themeModel.fontColor1),
                         ),
                         centerTitle: true,
-                        expandedHeight: MediaQuery.of(context).size.width -
-                            MediaQuery.of(context).padding.top,
+                        expandedHeight: MediaQuery.of(context).size.width,
                         flexibleSpace: FlexibleSpaceBar(
                           background: Container(
                             height: MediaQuery.of(context).size.width,
-                            padding: EdgeInsets.all(0),
+                            margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top*2),
                             color: Colors.white,
                             child: goodsModel.loadFinish
                                 ? GoodsTopSwiper()
                                 : MyExtendedImage.network(
                                     goodsModel.goodsInfo.goodsImg,
-                                    fit: BoxFit.fitWidth,
+                                    fit: BoxFit.fitHeight,
                                   ),
                           ),
                         ),

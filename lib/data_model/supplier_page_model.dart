@@ -1,6 +1,6 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/goodsItem.dart';
-import 'package:flutter_app/models/index.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/goodsItem.dart';
+import 'package:ganglong_shop_app/models/index.dart';
 
 class SupplierPageModel with ChangeNotifier {
   final List<GoodsItem> allGoodsList;

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/classifyItem.dart';
-import 'package:flutter_app/routes/application.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/classifyItem.dart';
+import 'package:ganglong_shop_app/routes/application.dart';
 
 class ClassifyPageModel with ChangeNotifier {
   int _choiceClassifyItemId = 0;

@@ -1,10 +1,10 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/user_info_model.dart';
-import 'package:flutter_app/models/couponItem.dart';
-import 'package:flutter_app/models/couponList.dart';
-import 'package:flutter_app/request/fetch_coupon_list.dart';
-import 'package:flutter_app/request/post_user_get_coupon.dart';
-import 'package:flutter_app/routes/application.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/user_info_model.dart';
+import 'package:ganglong_shop_app/models/couponItem.dart';
+import 'package:ganglong_shop_app/models/couponList.dart';
+import 'package:ganglong_shop_app/request/fetch_coupon_list.dart';
+import 'package:ganglong_shop_app/request/post_user_get_coupon.dart';
+import 'package:ganglong_shop_app/routes/application.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class CouponListPageModel with ChangeNotifier {

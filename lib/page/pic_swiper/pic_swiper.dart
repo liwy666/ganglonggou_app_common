@@ -5,7 +5,7 @@ import 'package:extended_image/extended_image.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart' hide Image;
 import 'package:flutter/rendering.dart';
-import 'package:flutter_app/page/components/my_extended_image.dart';
+import 'package:ganglong_shop_app/page/components/my_extended_image.dart';
 
 class PicSwiper extends StatefulWidget {
   final int index;

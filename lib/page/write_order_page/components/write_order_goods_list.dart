@@ -1,7 +1,7 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/cart_data_model.dart';
-import 'package:flutter_app/models/cartItem.dart';
-import 'package:flutter_app/page/components/horizontal_goods_card.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/cart_data_model.dart';
+import 'package:ganglong_shop_app/models/cartItem.dart';
+import 'package:ganglong_shop_app/page/components/horizontal_goods_card.dart';
 import 'package:provider/provider.dart';
 
 class WriteOrderGoodsList extends StatelessWidget {

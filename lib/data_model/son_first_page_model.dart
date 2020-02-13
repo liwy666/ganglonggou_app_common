@@ -1,4 +1,4 @@
-import 'package:flutter_app/common_import.dart';
+import 'package:ganglong_shop_app/common_import.dart';
 
 class SonFirstPageModel with ChangeNotifier {
   double _newGoodsSwiperHeight = 800; //新品尝鲜的高度

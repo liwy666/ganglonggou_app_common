@@ -1,11 +1,11 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/user_info_model.dart';
-import 'package:flutter_app/models/cartItem.dart';
-import 'package:flutter_app/models/goodsInfo.dart';
-import 'package:flutter_app/page/components/my_loading.dart';
-import 'package:flutter_app/request/post_check_carts.dart';
-import 'package:flutter_app/routes/application.dart';
-import 'package:flutter_app/sqflite_model/cart_sqflite.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/user_info_model.dart';
+import 'package:ganglong_shop_app/models/cartItem.dart';
+import 'package:ganglong_shop_app/models/goodsInfo.dart';
+import 'package:ganglong_shop_app/page/components/my_loading.dart';
+import 'package:ganglong_shop_app/request/post_check_carts.dart';
+import 'package:ganglong_shop_app/routes/application.dart';
+import 'package:ganglong_shop_app/sqflite_model/cart_sqflite.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class CartDataModel extends ChangeNotifier {

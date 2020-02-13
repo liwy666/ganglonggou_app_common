@@ -1,6 +1,6 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/index.dart';
-import 'package:flutter_app/request/fetch_all_order.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/index.dart';
+import 'package:ganglong_shop_app/request/fetch_all_order.dart';
 
 class OrderDataModel with ChangeNotifier {
   bool _isInit = false;

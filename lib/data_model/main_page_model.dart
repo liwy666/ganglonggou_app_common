@@ -1,4 +1,4 @@
-import 'package:flutter_app/common_import.dart';
+import 'package:ganglong_shop_app/common_import.dart';
 
 class MainPageModel extends ChangeNotifier {
   final Color _defaultColor = Color(0xff636e72);

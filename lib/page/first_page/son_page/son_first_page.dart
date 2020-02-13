@@ -1,28 +1,29 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/classify_list_ad_model.dart';
-import 'package:flutter_app/data_model/goods_list_data_model.dart';
-import 'package:flutter_app/data_model/index_ad_list_data_model.dart';
-import 'package:flutter_app/data_model/page_position_model.dart';
-import 'package:flutter_app/data_model/son_first_page_model.dart';
-import 'package:flutter_app/data_model/theme_model.dart';
-import 'package:flutter_app/models/classifyItem.dart';
-import 'package:flutter_app/models/classifyList.dart';
-import 'package:flutter_app/models/goodsItem.dart';
-import 'package:flutter_app/models/indexAdItem.dart';
-import 'package:flutter_app/models/indexInfo.dart';
-import 'package:flutter_app/page/components/my_goods_list/my_goods_list.dart';
-import 'package:flutter_app/page/first_page/son_page/components/brand_together_component.dart';
-import 'package:flutter_app/page/first_page/son_page/components/first_title_component.dart';
-import 'package:flutter_app/page/first_page/son_page/components/grid_navigation_component.dart';
-import 'package:flutter_app/page/first_page/son_page/components/other_shop_component.dart';
-import 'package:flutter_app/page/first_page/son_page/components/solitary_banner_component.dart';
-import 'package:flutter_app/page/first_page/son_page/components/swiper_component.dart';
-import 'package:flutter_app/provider/provider_widget.dart';
-import 'package:flutter_app/request/fetch_classify_list.dart';
-import 'package:flutter_app/request/fetch_index_info.dart';
-import 'package:flutter_app/sqflite_model/classify_sqflite.dart';
-import 'package:flutter_app/sqflite_model/goods_sqflite.dart';
-import 'package:flutter_app/sqflite_model/index_ad_sqflite.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/classify_list_ad_model.dart';
+import 'package:ganglong_shop_app/data_model/first_page_model.dart';
+import 'package:ganglong_shop_app/data_model/goods_list_data_model.dart';
+import 'package:ganglong_shop_app/data_model/index_ad_list_data_model.dart';
+import 'package:ganglong_shop_app/data_model/page_position_model.dart';
+import 'package:ganglong_shop_app/data_model/son_first_page_model.dart';
+import 'package:ganglong_shop_app/data_model/theme_model.dart';
+import 'package:ganglong_shop_app/models/classifyItem.dart';
+import 'package:ganglong_shop_app/models/classifyList.dart';
+import 'package:ganglong_shop_app/models/goodsItem.dart';
+import 'package:ganglong_shop_app/models/indexAdItem.dart';
+import 'package:ganglong_shop_app/models/indexInfo.dart';
+import 'package:ganglong_shop_app/page/components/my_goods_list/my_goods_list.dart';
+import 'package:ganglong_shop_app/page/first_page/son_page/components/brand_together_component.dart';
+import 'package:ganglong_shop_app/page/first_page/son_page/components/first_title_component.dart';
+import 'package:ganglong_shop_app/page/first_page/son_page/components/grid_navigation_component.dart';
+import 'package:ganglong_shop_app/page/first_page/son_page/components/other_shop_component.dart';
+import 'package:ganglong_shop_app/page/first_page/son_page/components/solitary_banner_component.dart';
+import 'package:ganglong_shop_app/page/first_page/son_page/components/swiper_component.dart';
+import 'package:ganglong_shop_app/provider/provider_widget.dart';
+import 'package:ganglong_shop_app/request/fetch_classify_list.dart';
+import 'package:ganglong_shop_app/request/fetch_index_info.dart';
+import 'package:ganglong_shop_app/sqflite_model/classify_sqflite.dart';
+import 'package:ganglong_shop_app/sqflite_model/goods_sqflite.dart';
+import 'package:ganglong_shop_app/sqflite_model/index_ad_sqflite.dart';
 import 'package:provider/provider.dart';
 import 'components/new_goods_swiper_component.dart';
 
@@ -45,10 +46,13 @@ class _SonFirstPage extends State<SonFirstPage>
   Widget build(BuildContext context) {
     super.build(context);
     final _themeModel = Provider.of<ThemeModel>(context);
+    final _firstPageModel = Provider.of<FirstPageModel>(context);
     // TODO: implement build
     return ProviderWidget2<SonFirstPageModel, PagePositionModel>(
       model1: SonFirstPageModel(),
-      model2: PagePositionModel(),
+      model2: PagePositionModel(factListenPagePositionFunction: (double pagePosition){
+        _firstPageModel.pagePosition = pagePosition;
+      }),
       builder: ((BuildContext context, SonFirstPageModel sonFirstPageModel,
           PagePositionModel pagePositionModel, _) {
         return Scaffold(

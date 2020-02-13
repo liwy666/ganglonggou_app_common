@@ -1,15 +1,15 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/order_data_model.dart';
-import 'package:flutter_app/data_model/theme_model.dart';
-import 'package:flutter_app/data_model/user_info_model.dart';
-import 'package:flutter_app/page/components/my_tab_bar.dart';
-import 'package:flutter_app/page/home_page/companents/home_config.dart';
-import 'package:flutter_app/page/home_page/companents/home_coupon.dart';
-import 'package:flutter_app/page/home_page/companents/home_order.dart';
-import 'package:flutter_app/page/home_page/companents/home_quit_logon_button.dart';
-import 'package:flutter_app/page/home_page/companents/home_to_start_page.dart';
-import 'package:flutter_app/page/home_page/companents/home_user_info_preview.dart';
-import 'package:flutter_app/routes/application.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/order_data_model.dart';
+import 'package:ganglong_shop_app/data_model/theme_model.dart';
+import 'package:ganglong_shop_app/data_model/user_info_model.dart';
+import 'package:ganglong_shop_app/page/components/my_tab_bar.dart';
+import 'package:ganglong_shop_app/page/home_page/companents/home_config.dart';
+import 'package:ganglong_shop_app/page/home_page/companents/home_coupon.dart';
+import 'package:ganglong_shop_app/page/home_page/companents/home_order.dart';
+import 'package:ganglong_shop_app/page/home_page/companents/home_quit_logon_button.dart';
+import 'package:ganglong_shop_app/page/home_page/companents/home_to_start_page.dart';
+import 'package:ganglong_shop_app/page/home_page/companents/home_user_info_preview.dart';
+import 'package:ganglong_shop_app/routes/application.dart';
 import 'package:provider/provider.dart';
 
 import 'companents/home_address.dart';

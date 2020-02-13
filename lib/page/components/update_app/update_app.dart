@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/getVersionInfo.dart';
-import 'package:flutter_app/page/components/update_app/components/download_dialog_box_child.dart';
-import 'package:flutter_app/page/components/update_app/components/if_update_dialog_box_child.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/getVersionInfo.dart';
+import 'package:ganglong_shop_app/page/components/update_app/components/download_dialog_box_child.dart';
+import 'package:ganglong_shop_app/page/components/update_app/components/if_update_dialog_box_child.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';

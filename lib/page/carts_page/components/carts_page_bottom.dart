@@ -1,9 +1,9 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/cart_data_model.dart';
-import 'package:flutter_app/data_model/user_info_model.dart';
-import 'package:flutter_app/page/components/my_bottom_button.dart';
-import 'package:flutter_app/page/components/my_dialog.dart';
-import 'package:flutter_app/routes/application.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/cart_data_model.dart';
+import 'package:ganglong_shop_app/data_model/user_info_model.dart';
+import 'package:ganglong_shop_app/page/components/my_bottom_button.dart';
+import 'package:ganglong_shop_app/page/components/my_dialog.dart';
+import 'package:ganglong_shop_app/routes/application.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 

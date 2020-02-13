@@ -1,16 +1,16 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/order_data_model.dart';
-import 'package:flutter_app/models/index.dart';
-import 'package:flutter_app/page/components/my_loading.dart';
-import 'package:flutter_app/request/fetch_alipay_prepay_info.dart';
-import 'package:flutter_app/request/fetch_order_info.dart';
-import 'package:flutter_app/request/fetch_wechat_prepay_info.dart';
-import 'package:flutter_app/request/post_call_order.dart';
-import 'package:flutter_app/request/post_cancel_after_service.dart';
-import 'package:flutter_app/request/post_delete_order.dart';
-import 'package:flutter_app/request/post_take_order.dart';
-import 'package:flutter_app/service/alipay_service.dart';
-import 'package:flutter_app/service/wechat_service.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/order_data_model.dart';
+import 'package:ganglong_shop_app/models/index.dart';
+import 'package:ganglong_shop_app/page/components/my_loading.dart';
+import 'package:ganglong_shop_app/request/fetch_alipay_prepay_info.dart';
+import 'package:ganglong_shop_app/request/fetch_order_info.dart';
+import 'package:ganglong_shop_app/request/fetch_wechat_prepay_info.dart';
+import 'package:ganglong_shop_app/request/post_call_order.dart';
+import 'package:ganglong_shop_app/request/post_cancel_after_service.dart';
+import 'package:ganglong_shop_app/request/post_delete_order.dart';
+import 'package:ganglong_shop_app/request/post_take_order.dart';
+import 'package:ganglong_shop_app/service/alipay_service.dart';
+import 'package:ganglong_shop_app/service/wechat_service.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ReadOrderPageModel with ChangeNotifier {

@@ -1,6 +1,6 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/page/components/my_loading.dart';
-import 'package:flutter_app/request/post_submit_after_service.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/page/components/my_loading.dart';
+import 'package:ganglong_shop_app/request/post_submit_after_service.dart';
 
 class AskAfterServiceModel with ChangeNotifier {
   final String orderSn;

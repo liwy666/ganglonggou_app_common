@@ -1,7 +1,8 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/evaluate_list_model.dart';
-import 'package:flutter_app/models/goodsEvaluateItem.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/evaluate_list_model.dart';
+import 'package:ganglong_shop_app/models/goodsEvaluateItem.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ganglong_shop_app/page/components/my_extended_image.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
@@ -31,7 +32,7 @@ class EvaluateItem extends StatelessWidget {
                         Container(
                           margin: EdgeInsets.only(right: 10),
                           width: ScreenUtil().setWidth(100),
-                          child: Image.network(
+                          child: MyExtendedImage.network(
                             evaluateItem.user_img,
                             fit: BoxFit.fitWidth,
                           ),

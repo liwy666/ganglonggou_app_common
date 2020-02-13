@@ -1,4 +1,4 @@
-import 'package:flutter_app/common_import.dart';
+import 'package:ganglong_shop_app/common_import.dart';
 
 class InheritedProvider<T> extends InheritedWidget {
   InheritedProvider({@required this.data, Widget child}) : super(child: child);

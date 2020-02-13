@@ -1,6 +1,6 @@
 import 'package:fluro/fluro.dart';
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/routes/route_handlers.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/routes/route_handlers.dart';
 
 class Routes {
   static String root = "/";
@@ -44,15 +44,15 @@ class Routes {
 
     router.define(goods,
         handler: goodsHandler,
-        transitionType: TransitionType.inFromRight); //商品详情
+        transitionType: TransitionType.cupertino); //商品详情
 
     router.define(evaluateList,
         handler: evaluateListHandler,
-        transitionType: TransitionType.inFromRight); //商品评价列表
+        transitionType: TransitionType.cupertino); //商品评价列表
 
     router.define(carts,
         handler: cartsHandler,
-        transitionType: TransitionType.inFromRight); //购物车列表
+        transitionType: TransitionType.cupertino); //购物车列表
 
     router.define(logon,
         handler: logonHandler,
@@ -60,35 +60,35 @@ class Routes {
 
     router.define(register,
         handler: registerHandler,
-        transitionType: TransitionType.inFromRight); //注册页
+        transitionType: TransitionType.cupertino); //注册页
 
     router.define(retrievePassword,
         handler: retrievePasswordHandler,
-        transitionType: TransitionType.inFromRight); //找回密码页
+        transitionType: TransitionType.cupertino); //找回密码页
 
     router.define(writeOrder,
         handler: writeOderHandler,
-        transitionType: TransitionType.inFromRight); //填写订单
+        transitionType: TransitionType.cupertino); //填写订单
 
     router.define(readOrder,
         handler: readOderHandler,
-        transitionType: TransitionType.inFromRight); //订单详情
+        transitionType: TransitionType.cupertino); //订单详情
 
     router.define(orderList,
         handler: orderListHandler,
-        transitionType: TransitionType.inFromRight); //订单列表
+        transitionType: TransitionType.cupertino); //订单列表
 
     router.define(addressList,
         handler: addressListHandler,
-        transitionType: TransitionType.inFromRight); //地址管理
+        transitionType: TransitionType.cupertino); //地址管理
 
     router.define(editAddress,
         handler: editAddressHandler,
-        transitionType: TransitionType.inFromRight); //地址编辑
+        transitionType: TransitionType.cupertino); //地址编辑
 
     router.define(userCouponList,
         handler: userCouponListHandler,
-        transitionType: TransitionType.inFromRight); //用户优惠券列表
+        transitionType: TransitionType.cupertino); //用户优惠券列表
 
     router.define(picSwiper,
         handler: picSwiperHandler,
@@ -96,7 +96,7 @@ class Routes {
 
     router.define(editUserInfo,
         handler: editUserInfoHandler,
-        transitionType: TransitionType.inFromRight); //编辑用户资料
+        transitionType: TransitionType.cupertino); //编辑用户资料
 
     router.define(webView,
         handler: webViewHandler,
@@ -104,30 +104,30 @@ class Routes {
 
     router.define(searchGoods,
         handler: searchGoodsHandler,
-        transitionType: TransitionType.inFromRight); //商品搜索
+        transitionType: TransitionType.cupertino); //商品搜索
 
     router.define(searchGoodsComplete,
         handler: searchGoodsCompleteHandler,
-        transitionType: TransitionType.inFromRight); //商品搜索结果
+        transitionType: TransitionType.cupertino); //商品搜索结果
 
     router.define(askAfterService,
         handler: askAfterServiceHandler,
-        transitionType: TransitionType.inFromRight); //申请售后
+        transitionType: TransitionType.cupertino); //申请售后
 
     router.define(submitEvaluate,
         handler: submitEvaluateHandler,
-        transitionType: TransitionType.inFromRight); //提交评价
+        transitionType: TransitionType.cupertino); //提交评价
 
     router.define(config,
         handler: configHandler,
-        transitionType: TransitionType.inFromRight); //设置中心
+        transitionType: TransitionType.cupertino); //设置中心
 
     router.define(supplier,
         handler: supplierHandler,
-        transitionType: TransitionType.inFromRight); //供应商
+        transitionType: TransitionType.cupertino); //供应商
 
     router.define(couponList,
         handler: couponListHandler,
-        transitionType: TransitionType.inFromRight); //优惠券列表
+        transitionType: TransitionType.cupertino); //优惠券列表
   }
 }

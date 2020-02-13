@@ -1,10 +1,10 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/cart_data_model.dart';
-import 'package:flutter_app/models/index.dart';
-import 'package:flutter_app/page/write_order_page/components/write_order_invoice_open.dart';
-import 'package:flutter_app/request/fetch_pay_type_list.dart';
-import 'package:flutter_app/request/fetch_user_have_coupon_list.dart';
-import 'package:flutter_app/request/post_write_order.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/cart_data_model.dart';
+import 'package:ganglong_shop_app/models/index.dart';
+import 'package:ganglong_shop_app/page/write_order_page/components/write_order_invoice_open.dart';
+import 'package:ganglong_shop_app/request/fetch_pay_type_list.dart';
+import 'package:ganglong_shop_app/request/fetch_user_have_coupon_list.dart';
+import 'package:ganglong_shop_app/request/post_write_order.dart';
 
 class WriteOrderPageModel with ChangeNotifier {
   PayTypeList _payTypeList;

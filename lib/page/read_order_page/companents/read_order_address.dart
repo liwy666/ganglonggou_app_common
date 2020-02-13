@@ -1,6 +1,6 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/data_model/read_order_page_model.dart';
-import 'package:flutter_app/page/components/my_order_list.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/read_order_page_model.dart';
+import 'package:ganglong_shop_app/page/components/my_order_list.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 

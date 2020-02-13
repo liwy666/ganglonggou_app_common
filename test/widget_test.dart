@@ -1,4 +1,4 @@
-import 'package:flutter_app/common_import.dart';
+import 'package:ganglong_shop_app/common_import.dart';
 import 'package:path_provider/path_provider.dart';
 
 void main() {

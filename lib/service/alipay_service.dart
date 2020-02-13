@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:fake_alipay/fake_alipay.dart';
-import 'package:flutter_app/models/AliPayAuthRespInfo.dart';
+import 'package:ganglong_shop_app/models/AliPayAuthRespInfo.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class AliPayService {

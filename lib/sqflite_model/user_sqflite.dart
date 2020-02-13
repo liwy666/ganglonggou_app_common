@@ -1,7 +1,7 @@
-import 'package:flutter_app/common_import.dart';
-import 'package:flutter_app/models/index.dart';
-import 'package:flutter_app/sqflite_model/base_sqflite.dart';
-import 'package:flutter_app/sqflite_model/sqlfite_config.dart';
+import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/models/index.dart';
+import 'package:ganglong_shop_app/sqflite_model/base_sqflite.dart';
+import 'package:ganglong_shop_app/sqflite_model/sqlfite_config.dart';
 
 class UserSqflite extends BaseSqflite {
   final String _tableName = USER_TABLE_NAME;

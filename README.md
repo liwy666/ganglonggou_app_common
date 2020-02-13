@@ -1,4 +1,4 @@
-# flutter_app
+# ganglong_shop_app
 
 A new Flutter application.
 
