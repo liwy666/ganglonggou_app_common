@@ -14,6 +14,7 @@ class MyPageTips extends StatelessWidget {
     return Container(
       width: ScreenUtil().setWidth(400),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Image.asset(
             imgRoute,

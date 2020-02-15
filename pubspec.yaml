@@ -118,6 +118,8 @@ flutter:
     - static_images/without_coupon.png
     - static_images/wx_icbc_icon_20190813.png
     - static_images/wx_conpou_icon_20190813.png
+    - static_images/user_not_logon_head.png
+    - static_images/browser-404.png
     - static_jsons/address_options.json
 
 

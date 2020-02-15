@@ -2,17 +2,22 @@ export 'package:flutter/material.dart';
 export 'package:ganglong_shop_app/http.dart';
 
 //入口名称
+import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:ganglong_shop_app/routes/application.dart';
 
 const bool DEBUG = true;
 const String INTO_TYPE = 'wx';
 const String SON_INTO_TYPE = 'android';
 //工行图标地址
-const String SON_FIRST_PAGE_ICBC_ICON = "https://mate.ganglonggou.com/lib/images/wx_icbc_icon_20190813.png";
+const String SON_FIRST_PAGE_ICBC_ICON =
+    "https://mate.ganglonggou.com/lib/images/wx_icbc_icon_20190813.png";
 //优惠券图标地址
-const String SON_FIRST_PAGE_COUPONS_ICON = "https://mate.ganglonggou.com/lib/images/wx_conpou_icon_20190813.png";
+const String SON_FIRST_PAGE_COUPONS_ICON =
+    "https://mate.ganglonggou.com/lib/images/wx_conpou_icon_20190813.png";
 //工行地址
-const String ICBC_URL = "https://m.mall.icbc.com.cn/mobile/mobileStroe/index.jhtml?shopId=026386";
+const String ICBC_URL =
+    "https://m.mall.icbc.com.cn/mobile/mobileStroe/index.jhtml?shopId=026386";
 //首页头部背景图地址
 const String SON_FIRST_PAGE_HEAD_BACKGROUND_IMG_URL =
     'static_images/wx_first_top1_20200208.jpg';
@@ -21,7 +26,10 @@ const String SON_FIRST_PAGE_SWIPER_BACKGROUND_IMG_URL =
     'static_images/wx_first_top2_20200208.png';
 //首页其他店铺单个背景图
 const String SON_FIRST_PAGE_OTHER_SHOP_ITEM_BACKGROUND_IMG_URL =
-    'static_images/ketlle_goods_b1.jpg';
+    'static_images/ketlle_goods_b1.png';
+//用户未登录头像
+const String USER_NOT_LOGON_HEAD_IMG_URL =
+    'static_images/user_not_logon_head.png';
 //常规数据缓存时效(ms)(6小时)
 const int COMMON_SQL_DATA_INVALID_TIME = 21600000;
 //积分名称
@@ -72,7 +80,7 @@ const String YZXB_LOGISTICS_QUERY_URL = 'https://m.ickd.cn/result.html#no=';
 const String COMMON_LOGISTICS_QUERY_URL =
     'https://m.kuaidi100.com/result.jsp?nu=';
 //app名称
-const String APP_NAME = '岗隆数码';
+const String APP_NAME = '岗隆购';
 //用户协议地址
 const String USER_AGREEMENT_URL =
     'https://mate.ganglonggou.com/app_web_extend/agreement/userAgreement.html';
@@ -86,6 +94,7 @@ const String ABOUT_WE_URL =
 const String FEED_BACK_URL =
     'https://mate.ganglonggou.com/app_web_extend/#/feedback';
 
+///深拷贝
 List<T> listDeepCopy<T>(List list) {
   if (list.length == 0 || list == null) return [];
   List<T> _tempList = [];
@@ -94,6 +103,34 @@ List<T> listDeepCopy<T>(List list) {
   });
 
   return _tempList;
+}
+
+///打开外链接
+Future<void> openUrl(
+    {@required String url, @required BuildContext context}) async {
+  /*https://mate.ganglonggou.com/wx-ganglonggou/#/activity01*/
+  if (url.isEmpty || url == null) return;
+  RegExp regGangLongUrl =
+      new RegExp(r".+mate.ganglonggou.com/wx-ganglonggou.+");
+  if (regGangLongUrl.hasMatch(url)) {
+    //抽取出路由
+    RegExp regExtractRoute = RegExp(r'#(\/.+)$');
+    if (regExtractRoute.hasMatch(url)) {
+      _urlExtractRoute(url: url, context: context);
+    }
+  }
+}
+
+_urlExtractRoute({@required String url, @required BuildContext context}) {
+  RegExp reg = RegExp(r'#(\/.+)$');
+  Match match = reg.firstMatch(url);
+  try {
+    if (match.group(1).isNotEmpty) {
+      Application.router.navigateTo(context, match.group(1));
+    }
+  } catch (e) {
+    print(e);
+  }
 }
 
 bool checkPhoneNumber(String phoneNumber) {

@@ -6,7 +6,7 @@ import 'package:ganglong_shop_app/routes/application.dart';
 
 class ClassifyPageModel with ChangeNotifier {
   int _choiceClassifyItemId = 0;
-  final List<ClassifyItem> classifyItemList;
+  List<ClassifyItem> classifyItemList = [];
 
   int get choiceClassifyItemId => _choiceClassifyItemId;
 
@@ -29,8 +29,13 @@ class ClassifyPageModel with ChangeNotifier {
     }
   }
 
-  ClassifyPageModel({@required this.classifyItemList}) {
-    if (classifyItemList.length > 0) {
+  ClassifyPageModel({@required List<ClassifyItem> classifyItemListTemp}) {
+    if (classifyItemListTemp.length > 0) {
+      this.classifyItemList = classifyItemListTemp
+          .where(
+              (ClassifyItem classifyItem) => classifyItem.children.length > 0)
+          .toList();
+      print(this.classifyItemList.length);
       _choiceClassifyItemId = this.classifyItemList[0].id;
     }
   }

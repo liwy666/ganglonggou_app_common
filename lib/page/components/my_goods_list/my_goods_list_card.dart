@@ -38,14 +38,14 @@ class MyGoodsListCard extends StatelessWidget {
                     width: ScreenUtil().setWidth(300),
                     height: ScreenUtil().setWidth(300),
                   ),
-                  item.goods_name.startsWith("特价捡漏")
+             /*     item.goods_name.startsWith("特价捡漏")
                       ? Image.asset(
                           'static_images/hot_goods_head.png',
                           fit: BoxFit.fitWidth,
                           width: ScreenUtil().setWidth(300),
                           height: ScreenUtil().setWidth(300),
                         )
-                      : Container(),
+                      : Container(),*/
                 ],
               ),
               Container(

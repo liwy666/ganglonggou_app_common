@@ -72,7 +72,41 @@ class ConfigPage extends StatelessWidget {
               ),
               Container(
                 color: _themeModel.pageBackgroundColor2,
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      "跟随系统",
+                      style: TextStyle(color: _themeModel.fontColor1),
+                    ),
+                    Switch(
+                      activeColor: Colors.blue,
+                      onChanged: (bool value) {
+                        if (value) {
+                          _themeModel.onFollowingSystem();
+                        } else {
+                          _themeModel.offFollowingSystem();
+                        }
+                      },
+                      value: _themeModel.appThemeModeFollowingSystem,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  color: _themeModel.pageBackgroundColor2,
+                  child: Text(
+                    "如果您想手动选择是否开启'夜间模式'，可以关掉此开关",
+                    style: TextStyle(
+                        fontSize: SMALL_FONT_SIZE,
+                        color: _themeModel.fontColor2),
+                  )),
+              Container(
+                margin: EdgeInsets.only(bottom: 10),
+                color: _themeModel.pageBackgroundColor2,
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -83,6 +117,7 @@ class ConfigPage extends StatelessWidget {
                     Switch(
                       activeColor: Colors.blue,
                       onChanged: (bool value) {
+                        if (_themeModel.appThemeModeFollowingSystem) return;
                         if (value) {
                           _themeModel.switchNightMode();
                         } else {
@@ -97,24 +132,21 @@ class ConfigPage extends StatelessWidget {
               MySingleRowTile(
                 onTapFunction: () {
                   Application.router.navigateTo(context,
-                      '/web_view?initialLink=${base64UrlEncode(
-                          utf8.encode(ABOUT_WE_URL))}');
+                      '/web_view?initialLink=${base64UrlEncode(utf8.encode(ABOUT_WE_URL))}');
                 },
                 child: Text("关于我们"),
               ),
               MySingleRowTile(
                 onTapFunction: () {
                   Application.router.navigateTo(context,
-                      '/web_view?initialLink=${base64UrlEncode(
-                          utf8.encode(PRIVACY_AGREEMENT_URL))}');
+                      '/web_view?initialLink=${base64UrlEncode(utf8.encode(PRIVACY_AGREEMENT_URL))}');
                 },
                 child: Text("隐私协议查看"),
               ),
               MySingleRowTile(
                 onTapFunction: () {
                   Application.router.navigateTo(context,
-                      '/web_view?initialLink=${base64UrlEncode(
-                          utf8.encode(USER_AGREEMENT_URL))}');
+                      '/web_view?initialLink=${base64UrlEncode(utf8.encode(USER_AGREEMENT_URL))}');
                 },
                 child: Text("用户协议查看"),
               ),
@@ -144,8 +176,7 @@ class ConfigPage extends StatelessWidget {
               MySingleRowTile(
                 onTapFunction: () async {
                   await launch(
-                      "$FEED_BACK_URL?version=${startModel
-                          .appVersion}&platform=$SON_INTO_TYPE");
+                      "$FEED_BACK_URL?version=${startModel.appVersion}&platform=$SON_INTO_TYPE");
                 },
                 child: Text("反馈"),
               ),

@@ -34,8 +34,15 @@ class SwiperComponent extends StatelessWidget {
                     );
                   },
                 )
-              : _ImgItem(
-                  imgUrl: indexAdListModel.swiperList[0].ad_img,
+              : GestureDetector(
+                  child: _ImgItem(
+                    imgUrl: indexAdListModel.swiperList[0].ad_img,
+                  ),
+                  onTap: () {
+                    FirstPageModel.toControl(
+                        indexAdItem: indexAdListModel.swiperList[0],
+                        context: context);
+                  },
                 );
         },
       )),

@@ -6,6 +6,7 @@ import 'package:ganglong_shop_app/page/components/my_loading.dart';
 import 'package:ganglong_shop_app/request/fetch_version_info.dart';
 import 'package:flutter_ios_dark_mode/flutter_ios_dark_mode.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ganglong_shop_app/routes/application.dart';
 import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +28,8 @@ class _StartPage extends State<StartPage> {
       await _startModel.init();
       //loading组件写入全局context
       MyLoading.loadContext = context;
+      //Application写入全局context
+      Application.startPageContext = context;
       //初始化页面高宽
       ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
       //检查版本更新
@@ -75,17 +78,18 @@ class _StartPage extends State<StartPage> {
     FlutterIosDarkMode()
         .onDarkModeStateChanged
         .listen((bool listenDarkModeEnabled) {
-          print("暗夜模式：$listenDarkModeEnabled");
       _switchDarkTheme(listenDarkModeEnabled);
     });
-
   }
+
   //切换主题模式
   void _switchDarkTheme(bool darkModeEnabled) {
     final _themeModel = Provider.of<ThemeModel>(context);
+    if (!_themeModel.appThemeModeFollowingSystem) return;
+
     if (darkModeEnabled) {
       _themeModel.switchNightMode();
-    } else{
+    } else {
       _themeModel.switchDefaultMode();
     }
   }

@@ -19,16 +19,20 @@ class CartsPageBottom extends StatelessWidget {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Checkbox(
-                    value: cartDataModel.allChoice,
-                    onChanged: (_) {
-                      cartDataModel.switchAllChoice();
-                    },
-                  ),
-                  Text(
-                    "全选",
-                    style: TextStyle(fontSize: ScreenUtil().setWidth(20)),
-                  ),
+                  cartDataModel.cartList.length > 0
+                      ? Checkbox(
+                          value: cartDataModel.allChoice,
+                          onChanged: (_) {
+                            cartDataModel.switchAllChoice();
+                          },
+                        )
+                      : Container(),
+                  cartDataModel.cartList.length > 0
+                      ? Text(
+                          "全选",
+                          style: TextStyle(fontSize: ScreenUtil().setWidth(20)),
+                        )
+                      : Container(),
                   cartDataModel.selectionCartList.length > 0
                       ? Container(
                           margin: EdgeInsets.only(left: 15),

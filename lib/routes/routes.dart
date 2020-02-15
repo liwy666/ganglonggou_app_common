@@ -1,5 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/page/error_page/not_found_route_page.dart';
+import 'package:ganglong_shop_app/routes/application.dart';
 import 'package:ganglong_shop_app/routes/route_handlers.dart';
 
 class Routes {
@@ -28,12 +30,14 @@ class Routes {
   static String config = '/config';
   static String supplier = '/supplier';
   static String couponList = '/coupon_list';
+  static String notFoundRoute = '/not_found_route';
+  static String activityOnePage = '/activity01';
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = Handler(
         handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      print("ROUTE WAS NOT FOUND !!!");
-      return;
+      print("没有找到路由");
+      return NotFoundRoutePage();
     });
 
     router.define(root, handler: startHandler); //默认
@@ -43,8 +47,7 @@ class Routes {
     router.define(main, handler: rootHandler); //主页
 
     router.define(goods,
-        handler: goodsHandler,
-        transitionType: TransitionType.cupertino); //商品详情
+        handler: goodsHandler, transitionType: TransitionType.cupertino); //商品详情
 
     router.define(evaluateList,
         handler: evaluateListHandler,
@@ -129,5 +132,13 @@ class Routes {
     router.define(couponList,
         handler: couponListHandler,
         transitionType: TransitionType.cupertino); //优惠券列表
+
+    router.define(activityOnePage,
+        handler: activityOneHandler,
+        transitionType: TransitionType.cupertino); //活动页01
+
+    router.define(notFoundRoute,
+        handler: notFoundRouteHandler,
+        transitionType: TransitionType.cupertino); //没有找到路由
   }
 }

@@ -32,9 +32,8 @@ class FirstPageModel extends ChangeNotifier {
         if (indexAdItem.url.isNotEmpty && indexAdItem.url != null) {
           /*Application.router.navigateTo(context,
               '/web_view?initialLink=${base64UrlEncode(utf8.encode(indexAdItem.url))}');*/
-          //MyLoading.eject();
-          await launch(indexAdItem.url);
-          //MyLoading.shut();
+          //await launch(indexAdItem.url);
+          await openUrl(url: indexAdItem.url, context: context);
         }
         break;
       case "搜索关键词":
@@ -52,20 +51,37 @@ class FirstPageModel extends ChangeNotifier {
       {@required ClassifyItem classifyItem, @required BuildContext context}) {
     if (classifyItem.classify_name.isNotEmpty &&
         classifyItem.classify_name != null) {
-      switch(classifyItem.click_type){
+      switch (classifyItem.click_type) {
         case "工行活动页":
           launch(ICBC_URL);
           break;
         case "领券活动页":
-          Application.router.navigateTo(context,
-              'coupon_list');
+          Application.router.navigateTo(context, 'coupon_list');
           break;
         default:
           Application.router.navigateTo(context,
               'search_goods_complete?keyword=${base64UrlEncode(utf8.encode(classifyItem.classify_name))}&showKeyword=false');
           break;
       }
+    }
+  }
 
+  static void classBannerToControl(
+      {@required ClassifyItem classifyItem, @required BuildContext context}) {
+    switch (classifyItem.click_type) {
+      case "搜索关键词":
+        if (classifyItem.key_word == "无响应") break;
+        Application.router.navigateTo(context,
+            'search_goods_complete?keyword=${base64UrlEncode(utf8.encode(classifyItem.key_word))}&showKeyword=false');
+        break;
+      case "商品ID":
+        if (classifyItem.goods_id != null &&
+            classifyItem.goods_id.toString().isNotEmpty &&
+            classifyItem.goods_id != 0) {
+          Application.router
+              .navigateTo(context, '/goods?goodsId=${classifyItem.goods_id}');
+        }
+        break;
     }
   }
 }

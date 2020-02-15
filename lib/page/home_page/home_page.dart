@@ -5,6 +5,8 @@ import 'package:ganglong_shop_app/data_model/user_info_model.dart';
 import 'package:ganglong_shop_app/page/components/my_tab_bar.dart';
 import 'package:ganglong_shop_app/page/home_page/companents/home_config.dart';
 import 'package:ganglong_shop_app/page/home_page/companents/home_coupon.dart';
+import 'package:ganglong_shop_app/page/home_page/companents/home_logon_button.dart';
+import 'package:ganglong_shop_app/page/home_page/companents/home_not_logon_user_info_preview.dart';
 import 'package:ganglong_shop_app/page/home_page/companents/home_order.dart';
 import 'package:ganglong_shop_app/page/home_page/companents/home_quit_logon_button.dart';
 import 'package:ganglong_shop_app/page/home_page/companents/home_to_start_page.dart';
@@ -73,8 +75,29 @@ class _NotLogonHomePage extends StatelessWidget {
     final _themeModel = Provider.of<ThemeModel>(context);
     // TODO: implement build
     return Scaffold(
+      appBar: MyTabBar(
+        tabBarName: '个人中心',
+        hideLeftButton: true,
+        backgroundColor: Theme.of(context).accentColor,
+        tabBarNameColor: Colors.white,
+      ),
       backgroundColor: _themeModel.pageBackgroundColor1,
-      body: Center(
+      body: ListView(
+        children: <Widget>[
+          HomeNotLogonUserInfoPreview(),
+          HomeOrder(),
+          HomeAddress(),
+          HomeCoupon(),
+          HomeConfig(),
+          HomeLogonButton(),
+        ],
+      ),
+    );
+  }
+}
+
+/*
+Center(
         child: RaisedButton(
           child: Text(
             "马上登录",
@@ -91,6 +114,4 @@ class _NotLogonHomePage extends StatelessWidget {
           },
         ),
       ),
-    );
-  }
-}
+*/

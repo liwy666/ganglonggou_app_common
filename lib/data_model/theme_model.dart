@@ -1,9 +1,11 @@
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ganglong_shop_app/common_import.dart';
 import 'package:ganglong_shop_app/sqflite_model/base_sqflite.dart';
 import 'package:ganglong_shop_app/sqflite_model/sqlfite_config.dart';
 
 class ThemeModel with ChangeNotifier {
   AppThemeMode _appThemeMode = AppThemeMode.defaultMode;
+  bool _appThemeModeFollowingSystem;
   Color _themeColor;
   Color _pageBackgroundColor1;
   Color _pageBackgroundColor2;
@@ -20,9 +22,12 @@ class ThemeModel with ChangeNotifier {
 
   Color get fontColor2 => _fontColor2;
 
+  bool get appThemeModeFollowingSystem => _appThemeModeFollowingSystem;
+
   AppThemeMode get appThemeMode => _appThemeMode;
 
-  void init(String themeMode) {
+  void init(
+      {@required String themeMode, @required String themeModeFollowingSystem}) {
     switch (themeMode) {
       case "default":
         _switchDefaultMode();
@@ -33,6 +38,52 @@ class ThemeModel with ChangeNotifier {
       default:
         _switchDefaultMode();
     }
+
+    switch (themeModeFollowingSystem) {
+      case "1":
+        _appThemeModeFollowingSystem = true;
+        break;
+      case "0":
+        _appThemeModeFollowingSystem = false;
+        break;
+      default:
+        _appThemeModeFollowingSystem = true;
+    }
+  }
+
+  ///关闭跟随系统
+  Future<void> offFollowingSystem() async {
+    ///修改数据库
+    List<Map<String, dynamic>> queryResult = await BaseSqflite.db.query(
+        CONFIG_TABLE_NAME,
+        where: 'config_key = \'theme_mode_following_system\'');
+    if (queryResult.length == 0) {
+      await BaseSqflite.db.insert(CONFIG_TABLE_NAME,
+          {'config_key': 'theme_mode_following_system', 'config_value': '0'});
+    } else {
+      await BaseSqflite.db.update(CONFIG_TABLE_NAME, {'config_value': '0'},
+          where: 'config_key = \'theme_mode_following_system\'');
+    }
+    _appThemeModeFollowingSystem = false;
+    notifyListeners();
+  }
+
+  ///开启跟随系统
+  Future<void> onFollowingSystem() async {
+    ///修改数据库
+    List<Map<String, dynamic>> queryResult = await BaseSqflite.db.query(
+        CONFIG_TABLE_NAME,
+        where: 'config_key = \'theme_mode_following_system\'');
+    if (queryResult.length == 0) {
+      await BaseSqflite.db.insert(CONFIG_TABLE_NAME,
+          {'config_key': 'theme_mode_following_system', 'config_value': '1'});
+    } else {
+      await BaseSqflite.db.update(CONFIG_TABLE_NAME, {'config_value': '1'},
+          where: 'config_key = \'theme_mode_following_system\'');
+    }
+    _appThemeModeFollowingSystem = true;
+    Fluttertoast.showToast(msg: "该设置将在软件重启后生效"); //短提示
+    notifyListeners();
   }
 
   ///切换黑夜模式
@@ -46,7 +97,6 @@ class ThemeModel with ChangeNotifier {
       await BaseSqflite.db.update(CONFIG_TABLE_NAME, {'config_value': 'night'},
           where: 'config_key = \'theme_mode\'');
     }
-    print(queryResult);
     _switchNightMode();
     notifyListeners();
   }

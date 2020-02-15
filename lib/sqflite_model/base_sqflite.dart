@@ -9,6 +9,7 @@ abstract class BaseSqflite {
     {"config_key": "index_info_invalid_time", "config_value": "0"},
     {"config_key": "classify_list_invalid_time", "config_value": "0"},
     {"config_key": "theme_mode", "config_value": "default"},
+    {"config_key": "theme_mode_following_system", "config_value": "1"},
   ];
 
   /*初始化sql*/

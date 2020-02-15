@@ -26,7 +26,7 @@ class ClassifyPage extends StatelessWidget {
             ClassifyListDataModel classifyListDataModel, _) {
           return ProviderWidget<ClassifyPageModel>(
             model: ClassifyPageModel(
-                classifyItemList: classifyListDataModel.classifyList),
+                classifyItemListTemp: classifyListDataModel.classifyList),
             builder:
                 (BuildContext context, ClassifyPageModel classifyPageModel, _) {
               return Row(
@@ -35,10 +35,11 @@ class ClassifyPage extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.25,
                     height: MediaQuery.of(context).size.height,
                     decoration: BoxDecoration(
-                        color: _leftListBackGroundColor,
+                        color: _themeModel.pageBackgroundColor1,
                         border: Border(
                             right: BorderSide(
-                                color: Color(0xff95a5a6), width: 0.25))),
+                                color: Color(0xff95a5a6), width: 0.25)) //右侧悬浮
+                        ),
                     child: ListView(
                       children: classifyPageModel.classifyItemList
                           .map((ClassifyItem classifyItem) {
@@ -49,8 +50,9 @@ class ClassifyPage extends StatelessWidget {
                         );
                       }).toList(),
                     ),
-                  ),
+                  ), //左侧选择栏
                   Container(
+                    color: _themeModel.pageBackgroundColor2,
                     padding: EdgeInsets.only(top: 30),
                     width: MediaQuery.of(context).size.width * 0.75,
                     height: MediaQuery.of(context).size.height,
@@ -64,7 +66,7 @@ class ClassifyPage extends StatelessWidget {
                         return _ClassifyChild(classifyItem: classifyItem);
                       }).toList(),
                     ),
-                  ),
+                  ), //右侧明细栏
                 ],
               );
             },
@@ -97,7 +99,7 @@ class _ClassifyItem extends StatelessWidget {
           child: Container(
             color: isChoice
                 ? _themeModel.pageBackgroundColor2
-                : _leftListBackGroundColor,
+                : _themeModel.pageBackgroundColor1,
             height: itemHeight,
             child: Row(
               children: <Widget>[
@@ -106,7 +108,7 @@ class _ClassifyItem extends StatelessWidget {
                   width: 5,
                   color: isChoice
                       ? Theme.of(context).accentColor
-                      : _leftListBackGroundColor,
+                      : _themeModel.pageBackgroundColor1,
                   margin: EdgeInsets.only(right: 10),
                 ),
                 Container(
@@ -115,8 +117,10 @@ class _ClassifyItem extends StatelessWidget {
                     classifyItem.classify_name,
                     style: TextStyle(
                         fontSize: isChoice ? SMALL_FONT_SIZE : SMALL_FONT_SIZE,
-                        color: isChoice ? Color(0xff2c3e50) : Color(0xff7f8c8d),
-                        fontWeight: FontWeight.w100),
+                        color: isChoice
+                            ? _themeModel.themeColor
+                            : _themeModel.fontColor1,
+                        fontWeight: FontWeight.w400),
                   ),
                 )
               ],

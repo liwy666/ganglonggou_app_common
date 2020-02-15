@@ -1,0 +1,129 @@
+PODS:
+  - AlipaySDK-iOS (15.5.9)
+  - fake_alipay (0.0.1):
+    - AlipaySDK-iOS (~> 15.5.5)
+    - Flutter
+  - fake_wechat (0.0.1):
+    - Flutter
+    - WechatOpenSDK (~> 1.8.6)
+  - Flutter (1.0.0)
+  - flutter_custom_dialog (0.0.1):
+    - Flutter
+  - flutter_des (0.0.1):
+    - Flutter
+  - flutter_downloader (0.0.1):
+    - Flutter
+  - flutter_ios_dark_mode (0.0.1):
+    - Flutter
+  - flutter_web_view (0.0.1):
+    - Flutter
+  - flutter_webview_plugin (0.0.1):
+    - Flutter
+  - fluttertoast (0.0.2):
+    - Flutter
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
+  - image_picker (0.0.1):
+    - Flutter
+  - open_file (0.0.1):
+    - Flutter
+  - package_info (0.0.1):
+    - Flutter
+  - path_provider (0.0.1):
+    - Flutter
+  - permission_handler (4.0.0):
+    - Flutter
+  - sqflite (0.0.1):
+    - Flutter
+    - FMDB (~> 2.7.2)
+  - url_launcher (0.0.1):
+    - Flutter
+  - WechatOpenSDK (1.8.6)
+
+DEPENDENCIES:
+  - fake_alipay (from `.symlinks/plugins/fake_alipay/ios`)
+  - fake_wechat (from `.symlinks/plugins/fake_wechat/ios`)
+  - Flutter (from `.symlinks/flutter/ios`)
+  - flutter_custom_dialog (from `.symlinks/plugins/flutter_custom_dialog/ios`)
+  - flutter_des (from `.symlinks/plugins/flutter_des/ios`)
+  - flutter_downloader (from `.symlinks/plugins/flutter_downloader/ios`)
+  - flutter_ios_dark_mode (from `.symlinks/plugins/flutter_ios_dark_mode/ios`)
+  - flutter_web_view (from `.symlinks/plugins/flutter_web_view/ios`)
+  - flutter_webview_plugin (from `.symlinks/plugins/flutter_webview_plugin/ios`)
+  - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
+  - image_picker (from `.symlinks/plugins/image_picker/ios`)
+  - open_file (from `.symlinks/plugins/open_file/ios`)
+  - package_info (from `.symlinks/plugins/package_info/ios`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
+  - sqflite (from `.symlinks/plugins/sqflite/ios`)
+  - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
+
+SPEC REPOS:
+  trunk:
+    - AlipaySDK-iOS
+    - FMDB
+    - WechatOpenSDK
+
+EXTERNAL SOURCES:
+  fake_alipay:
+    :path: ".symlinks/plugins/fake_alipay/ios"
+  fake_wechat:
+    :path: ".symlinks/plugins/fake_wechat/ios"
+  Flutter:
+    :path: ".symlinks/flutter/ios"
+  flutter_custom_dialog:
+    :path: ".symlinks/plugins/flutter_custom_dialog/ios"
+  flutter_des:
+    :path: ".symlinks/plugins/flutter_des/ios"
+  flutter_downloader:
+    :path: ".symlinks/plugins/flutter_downloader/ios"
+  flutter_ios_dark_mode:
+    :path: ".symlinks/plugins/flutter_ios_dark_mode/ios"
+  flutter_web_view:
+    :path: ".symlinks/plugins/flutter_web_view/ios"
+  flutter_webview_plugin:
+    :path: ".symlinks/plugins/flutter_webview_plugin/ios"
+  fluttertoast:
+    :path: ".symlinks/plugins/fluttertoast/ios"
+  image_picker:
+    :path: ".symlinks/plugins/image_picker/ios"
+  open_file:
+    :path: ".symlinks/plugins/open_file/ios"
+  package_info:
+    :path: ".symlinks/plugins/package_info/ios"
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
+  permission_handler:
+    :path: ".symlinks/plugins/permission_handler/ios"
+  sqflite:
+    :path: ".symlinks/plugins/sqflite/ios"
+  url_launcher:
+    :path: ".symlinks/plugins/url_launcher/ios"
+
+SPEC CHECKSUMS:
+  AlipaySDK-iOS: 1c5283b30977a24acecc0114662697f7dc78f618
+  fake_alipay: ee8883cc6c794db2b38b53cb05840368085d1e63
+  fake_wechat: 8d39a92becce4f830f06a35ea9ea83303be37fea
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_custom_dialog: c0d222a3c35af5b57581e54ef8784c94037cd2ec
+  flutter_des: af0bb83f27f1468ad652d907958b1d42d5644544
+  flutter_downloader: 058b9c41564a90500f67f3e432e3524613a7fd83
+  flutter_ios_dark_mode: 4ef3fd2b5d4bf59251f3480138a47401cf176ffc
+  flutter_web_view: 95e784768166c40b99e0801adff6ccc798bde237
+  flutter_webview_plugin: ed9e8a6a96baf0c867e90e1bce2673913eeac694
+  fluttertoast: b644586ef3b16f67fae9a1f8754cef6b2d6b634b
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  image_picker: e3eacd46b94694dde7cf2705955cece853aa1a8f
+  open_file: 02eb5cb6b21264bd3a696876f5afbfb7ca4f4b7d
+  package_info: 48b108e75b8802c2d5e126f208ef540561c98aef
+  path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
+  permission_handler: 0fb88b8a3c23e31e5de45b8f1bb8b7de28cf8941
+  sqflite: 4001a31ff81d210346b500c55b17f4d6c7589dd0
+  url_launcher: a1c0cc845906122c4784c542523d8cacbded5626
+  WechatOpenSDK: 368ae03b72ee3ea1328c4f11326fbb5d2721d118
+
+PODFILE CHECKSUM: 10ae9c18d12c9ffc2275c9a159a3b1e281990db0
+
+COCOAPODS: 1.8.4

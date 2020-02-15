@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:fluro/fluro.dart';
 import 'package:ganglong_shop_app/common_import.dart';
 import 'package:ganglong_shop_app/models/index.dart';
+import 'package:ganglong_shop_app/page/activity_page/activity_one_page.dart';
 import 'package:ganglong_shop_app/page/address_list_page/address_list_page.dart';
 import 'package:ganglong_shop_app/page/ask_after_service_page/ask_after_service_page.dart';
 import 'package:ganglong_shop_app/page/carts_page/carts_page.dart';
@@ -10,6 +11,7 @@ import 'package:ganglong_shop_app/page/config_page/config_page.dart';
 import 'package:ganglong_shop_app/page/coupon_list_page/coupon_list_page.dart';
 import 'package:ganglong_shop_app/page/edit_address_page/edit_address_page.dart';
 import 'package:ganglong_shop_app/page/edit_user_info_page/edit_user_info_page.dart';
+import 'package:ganglong_shop_app/page/error_page/not_found_route_page.dart';
 import 'package:ganglong_shop_app/page/evaluate_list_page/evaluate_list_page.dart';
 import 'package:ganglong_shop_app/page/goods_page/goods_page.dart';
 import 'package:ganglong_shop_app/page/logon_page/logon_page.dart';
@@ -245,8 +247,20 @@ Handler supplierHandler = Handler(
   );
 });
 
-/*设置中心*/
+/*优惠券列表*/
 Handler couponListHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
   return CouponListPage();
+});
+
+/*活动页01*/
+Handler activityOneHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  return ActivityOnePage();
+});
+
+/*没有找到路由*/
+Handler notFoundRouteHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  return NotFoundRoutePage();
 });

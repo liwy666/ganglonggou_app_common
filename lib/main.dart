@@ -28,19 +28,25 @@ Future<Null> _runApp() async {
   await BaseSqflite.initSql();
   List<Map<String, dynamic>> configSqlQueryAll =
       await BaseSqflite.db.query(CONFIG_TABLE_NAME);
-  String themeMode = "default";
+  String _themeMode = "default";
+  String _themeModeFollowingSystem = "1";
   if (configSqlQueryAll.length > 0) {
     configSqlQueryAll.forEach((Map<String, dynamic> mapItem) {
       switch (mapItem['config_key']) {
         case "theme_mode":
-          themeMode = mapItem["config_value"];
+          _themeMode = mapItem["config_value"];
+          break;
+        case "theme_mode_following_system":
+          _themeModeFollowingSystem = mapItem["config_value"];
           break;
       }
     });
   }
   /*初始化主题模式*/
   final themeModel = ThemeModel();
-  themeModel.init(themeMode);
+  themeModel.init(
+      themeMode: _themeMode,
+      themeModeFollowingSystem: _themeModeFollowingSystem);
   /*start_model*/
   StartModel startModel = StartModel();
   /*注册model*/
@@ -79,9 +85,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //home: HomeContent(),
       theme: ThemeData(
-          primarySwatch: _themeModel.themeColor,
-          //platform: TargetPlatform.iOS //右滑返回
-          ),
+        primarySwatch: _themeModel.themeColor,
+        //platform: TargetPlatform.iOS //右滑返回
+      ),
       onGenerateRoute: Application.router.generator,
     );
   }

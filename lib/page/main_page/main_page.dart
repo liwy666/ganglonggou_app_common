@@ -102,6 +102,7 @@ class _MainPage extends State<MainPage> {
                 currentIndex: mainPageModel.currentIndex,
                 //高亮项数（int）
                 onTap: (index) {
+                  if(index == 2) return;
                   mainPageModel.bottomNavigationBarClick(index);
                 },
                 //点击时触发回调函数，回调参数是当前点击项数
@@ -164,23 +165,30 @@ class _MainPage extends State<MainPage> {
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
             floatingActionButton: GestureDetector(
-              child: Container(
-                height: 60,
-                width: 60,
-                padding: EdgeInsets.all(0),
+              child: Card(
+                color: _themeModel.pageBackgroundColor2,
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(30))),
                 margin: EdgeInsets.only(top: 20),
-                decoration: BoxDecoration(
-                  color: _themeModel.pageBackgroundColor2,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Image.asset(
-                  'static_images/middle_button.png',
-                  fit: BoxFit.fitWidth,
+                child: Container(
+                  height: 60,
+                  width: 60,
+                  padding: EdgeInsets.all(5),
+//                  margin: EdgeInsets.only(top: 20),
+                  decoration: BoxDecoration(
+                      //borderRadius: BorderRadius.circular(30),
+                      ),
+                  child: Image.asset(
+                    'static_images/middle_button.png',
+                    fit: BoxFit.fitWidth,
+                  ),
                 ),
               ),
               onTap: () {
-                Application.router.navigateTo(context,
-                    'search_goods_complete?keyword=${base64UrlEncode(utf8.encode("特价捡漏"))}&showKeyword=false');
+//                Application.router.navigateTo(context,
+//                    'search_goods_complete?keyword=${base64UrlEncode(utf8.encode("特价捡漏"))}&showKeyword=false');
+
+                Application.router.navigateTo(context, '/activity01');
               },
             ),
           ),
