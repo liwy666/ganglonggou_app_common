@@ -1,4 +1,5 @@
 import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/config_model.dart';
 import 'package:ganglong_shop_app/data_model/start_model.dart';
 import 'package:ganglong_shop_app/data_model/theme_model.dart';
 import 'package:ganglong_shop_app/models/getVersionInfo.dart';
@@ -35,12 +36,15 @@ class _StartPage extends State<StartPage> {
       //检查版本更新
       //bool needUpdateApp = await _checkVersion();
       bool needUpdateApp = false;
+      //检查是否初次安装
+      bool initialInstallation = _checkInitialInstallation();
       //检测主题模式
       _checkDarkModel();
       //等待
       await Future.delayed(Duration(seconds: 1));
       //跳转
-      Navigator.popAndPushNamed(context, '/main?needUpdateApp=$needUpdateApp');
+      Navigator.popAndPushNamed(context,
+          '/main?needUpdateApp=$needUpdateApp&whetherInitialInstallation=$initialInstallation');
     });
     // TODO: implement initState
     super.initState();
@@ -68,7 +72,14 @@ class _StartPage extends State<StartPage> {
     return false;
   }
 
-  //检测是否开启暗夜模式
+  ///检查是否初次安装
+  bool _checkInitialInstallation() {
+    final _configModel = Provider.of<ConfigModel>(context);
+    final bool initialInstallation = _configModel.initialInstallation;
+    return initialInstallation;
+  }
+
+  ///检测是否开启暗夜模式
   void _checkDarkModel() async {
     //检测
     final bool darkModeEnabled = await FlutterIosDarkMode().darkModeEnabled;
@@ -82,7 +93,7 @@ class _StartPage extends State<StartPage> {
     });
   }
 
-  //切换主题模式
+  ///切换主题模式
   void _switchDarkTheme(bool darkModeEnabled) {
     final _themeModel = Provider.of<ThemeModel>(context);
     if (!_themeModel.appThemeModeFollowingSystem) return;

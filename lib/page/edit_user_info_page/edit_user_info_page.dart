@@ -89,15 +89,17 @@ class EditUserInfoPage extends StatelessWidget {
                             ),
                           ),
                           color: Theme.of(context).accentColor,
-                          onPressed: () async{
-                           bool submitResult = await editUserInfoPageModel.submitUserData();
-                           print(submitResult);
-                           if(submitResult){
-                             MyLoading.eject();
-                             await userInfoModel.updateUserInfo(editUserInfoPageModel.userInfo);
-                             MyLoading.shut();
-                             Application.router.pop(context);
-                           }
+                          onPressed: () async {
+                            bool submitResult =
+                                await editUserInfoPageModel.submitUserData();
+                            print(submitResult);
+                            if (submitResult) {
+                              MyLoading.eject();
+                              await userInfoModel.updateUserInfo(
+                                  editUserInfoPageModel.userInfo);
+                              MyLoading.shut();
+                              Application.router.pop(context);
+                            }
                           },
                         ),
                       ),

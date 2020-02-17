@@ -53,34 +53,18 @@ class ThemeModel with ChangeNotifier {
 
   ///关闭跟随系统
   Future<void> offFollowingSystem() async {
-    ///修改数据库
-    List<Map<String, dynamic>> queryResult = await BaseSqflite.db.query(
-        CONFIG_TABLE_NAME,
-        where: 'config_key = \'theme_mode_following_system\'');
-    if (queryResult.length == 0) {
-      await BaseSqflite.db.insert(CONFIG_TABLE_NAME,
-          {'config_key': 'theme_mode_following_system', 'config_value': '0'});
-    } else {
-      await BaseSqflite.db.update(CONFIG_TABLE_NAME, {'config_value': '0'},
-          where: 'config_key = \'theme_mode_following_system\'');
-    }
+    //修改数据库
+    await BaseSqflite.updateOnly(
+        key: 'theme_mode_following_system', value: '0');
     _appThemeModeFollowingSystem = false;
     notifyListeners();
   }
 
   ///开启跟随系统
   Future<void> onFollowingSystem() async {
-    ///修改数据库
-    List<Map<String, dynamic>> queryResult = await BaseSqflite.db.query(
-        CONFIG_TABLE_NAME,
-        where: 'config_key = \'theme_mode_following_system\'');
-    if (queryResult.length == 0) {
-      await BaseSqflite.db.insert(CONFIG_TABLE_NAME,
-          {'config_key': 'theme_mode_following_system', 'config_value': '1'});
-    } else {
-      await BaseSqflite.db.update(CONFIG_TABLE_NAME, {'config_value': '1'},
-          where: 'config_key = \'theme_mode_following_system\'');
-    }
+    //修改数据库
+    await BaseSqflite.updateOnly(
+        key: 'theme_mode_following_system', value: '1');
     _appThemeModeFollowingSystem = true;
     Fluttertoast.showToast(msg: "该设置将在软件重启后生效"); //短提示
     notifyListeners();
@@ -88,31 +72,14 @@ class ThemeModel with ChangeNotifier {
 
   ///切换黑夜模式
   Future<void> switchNightMode() async {
-    List<Map<String, dynamic>> queryResult = await BaseSqflite.db
-        .query(CONFIG_TABLE_NAME, where: 'config_key = \'theme_mode\'');
-    if (queryResult.length == 0) {
-      await BaseSqflite.db.insert(CONFIG_TABLE_NAME,
-          {'config_key': 'theme_mode', 'config_value': 'night'});
-    } else {
-      await BaseSqflite.db.update(CONFIG_TABLE_NAME, {'config_value': 'night'},
-          where: 'config_key = \'theme_mode\'');
-    }
+    await BaseSqflite.updateOnly(key: 'theme_mode', value: 'night');
     _switchNightMode();
     notifyListeners();
   }
 
   ///切换默认模式
   Future<void> switchDefaultMode() async {
-    List<Map<String, dynamic>> queryResult = await BaseSqflite.db
-        .query(CONFIG_TABLE_NAME, where: 'config_key = \'theme_mode\'');
-    if (queryResult.length == 0) {
-      await BaseSqflite.db.insert(CONFIG_TABLE_NAME,
-          {'config_key': 'theme_mode', 'config_value': 'default'});
-    } else {
-      await BaseSqflite.db.update(
-          CONFIG_TABLE_NAME, {'config_value': 'default'},
-          where: 'config_key = \'theme_mode\'');
-    }
+    await BaseSqflite.updateOnly(key: 'theme_mode', value: 'default');
     _switchDefaultMode();
     notifyListeners();
   }

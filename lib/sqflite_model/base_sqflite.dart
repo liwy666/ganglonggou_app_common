@@ -10,6 +10,9 @@ abstract class BaseSqflite {
     {"config_key": "classify_list_invalid_time", "config_value": "0"},
     {"config_key": "theme_mode", "config_value": "default"},
     {"config_key": "theme_mode_following_system", "config_value": "1"},
+    {"config_key": "initial_installation", "config_value": "1"},
+    {"config_key": "agree_user_agreement", "config_value": "0"},
+    {"config_key": "agree_privacy_agreement", "config_value": "0"},
   ];
 
   /*初始化sql*/
@@ -71,5 +74,20 @@ abstract class BaseSqflite {
     _initConfigTableSqlCode.forEach((Map<String, String> mapItem) {
       db.insert(CONFIG_TABLE_NAME, mapItem);
     });
+  }
+
+  ///修改某条数据
+  static Future<bool> updateOnly(
+      {@required String key, @required String value}) async {
+    List<Map<String, dynamic>> queryResult = await BaseSqflite.db
+        .query(CONFIG_TABLE_NAME, where: 'config_key = \'$key\'');
+    if (queryResult.length == 0) {
+      await BaseSqflite.db.insert(
+          CONFIG_TABLE_NAME, {'config_key': '$key', 'config_value': '$value'});
+    } else {
+      await BaseSqflite.db.update(CONFIG_TABLE_NAME, {'config_value': '$value'},
+          where: 'config_key = \'$key\'');
+    }
+    return true;
   }
 }

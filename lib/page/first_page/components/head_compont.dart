@@ -44,27 +44,6 @@ class _HeadComponent extends State<HeadComponent> {
         child: Stack(
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            //顶部Tab
-            Positioned(
-              top: 40,
-              child: Consumer<ClassifyListDataModel>(builder:
-                  (context, ClassifyListDataModel classifyListModel, _) {
-                return Container(
-                    child: TabBar(
-                  isScrollable: true,
-                  labelColor: Colors.white,
-                  labelStyle: TextStyle(fontSize: COMMON_FONT_SIZE),
-                  unselectedLabelColor: Colors.white,
-                  unselectedLabelStyle: TextStyle(fontSize: COMMON_FONT_SIZE),
-                  controller: widget.tabController,
-                  tabs: classifyListModel.headComponentTabs.map((tab) {
-                    return Tab(
-                      text: tab,
-                    );
-                  }).toList(),
-                ));
-              }),
-            ),
             //搜索框
             GestureDetector(
               child: ClipRRect(
@@ -91,6 +70,29 @@ class _HeadComponent extends State<HeadComponent> {
               onTap: () {
                 Application.router.navigateTo(context, '/search_goods');
               },
+            ),
+            //顶部Tab
+            Positioned(
+              top: 40,
+              child: Consumer<ClassifyListDataModel>(builder:
+                  (context, ClassifyListDataModel classifyListModel, _) {
+                return Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: TabBar(
+                      isScrollable: true,
+                      labelColor: Colors.white,
+                      labelStyle: TextStyle(fontSize: COMMON_FONT_SIZE),
+                      unselectedLabelColor: Colors.white,
+                      unselectedLabelStyle:
+                          TextStyle(fontSize: COMMON_FONT_SIZE),
+                      controller: widget.tabController,
+                      tabs: classifyListModel.headComponentTabs.map((tab) {
+                        return Tab(
+                          text: tab,
+                        );
+                      }).toList(),
+                    ));
+              }),
             ),
           ],
         ),

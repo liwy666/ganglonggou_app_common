@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ganglong_shop_app/common_import.dart';
 import 'package:ganglong_shop_app/data_model/classify_list_ad_model.dart';
+import 'package:ganglong_shop_app/data_model/config_model.dart';
 import 'package:ganglong_shop_app/data_model/main_page_model.dart';
 import 'package:ganglong_shop_app/data_model/start_model.dart';
 import 'package:ganglong_shop_app/data_model/theme_model.dart';
 import 'package:ganglong_shop_app/page/carts_page/carts_page.dart';
 import 'package:ganglong_shop_app/page/classify_page/classify_page.dart';
+import 'package:ganglong_shop_app/page/components/ask_whether_agree_agreement/ask_whether_agree_agreement.dart';
 import 'package:ganglong_shop_app/page/components/update_app/update_app.dart';
 import 'package:ganglong_shop_app/page/first_page/first_page.dart';
 import 'package:ganglong_shop_app/page/home_page/home_page.dart';
@@ -20,8 +22,13 @@ import 'package:provider/provider.dart';
 class MainPage extends StatefulWidget {
   final int currentIndex;
   final bool needUpdateApp;
+  final bool whetherInitialInstallation;
 
-  const MainPage({Key key, @required this.currentIndex, this.needUpdateApp})
+  const MainPage(
+      {Key key,
+      @required this.currentIndex,
+      this.needUpdateApp,
+      this.whetherInitialInstallation})
       : super(key: key);
 
   @override
@@ -39,9 +46,16 @@ class _MainPage extends State<MainPage> {
   void initState() {
     // TODO: implement initState
     WidgetsBinding.instance.addPostFrameCallback((callback) {
-      /*检查是否需要更新*/
+      //检查是否需要更新
       if (widget.needUpdateApp) {
         UpdateApp(context: context, getVersionInfo: _startModel.getVersionInfo);
+      }
+      //检查是否是第一次安装
+      if (widget.whetherInitialInstallation || DEBUG) {
+        final _configModel = Provider.of<ConfigModel>(context);
+        _configModel.alreadyInstallation();
+        AskWhetherAgreeAgreement(context: context);
+        print("是否初次安装：${widget.whetherInitialInstallation}");
       }
     });
     super.initState();
@@ -102,7 +116,7 @@ class _MainPage extends State<MainPage> {
                 currentIndex: mainPageModel.currentIndex,
                 //高亮项数（int）
                 onTap: (index) {
-                  if(index == 2) return;
+                  if (index == 2) return;
                   mainPageModel.bottomNavigationBarClick(index);
                 },
                 //点击时触发回调函数，回调参数是当前点击项数

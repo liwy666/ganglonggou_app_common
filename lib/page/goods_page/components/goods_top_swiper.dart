@@ -26,7 +26,7 @@ class GoodsTopSwiper extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return MyExtendedImage.network(
                 goodsModel.extraGoodsInfo.goods_gallery[index].img_url,
-                fit: BoxFit.fitWidth,
+                fit: BoxFit.fitHeight,
               );
             },
             onTap: (index) {

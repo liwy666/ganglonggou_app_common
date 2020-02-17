@@ -45,9 +45,15 @@ Handler rootHandler = Handler(
       params["needUpdateApp"] != null && params["needUpdateApp"].first == 'true'
           ? true
           : false;
+  bool whetherInitialInstallation =
+      params["whetherInitialInstallation"] != null &&
+              params["whetherInitialInstallation"].first == 'true'
+          ? true
+          : false;
   return MainPage(
     currentIndex: currentIndex,
     needUpdateApp: needUpdateApp,
+    whetherInitialInstallation: whetherInitialInstallation,
   );
 });
 

@@ -30,17 +30,19 @@ class PreviewSupplier extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      MyExtendedImage.network(
-                        goodsModel
-                            .extraGoodsInfo.supplier_preview_info.logo_img,
+                      MyExtendedImage.asset(
+//                        goodsModel
+//                            .extraGoodsInfo.supplier_preview_info.logo_img,
+                      'static_images/logo_320.png',
                         width: ScreenUtil().setWidth(150),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            goodsModel.extraGoodsInfo.supplier_preview_info
-                                .supplier_name,
+//                            goodsModel.extraGoodsInfo.supplier_preview_info
+//                                .supplier_name,
+                            APP_NAME,
                             style: TextStyle(
                                 color: _themeModel.fontColor1,
                                 fontWeight: FontWeight.w800,
@@ -49,8 +51,9 @@ class PreviewSupplier extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(top: 5),
                             child: Text(
-                                goodsModel.extraGoodsInfo.supplier_preview_info
-                                    .company_name,
+//                                goodsModel.extraGoodsInfo.supplier_preview_info
+//                                    .company_name,
+                                COMPANY_NAME,
                                 style: TextStyle(
                                     color: _themeModel.fontColor1,
                                     fontSize: SMALL_FONT_SIZE)),
@@ -59,7 +62,7 @@ class PreviewSupplier extends StatelessWidget {
                       ),
                       RaisedButton(
                         child: Text(
-                          "进店逛逛",
+                          "返回首页",
                           style: TextStyle(
                               color: _themeModel.pageBackgroundColor2,
                               fontSize: SMALL_FONT_SIZE),
@@ -70,12 +73,16 @@ class PreviewSupplier extends StatelessWidget {
                         )),
                         color: Colors.red,
                         onPressed: () {
+                         /*
+                          ///导航到供应商详情
                           Map<String, dynamic> SupplierInfoMap = goodsModel
                               .extraGoodsInfo.supplier_preview_info
                               .toJson();
                           SupplierInfoMap['goods_list'] = null;
                           Application.router.navigateTo(context,
-                              "/supplier?supplierPreviewInfoJson=${base64UrlEncode(utf8.encode(jsonEncode(SupplierInfoMap)))}");
+                              "/supplier?supplierPreviewInfoJson=${base64UrlEncode(utf8.encode(jsonEncode(SupplierInfoMap)))}");*/
+                          Application.router.navigateTo(context, '/main');
+
                         },
                       )
                     ],

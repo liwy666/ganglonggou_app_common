@@ -71,7 +71,8 @@ class GoodsPage extends StatelessWidget {
                         flexibleSpace: FlexibleSpaceBar(
                           background: Container(
                             height: MediaQuery.of(context).size.width,
-                            margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top*2),
+                            margin: EdgeInsets.only(
+                                top: MediaQuery.of(context).padding.top * 2),
                             color: Colors.white,
                             child: goodsModel.loadFinish
                                 ? GoodsTopSwiper()

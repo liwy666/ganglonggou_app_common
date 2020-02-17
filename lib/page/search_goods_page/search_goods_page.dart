@@ -91,22 +91,26 @@ class _SearchBox extends StatelessWidget with PreferredSizeWidget {
                   return TextField(
                     scrollPadding: EdgeInsets.all(0),
                     autofocus: true,
-                    controller: TextEditingController.fromValue(
-                        TextEditingValue(
-                            // 设置内容
-                            text: searchGoodsPageModel.searchKeyword,
-                            // 保持光标在最后
-                            selection: TextSelection.fromPosition(TextPosition(
-                                affinity: TextAffinity.downstream,
-                                offset: searchGoodsPageModel
-                                    .searchKeyword.length)))),
+                    controller:
+                        TextEditingController.fromValue(TextEditingValue(
+                      // 设置内容
+                      text: searchGoodsPageModel.searchKeyword,
+                      // 保持光标在最后
+                      selection: TextSelection.fromPosition(TextPosition(
+                          affinity: TextAffinity.downstream,
+                          offset: searchGoodsPageModel.searchKeyword.length)),
+                    )),
                     textInputAction: TextInputAction.search,
                     style: TextStyle(fontSize: SMALL_FONT_SIZE),
                     onChanged: (String val) {
                       searchGoodsPageModel.setSearchKeyWord = val;
                     },
-                    onEditingComplete: () {
+                    onSubmitted: (String val) {
+                      searchGoodsPageModel.setSearchKeyWord = val;
                       searchGoodsPageModel.startSearch(context);
+                    },
+                    onEditingComplete: () {
+                      //searchGoodsPageModel.startSearch(context);
                     },
                     decoration: InputDecoration(
                         //prefixIcon: Icon(Icons.person),
@@ -217,28 +221,29 @@ class _LogSearchAlign extends StatelessWidget {
               }).toList(),
               title: "搜索历史",
             ),
-           searchGoodsPageModel.searchLogItemList.length>0?Row(
-             mainAxisAlignment: MainAxisAlignment.end,
-             children: <Widget>[
-               FlatButton(
-                 child: Text(
-                   "清空搜索历史",
-                   style: TextStyle(
-                       fontSize: SMALL_FONT_SIZE, color: _themeModel.fontColor2),
-                 ),
-                 onPressed: () {
-                   MyDialog().showConfirmDialog(
-                       context: context,
-                       title:
-                       "确认清除全部历史记录吗？",
-                       clickFun: searchGoodsPageModel.cleanSearchLog,
-                       cancelButtonText: "取消",
-                       confirmButtonText: "删除");
-
-                 },
-               )
-             ],
-           ):Container(),
+            searchGoodsPageModel.searchLogItemList.length > 0
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      FlatButton(
+                        child: Text(
+                          "清空搜索历史",
+                          style: TextStyle(
+                              fontSize: SMALL_FONT_SIZE,
+                              color: _themeModel.fontColor2),
+                        ),
+                        onPressed: () {
+                          MyDialog().showConfirmDialog(
+                              context: context,
+                              title: "确认清除全部历史记录吗？",
+                              clickFun: searchGoodsPageModel.cleanSearchLog,
+                              cancelButtonText: "取消",
+                              confirmButtonText: "删除");
+                        },
+                      )
+                    ],
+                  )
+                : Container(),
           ],
         );
       },

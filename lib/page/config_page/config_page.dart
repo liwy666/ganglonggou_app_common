@@ -138,15 +138,13 @@ class ConfigPage extends StatelessWidget {
               ),
               MySingleRowTile(
                 onTapFunction: () {
-                  Application.router.navigateTo(context,
-                      '/web_view?initialLink=${base64UrlEncode(utf8.encode(PRIVACY_AGREEMENT_URL))}');
+                  openPrivacyAgreement(context);
                 },
                 child: Text("隐私协议查看"),
               ),
               MySingleRowTile(
                 onTapFunction: () {
-                  Application.router.navigateTo(context,
-                      '/web_view?initialLink=${base64UrlEncode(utf8.encode(USER_AGREEMENT_URL))}');
+                  openUserAgreement(context);
                 },
                 child: Text("用户协议查看"),
               ),

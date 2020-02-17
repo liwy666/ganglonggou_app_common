@@ -1,7 +1,7 @@
 export 'package:flutter/material.dart';
 export 'package:ganglong_shop_app/http.dart';
+import 'dart:convert';
 
-//入口名称
 import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ganglong_shop_app/routes/application.dart';
@@ -44,6 +44,8 @@ const int ORDER_SN_LENGTH = 16;
 const double MY_BOTTOM_BUTTON_HEIGHT = 100.0;
 //公司名称缩写
 const String COMPANY_NAME_ABBREVIATION = "岗隆";
+//公司名称
+const String COMPANY_NAME = "江苏岗隆数码科技有限公司";
 //关于微信
 const String WECHAT_APPID = 'wxaea0312f1b660706';
 const String WECHAT_FRIEND_SHARE_URL =
@@ -103,6 +105,18 @@ List<T> listDeepCopy<T>(List list) {
   });
 
   return _tempList;
+}
+
+///打开用户协议
+Future<void> openUserAgreement(BuildContext context) async {
+  Application.router.navigateTo(context,
+      '/web_view?initialLink=${base64UrlEncode(utf8.encode(USER_AGREEMENT_URL))}');
+}
+
+///打开隐私协议
+Future<void> openPrivacyAgreement(BuildContext context) async {
+  Application.router.navigateTo(context,
+      '/web_view?initialLink=${base64UrlEncode(utf8.encode(PRIVACY_AGREEMENT_URL))}');
 }
 
 ///打开外链接

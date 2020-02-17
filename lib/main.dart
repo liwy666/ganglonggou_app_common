@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ganglong_shop_app/data_model/address_list_model.dart';
 import 'package:ganglong_shop_app/data_model/cart_data_model.dart';
 import 'package:ganglong_shop_app/data_model/classify_list_ad_model.dart';
+import 'package:ganglong_shop_app/data_model/config_model.dart';
 import 'package:ganglong_shop_app/data_model/goods_list_data_model.dart';
 import 'package:ganglong_shop_app/data_model/index_ad_list_data_model.dart';
 import 'package:ganglong_shop_app/data_model/order_data_model.dart';
@@ -22,14 +23,17 @@ void main() {
 }
 
 Future<Null> _runApp() async {
-  /*初始化http*/
+  //初始化http
   initHttp();
-  /*初始化数据库*/
+  //初始化数据库
   await BaseSqflite.initSql();
   List<Map<String, dynamic>> configSqlQueryAll =
       await BaseSqflite.db.query(CONFIG_TABLE_NAME);
-  String _themeMode = "default";
-  String _themeModeFollowingSystem = "1";
+  String _themeMode = "default"; //主题模式
+  String _themeModeFollowingSystem = "1"; //是否跟随系统
+  String _initialInstallation = "1";
+  String _agreeUserAgreement = "0";
+  String _agreePrivacyAgreement = "0";
   if (configSqlQueryAll.length > 0) {
     configSqlQueryAll.forEach((Map<String, dynamic> mapItem) {
       switch (mapItem['config_key']) {
@@ -39,20 +43,37 @@ Future<Null> _runApp() async {
         case "theme_mode_following_system":
           _themeModeFollowingSystem = mapItem["config_value"];
           break;
+        case "initial_installation":
+          _initialInstallation = mapItem["config_value"];
+          break;
+        case "agree_user_agreement":
+          _agreeUserAgreement = mapItem["config_value"];
+          break;
+        case "agree_privacy_agreement":
+          _agreePrivacyAgreement = mapItem["config_value"];
+          break;
       }
     });
   }
-  /*初始化主题模式*/
+  //初始化主题模式
   final themeModel = ThemeModel();
   themeModel.init(
       themeMode: _themeMode,
       themeModeFollowingSystem: _themeModeFollowingSystem);
-  /*start_model*/
+  //初始花配置
+  final configModel = ConfigModel();
+  configModel.init(
+      initialInstallation: _initialInstallation,
+      agreeUserAgreement: _agreeUserAgreement,
+      agreePrivacyAgreement: _agreePrivacyAgreement);
+
+  //start_model
   StartModel startModel = StartModel();
-  /*注册model*/
+  //注册model
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<StartModel>.value(value: startModel),
+      ChangeNotifierProvider<ConfigModel>.value(value: configModel),
       ChangeNotifierProvider<GoodsListDataModel>.value(
           value: startModel.goodsListData),
       ChangeNotifierProvider<IndexAdListDataModel>.value(

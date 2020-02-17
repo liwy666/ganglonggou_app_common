@@ -16,7 +16,6 @@ class EditUserInfoPageModel with ChangeNotifier {
 
   set setUserName(String userName) {
     this._userInfo.user_name = userName;
-    notifyListeners();
   }
 
   EditUserInfoPageModel({@required UserInfo userInfo}) {

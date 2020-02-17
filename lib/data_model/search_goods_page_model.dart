@@ -26,7 +26,7 @@ class SearchGoodsPageModel with ChangeNotifier {
     if (val.length <= 30) {
       _searchKeyword = val;
     }
-    notifyListeners();
+    //notifyListeners();
   }
 
   Future<void> init() async {
