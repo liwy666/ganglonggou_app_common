@@ -44,7 +44,7 @@ class WhetherAgreeDialog extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(bottom: 20),
               child: Text.rich(TextSpan(children: [
-                TextSpan(text: "        您可以通过约等于完整版"),
+                TextSpan(text: "        您可以通过查看完整版"),
                 TextSpan(
                   text: "《用户协议》",
                   style: TextStyle(color: Colors.blue),
