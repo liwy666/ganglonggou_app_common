@@ -2,15 +2,33 @@ import 'package:ganglong_shop_app/common_import.dart';
 import 'package:ganglong_shop_app/sqflite_model/base_sqflite.dart';
 
 class ConfigModel with ChangeNotifier {
+  ///是否初次安装
   bool _initialInstallation = true;
+
+  ///是否同意用户协议
   bool _agreeUserAgreement = false;
+
+  ///是否同意隐私协议
   bool _agreePrivacyAgreement = false;
+
+  ///是否安装微信
+  bool _whetherInstalledWeChat = false;
+
+  ///是否安装支付宝
+  bool _whetherInstalledAliPay = false;
+
+  bool get agreeAllAgreement =>
+      _agreeUserAgreement && _agreePrivacyAgreement; //所有协议
 
   bool get initialInstallation => _initialInstallation;
 
   bool get agreeUserAgreement => _agreeUserAgreement;
 
   bool get agreePrivacyAgreement => _agreePrivacyAgreement;
+
+  bool get whetherInstalledWeChat => _whetherInstalledWeChat;
+
+  bool get whetherInstalledAliPay => _whetherInstalledAliPay;
 
   ///初始化
   void init(
@@ -59,9 +77,16 @@ class ConfigModel with ChangeNotifier {
   }
 
   ///同意协议
-  Future<void> agreeAgreement() async {
+  Future<void> agreeAgreementFunction() async {
     await _agreePrivacyAgreementFunction();
     await _agreeUserAgreementFunction();
+    notifyListeners();
+  }
+
+  ///不同意协议
+  Future<void> notAgreeAgreementFunction() async {
+    await _notAgreeUserAgreementFunction();
+    await _notAgreePrivacyAgreementFunction();
     notifyListeners();
   }
 
@@ -75,5 +100,17 @@ class ConfigModel with ChangeNotifier {
   Future<void> _agreePrivacyAgreementFunction() async {
     await BaseSqflite.updateOnly(key: 'agree_privacy_agreement', value: '1');
     _agreePrivacyAgreement = true;
+  }
+
+  ///不同意用户协议
+  Future<void> _notAgreeUserAgreementFunction() async {
+    await BaseSqflite.updateOnly(key: 'agree_user_agreement', value: '0');
+    _agreeUserAgreement = false;
+  }
+
+  ///不同意隐私政策
+  Future<void> _notAgreePrivacyAgreementFunction() async {
+    await BaseSqflite.updateOnly(key: 'agree_privacy_agreement', value: '0');
+    _agreePrivacyAgreement = false;
   }
 }

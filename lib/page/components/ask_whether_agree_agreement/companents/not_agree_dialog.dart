@@ -1,16 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:ganglong_shop_app/common_import.dart';
 import 'package:ganglong_shop_app/data_model/config_model.dart';
-import 'package:ganglong_shop_app/routes/application.dart';
 import 'package:provider/provider.dart';
 
-class WhetherAgreeDialog extends StatelessWidget {
+class NotAgreeDialog extends StatelessWidget {
   final TapGestureRecognizer _recognizerUser = TapGestureRecognizer();
   final TapGestureRecognizer _recognizerPrivacy = TapGestureRecognizer();
-  final Function notAgreeFunction;
-
-  WhetherAgreeDialog({Key key, @required this.notAgreeFunction})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,20 +26,15 @@ class WhetherAgreeDialog extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(bottom: 20),
               child: Text(
-                "温馨提示",
+                "您需要同意协议",
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
             ),
             Container(
-              margin: EdgeInsets.only(bottom: 10),
-              child: Text('        我们做出了诸多有利于用户个人对政策，明确了用户在使用岗隆购过程中我们所收集对信息，'
-                  '使用场景与规则，如何保护用户对隐私信息安全，'
-                  '并告知用户如何查询、更正、删除授权信息对方式。'),
-            ),
-            Container(
               margin: EdgeInsets.only(bottom: 20),
               child: Text.rich(TextSpan(children: [
-                TextSpan(text: "        您可以通过查看完整版"),
+                TextSpan(
+                    text: "        您需要同意协议才能获得更好的用户体验与后续服务，您可以稍后在登录界面重新授权和同意"),
                 TextSpan(
                   text: "《用户协议》",
                   style: TextStyle(color: Colors.blue),
@@ -56,7 +46,6 @@ class WhetherAgreeDialog extends StatelessWidget {
                   style: TextStyle(color: Colors.blue),
                   recognizer: _recognizerPrivacy,
                 ),
-                TextSpan(text: "了解详尽对个人信息处理规则和用户权力义务。"),
               ])),
             ),
             Row(
@@ -64,7 +53,7 @@ class WhetherAgreeDialog extends StatelessWidget {
               children: <Widget>[
                 FlatButton(
                   child: Text(
-                    "不同意",
+                    "稍后再说",
                     style: TextStyle(color: Colors.black),
                   ),
                   onPressed: () {
@@ -83,7 +72,7 @@ class WhetherAgreeDialog extends StatelessWidget {
                       },
                     );
                   },
-                ), //操场按
+                ),
               ],
             )
           ],
@@ -94,13 +83,12 @@ class WhetherAgreeDialog extends StatelessWidget {
 
   ///同意协议
   _agree({@required BuildContext context, @required ConfigModel configModel}) {
-    configModel.agreeAgreement();
+    configModel.agreeAgreementFunction();
     Navigator.pop(context);
   }
 
-  ///不同意协议
+  ///稍后再说
   _notAgree({@required BuildContext context}) {
     Navigator.pop(context);
-    notAgreeFunction();
   }
 }

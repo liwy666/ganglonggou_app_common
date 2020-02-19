@@ -8,6 +8,7 @@ import 'package:ganglong_shop_app/page/address_list_page/companents/address_card
 import 'package:ganglong_shop_app/page/components/my_loading.dart';
 import 'package:ganglong_shop_app/page/components/my_page_tips.dart';
 import 'package:ganglong_shop_app/page/components/my_tab_bar.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/provider/provider_widget.dart';
 import 'package:ganglong_shop_app/routes/application.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -62,7 +63,7 @@ class AddressListPage extends StatelessWidget {
                           print(e);
                           MyLoading.shut();
                         }
-                        Fluttertoast.showToast(msg: "切换地址成功"); //短提示
+                        MyToast.showToast(msg: "切换地址成功"); //短提示
                         if (intoUrl == '/write_order') {
                           Application.router.pop(context);
                         }

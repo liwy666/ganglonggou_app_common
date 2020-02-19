@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:fake_wechat/fake_wechat.dart';
 import 'package:ganglong_shop_app/common_import.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 
 class WeChatService {
   StreamSubscription<WechatSdkResp> _share;
@@ -41,13 +42,13 @@ class WeChatService {
         }
         break;
       case -4:
-        Fluttertoast.showToast(msg: "您拒绝了授权");
+        MyToast.showToast(msg: "您拒绝了授权");
         break;
       case -2:
-        Fluttertoast.showToast(msg: "您取消了授权");
+        MyToast.showToast(msg: "您取消了授权");
         break;
       default:
-        Fluttertoast.showToast(msg: "发生未知错误");
+        MyToast.showToast(msg: "发生未知错误");
         print(content);
         break;
     }
@@ -62,13 +63,13 @@ class WeChatService {
         }
         break;
       case -1:
-        Fluttertoast.showToast(msg: "发生支付错误");
+        MyToast.showToast(msg: "发生支付错误");
         break;
       case -2:
-        Fluttertoast.showToast(msg: "您取消了支付");
+        MyToast.showToast(msg: "您取消了支付");
         break;
       default:
-        Fluttertoast.showToast(msg: "发生未知错误");
+        MyToast.showToast(msg: "发生未知错误");
         print(content);
         break;
     }

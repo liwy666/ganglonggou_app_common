@@ -78,7 +78,7 @@ class _CODE {
 
       Theme.of(context).accentColor, //获取主题颜色
 
-      Fluttertoast.showToast(msg: "哎呀，库存不足了"), //短提示
+      MyToast.showToast(msg: "哎呀，库存不足了"), //短提示
 
       Navigator.of(context).pushNamedAndRemoveUntil(
           '/write_order', ModalRoute.withName('/')), //返回指定页面
@@ -139,6 +139,10 @@ class _CODE {
       }
     });
   }
+}
+
+class MyToast {
+  static showToast({String msg}) {}
 }
 
 class ThemeModel {}

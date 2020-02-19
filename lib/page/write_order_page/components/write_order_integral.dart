@@ -11,9 +11,8 @@ class WriteOrderIntegral extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Consumer<WriteOrderPageModel>(
-      child: Icon(Icons.blur_on),
-      builder: (BuildContext context, WriteOrderPageModel writeOrderPageModel,
-          Widget child) {
+      builder:
+          (BuildContext context, WriteOrderPageModel writeOrderPageModel, _) {
         return MyListTile(
           titleWidget: Text(
               "您有${writeOrderPageModel.userHaveIntegralNumber}$INTEGRAL_NAME,本单可使用${writeOrderPageModel.allowUseIntegral}"),
@@ -38,7 +37,8 @@ class WriteOrderIntegral extends StatelessWidget {
               ],
             ),
           ),
-          iconWidget: child,
+          //iconWidget: child,
+          hideIconWidget: true,
           onTapFunction: () {},
         );
       },

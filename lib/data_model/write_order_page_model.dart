@@ -147,6 +147,20 @@ class WriteOrderPageModel with ChangeNotifier {
   String _invoicebankName = "";
   String _invoicebankNumber = "";
 
+  String get invoicePhoneNumber => _invoicePhoneNumber;
+
+  String get invoiceCompanyName => _invoiceCompanyName;
+
+  String get invoiceTaxNumber => _invoiceTaxNumber;
+
+  String get invoiceAddress => _invoiceAddress;
+
+  String get invoicefixedPhoneNumber => _invoicefixedPhoneNumber;
+
+  String get invoicebankName => _invoicebankName;
+
+  String get invoicebankNumber => _invoicebankNumber;
+
   set setPhoneNumber(String phoneNumber) {
     this._invoicePhoneNumber = phoneNumber;
   }
@@ -183,6 +197,7 @@ class WriteOrderPageModel with ChangeNotifier {
   /*获取支付列表*/
   Future getPayType({String userToken}) async {
     _payTypeList = await FetchPayTypeList.fetch(userToken: userToken);
+    print(_payTypeList.data.length);
   }
 
   /*获取优惠券列表*/

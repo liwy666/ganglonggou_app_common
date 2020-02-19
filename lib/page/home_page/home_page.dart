@@ -9,6 +9,7 @@ import 'package:ganglong_shop_app/page/home_page/companents/home_logon_button.da
 import 'package:ganglong_shop_app/page/home_page/companents/home_not_logon_user_info_preview.dart';
 import 'package:ganglong_shop_app/page/home_page/companents/home_order.dart';
 import 'package:ganglong_shop_app/page/home_page/companents/home_quit_logon_button.dart';
+import 'package:ganglong_shop_app/page/home_page/companents/home_test_button.dart';
 import 'package:ganglong_shop_app/page/home_page/companents/home_to_start_page.dart';
 import 'package:ganglong_shop_app/page/home_page/companents/home_user_info_preview.dart';
 import 'package:ganglong_shop_app/routes/application.dart';
@@ -90,6 +91,7 @@ class _NotLogonHomePage extends StatelessWidget {
           HomeCoupon(),
           HomeConfig(),
           HomeLogonButton(),
+          HomeTestButton(),
         ],
       ),
     );

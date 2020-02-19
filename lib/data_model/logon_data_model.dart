@@ -1,8 +1,10 @@
 import 'package:fake_wechat/fake_wechat.dart';
 import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/config_model.dart';
 import 'package:ganglong_shop_app/data_model/user_info_model.dart';
 import 'package:ganglong_shop_app/models/index.dart';
 import 'package:ganglong_shop_app/page/components/my_loading.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/request/fetch_ali_pay_merchant_private_key.dart';
 import 'package:ganglong_shop_app/request/fetch_user_info.dart';
 import 'package:ganglong_shop_app/request/post_user_alipay_logon.dart';
@@ -12,6 +14,7 @@ import 'package:ganglong_shop_app/service/alipay_service.dart';
 import 'package:ganglong_shop_app/service/wechat_service.dart';
 import 'package:flutter_des/flutter_des.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 
 class LogonDataModel with ChangeNotifier {
   String _phoneNumber;
@@ -45,6 +48,9 @@ class LogonDataModel with ChangeNotifier {
         UserInfo userInfo = await FetchUserInfo.fetch(userToken: userToken);
         //更新全局UserModel
         await userInfoModel.userLogonSuccess(userInfo: userInfo);
+        //同意用户协议
+        ConfigModel _configModel = Provider.of<ConfigModel>(pageContext);
+        await _configModel.agreeAgreementFunction();
       } catch (e) {
         print(e);
       } finally {
@@ -66,7 +72,7 @@ class LogonDataModel with ChangeNotifier {
     if (_phoneNumber == null ||
         _phoneNumber.isEmpty ||
         !mobile.hasMatch(_phoneNumber)) {
-      Fluttertoast.showToast(msg: "填写的手机号不符合规范"); //短提示
+      MyToast.showToast(msg: "填写的手机号不符合规范"); //短提示
       return null;
     }*/
 
@@ -74,7 +80,7 @@ class LogonDataModel with ChangeNotifier {
     if (_password == null ||
         _password.toString().length > 18 ||
         _password.toString().isEmpty) {
-      Fluttertoast.showToast(msg: "填写的密码不符合规范"); //短提示
+      MyToast.showToast(msg: "填写的密码不符合规范"); //短提示
       return null;
     }
     //向后台获取Token
@@ -101,9 +107,11 @@ class LogonDataModel with ChangeNotifier {
       }
     });
 
+    print(await _weChatService.weChat.isWechatInstalled());
+
     if (!await _weChatService.weChat.isWechatInstalled() ||
         !await _weChatService.weChat.isWechatSupportApi()) {
-      Fluttertoast.showToast(msg: "您需要先安装微信"); //短提示
+      MyToast.showToast(msg: "您需要先安装微信"); //短提示
       return;
     }
 
@@ -131,7 +139,7 @@ class LogonDataModel with ChangeNotifier {
     });
 
     if (!await _aliPayService.aliPay.isAlipayInstalled()) {
-      Fluttertoast.showToast(msg: "您需要先安装支付宝"); //短提示
+      MyToast.showToast(msg: "您需要先安装支付宝"); //短提示
       return;
     }
 

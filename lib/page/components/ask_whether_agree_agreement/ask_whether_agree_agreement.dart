@@ -1,6 +1,6 @@
 import 'package:ganglong_shop_app/common_import.dart';
-import 'package:ganglong_shop_app/page/ask_after_service_page/companents/not_agree_dialog.dart';
-import 'package:ganglong_shop_app/page/ask_after_service_page/companents/whether_agree_dialog.dart';
+import 'package:ganglong_shop_app/page/components/ask_whether_agree_agreement/companents/not_agree_dialog.dart';
+import 'package:ganglong_shop_app/page/components/ask_whether_agree_agreement/companents/whether_agree_dialog.dart';
 
 class AskWhetherAgreeAgreement {
   final BuildContext context;

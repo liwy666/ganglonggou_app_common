@@ -5,6 +5,7 @@ import 'package:ganglong_shop_app/common_import.dart';
 import 'package:ganglong_shop_app/models/addressItem.dart';
 import 'package:ganglong_shop_app/models/addressOptionsItem.dart';
 import 'package:ganglong_shop_app/models/addressOptionsList.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/request/post_add_address.dart';
 import 'package:ganglong_shop_app/request/post_delete_address.dart';
 import 'package:ganglong_shop_app/request/post_update_address.dart';
@@ -163,7 +164,7 @@ class EditAddressPageModel with ChangeNotifier {
     if (!checkName(addressItem.name)) return false;
     if (addressItem.address_detail == null ||
         addressItem.address_detail.isEmpty) {
-      Fluttertoast.showToast(msg: "详细地址填写不符合规范"); //短提示
+      MyToast.showToast(msg: "详细地址填写不符合规范"); //短提示
       return false;
     }
 
@@ -182,7 +183,7 @@ class EditAddressPageModel with ChangeNotifier {
     if (_editType != 'update') return false;
 
     if (addressItemList.length < 2) {
-      Fluttertoast.showToast(msg: "这已经是您最后一个地址了~~"); //短提示
+      MyToast.showToast(msg: "这已经是您最后一个地址了~~"); //短提示
       return false;
     }
 
@@ -199,7 +200,7 @@ class EditAddressPageModel with ChangeNotifier {
     if (!checkName(addressItem.name)) return false;
     if (addressItem.address_detail == null ||
         addressItem.address_detail.isEmpty) {
-      Fluttertoast.showToast(msg: "详细地址填写不符合规范"); //短提示
+      MyToast.showToast(msg: "详细地址填写不符合规范"); //短提示
       return false;
     }
     addressItem.province = choiceProvince;

@@ -8,6 +8,7 @@ import 'package:ganglong_shop_app/page/components/my_extended_image.dart';
 import 'package:ganglong_shop_app/page/components/my_loading.dart';
 import 'package:ganglong_shop_app/page/components/my_single_row_tile.dart';
 import 'package:ganglong_shop_app/page/components/my_tab_bar.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/page/components/update_app/update_app.dart';
 import 'package:ganglong_shop_app/request/fetch_version_info.dart';
 import 'package:ganglong_shop_app/routes/application.dart';
@@ -166,7 +167,7 @@ class ConfigPage extends StatelessWidget {
                     UpdateApp(
                         context: context, getVersionInfo: _getVersionInfo);
                   } else {
-                    Fluttertoast.showToast(msg: "您的应用为最新版本"); //短提示
+                    MyToast.showToast(msg: "您的应用为最新版本"); //短提示
                   }
                 },
                 child: Text("检查更新"),

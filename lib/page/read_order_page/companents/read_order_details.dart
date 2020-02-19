@@ -3,6 +3,7 @@ import 'package:ganglong_shop_app/common_import.dart';
 import 'package:ganglong_shop_app/data_model/read_order_page_model.dart';
 import 'package:ganglong_shop_app/page/components/my_order_list.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:provider/provider.dart';
 
 class ReadOrderDetails extends StatelessWidget {
@@ -29,7 +30,7 @@ class ReadOrderDetails extends StatelessWidget {
                       ClipboardData data = new ClipboardData(
                           text: readOrderPageModel.orderInfo.order_sn);
                       await Clipboard.setData(data);
-                      Fluttertoast.showToast(msg: "已复制到您的剪切板"); //短提示
+                      MyToast.showToast(msg: "已复制到您的剪切板"); //短提示
                     },
                   ),
                 ],

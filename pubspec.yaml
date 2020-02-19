@@ -109,6 +109,7 @@ flutter:
     - static_images/order_state_8.png
     - static_images/WxAppApiPayment.png
     - static_images/AppAliPayment.png
+    - static_images/TestPayment.png
     - static_images/logo_320.png
     - static_images/start_img.jpg
     - static_images/update_img.png

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:ganglong_shop_app/common_import.dart';
 import 'package:ganglong_shop_app/models/getVersionInfo.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/page/components/update_app/components/download_dialog_box_child.dart';
 import 'package:ganglong_shop_app/page/components/update_app/components/if_update_dialog_box_child.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -45,7 +46,7 @@ class UpdateApp {
     bool permissions = await _checkPermission();
     //用户拒绝了存储授权
     if (!permissions) {
-      Fluttertoast.showToast(msg: "应用更新时需要您授权存储权限，再试一次吧", timeInSecForIos: 2);
+      MyToast.showToast(msg: "应用更新时需要您授权存储权限，再试一次吧", timeInSecForIos: 2);
       return;
     }
     //获取存储路径

@@ -1,5 +1,10 @@
+import 'dart:math';
+
 import 'package:extended_image/extended_image.dart';
+import 'package:flutter/gestures.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/config_model.dart';
 import 'package:ganglong_shop_app/data_model/logon_data_model.dart';
 import 'package:ganglong_shop_app/data_model/user_info_model.dart';
 import 'package:ganglong_shop_app/models/index.dart';
@@ -12,11 +17,19 @@ import 'package:provider/provider.dart';
 
 class LogonPage extends StatelessWidget {
   final bool showBar;
+  final TapGestureRecognizer _recognizerUser = TapGestureRecognizer();
+  final TapGestureRecognizer _recognizerPrivacy = TapGestureRecognizer();
 
-  const LogonPage({Key key, this.showBar}) : super(key: key);
+  LogonPage({Key key, this.showBar}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    _recognizerUser.onTap = () {
+      openUserAgreement(context);
+    };
+    _recognizerPrivacy.onTap = () {
+      openPrivacyAgreement(context);
+    };
     // TODO: implement build
     return Consumer<UserInfoModel>(
       builder: (BuildContext context, UserInfoModel userInfoModel, _) {
@@ -61,7 +74,7 @@ class LogonPage extends StatelessWidget {
                         logonDataModel.setPassword = value;
                       },
                     ),
-                    _LogonButton(),
+                    _LogonButton(), //登录按钮
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -89,6 +102,26 @@ class LogonPage extends StatelessWidget {
                           },
                         ),
                       ],
+                    ), //（忘记密码、注册）
+                    DefaultTextStyle(
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: SMALL_FONT_SIZE,
+                      ),
+                      child: Text.rich(TextSpan(children: [
+                        TextSpan(text: "登录即代表您已同意"),
+                        TextSpan(
+                          text: "《用户协议》",
+                          style: TextStyle(color: Colors.blue),
+                          recognizer: _recognizerUser,
+                        ),
+                        TextSpan(text: "和"),
+                        TextSpan(
+                          text: "《隐私政策》",
+                          style: TextStyle(color: Colors.blue),
+                          recognizer: _recognizerPrivacy,
+                        ),
+                      ])),
                     ),
                     Row(
                       children: <Widget>[
@@ -97,7 +130,7 @@ class LogonPage extends StatelessWidget {
                                 color: Colors.black54,
                                 fontSize: ScreenUtil().setWidth(22))),
                       ],
-                    ),
+                    ), //第三方登录文字
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 0),
                       child: Wrap(
@@ -140,7 +173,7 @@ class LogonPage extends StatelessWidget {
                           ), //支付宝
                         ],
                       ),
-                    ),
+                    ), //第三方登录按钮
                   ],
                 ),
               ),
@@ -156,9 +189,9 @@ class _LogonButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Consumer2<LogonDataModel, UserInfoModel>(
+    return Consumer3<LogonDataModel, UserInfoModel, ConfigModel>(
       builder: (BuildContext context, LogonDataModel logonDataModel,
-          UserInfoModel userInfoModel, Widget _) {
+          UserInfoModel userInfoModel, ConfigModel configModel, Widget _) {
         return RaisedButton(
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 10),

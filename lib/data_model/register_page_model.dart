@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:ganglong_shop_app/common_import.dart';
 import 'package:ganglong_shop_app/models/userInfo.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/request/fetch_user_info.dart';
 import 'package:ganglong_shop_app/request/post_register_by_email.dart';
 import 'package:ganglong_shop_app/request/post_send_email_verify_code.dart';
@@ -90,12 +91,12 @@ class RegisterPageModel with ChangeNotifier {
   Future<UserInfo> registerAccounts() async {
     if (!checkEmailAddress(_emailAddress)) return null;
     if (_verifyCode == null || _verifyCode.length < 6 || _verifyCode.isEmpty) {
-      Fluttertoast.showToast(msg: "请填写6位验证码"); //短提示
+      MyToast.showToast(msg: "请填写6位验证码"); //短提示
       return null;
     }
     if (!checkPasswordHard(_password)) return null;
     if (_password != _againPassword) {
-      Fluttertoast.showToast(msg: "两次密码填写不一致"); //短提示
+      MyToast.showToast(msg: "两次密码填写不一致"); //短提示
       return null;
     }
 

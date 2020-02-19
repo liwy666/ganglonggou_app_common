@@ -2,8 +2,10 @@ import 'package:ganglong_shop_app/common_import.dart';
 import 'package:ganglong_shop_app/data_model/order_data_model.dart';
 import 'package:ganglong_shop_app/models/index.dart';
 import 'package:ganglong_shop_app/page/components/my_loading.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/request/fetch_alipay_prepay_info.dart';
 import 'package:ganglong_shop_app/request/fetch_order_info.dart';
+import 'package:ganglong_shop_app/request/fetch_test_pay.dart';
 import 'package:ganglong_shop_app/request/fetch_wechat_prepay_info.dart';
 import 'package:ganglong_shop_app/request/post_call_order.dart';
 import 'package:ganglong_shop_app/request/post_cancel_after_service.dart';
@@ -47,8 +49,11 @@ class ReadOrderPageModel with ChangeNotifier {
       case "AppAliPayment":
         _aliPayAppPayment();
         break;
+      case "TestPayment":
+        _testAppPayment();
+        break;
       default:
-        Fluttertoast.showToast(
+        MyToast.showToast(
             msg: "此客户端暂不支持该付款方式，对此给您带来的不便我们深感抱歉",
             timeInSecForIos: 2,
             gravity: ToastGravity.CENTER);
@@ -120,7 +125,7 @@ class ReadOrderPageModel with ChangeNotifier {
 
       if (weChatPrepayInfo.return_code != 'SUCCESS' ||
           weChatPrepayInfo.result_code != 'SUCCESS') {
-        Fluttertoast.showToast(msg: "好像出错了，再试一次吧");
+        MyToast.showToast(msg: "好像出错了，再试一次吧");
         return;
       }
       _weChatService = WeChatService(weChatPaySuccess: (_) {
@@ -148,7 +153,7 @@ class ReadOrderPageModel with ChangeNotifier {
       String aliPayPrepayInfo = await FetchAliPayPrepayInfo.fetch(
           userToken: userToken, orderSn: orderInfo.order_sn);
       if (aliPayPrepayInfo == null || aliPayPrepayInfo.isEmpty) {
-        Fluttertoast.showToast(msg: "好像出错了，再试一次吧");
+        MyToast.showToast(msg: "好像出错了，再试一次吧");
         return;
       }
       _aliPayService = AliPayService(aliPayPaySuccess: (_) {
@@ -160,6 +165,14 @@ class ReadOrderPageModel with ChangeNotifier {
     } finally {
       MyLoading.shut();
     }
+  }
+
+  ///测试支付
+  Future<void> _testAppPayment() async {
+    MyLoading.eject();
+    await FetchTestPay.fetch(userToken: userToken, orderSn: orderInfo.order_sn);
+    MyLoading.shut();
+    _paySuccess();
   }
 
   ///支付成功后回调

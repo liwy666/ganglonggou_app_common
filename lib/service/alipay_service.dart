@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:fake_alipay/fake_alipay.dart';
 import 'package:ganglong_shop_app/models/AliPayAuthRespInfo.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 
 class AliPayService {
   StreamSubscription<AlipayResp> _pay;
@@ -29,25 +30,25 @@ class AliPayService {
         }
         break;
       case 8000:
-        Fluttertoast.showToast(msg: "支付正在处理中");
+        MyToast.showToast(msg: "支付正在处理中");
         break;
       case 8000:
-        Fluttertoast.showToast(msg: "支付正在处理中");
+        MyToast.showToast(msg: "支付正在处理中");
         break;
       case 4000:
-        Fluttertoast.showToast(msg: "订单支付失败");
+        MyToast.showToast(msg: "订单支付失败");
         break;
       case 5000:
-        Fluttertoast.showToast(msg: "重复发起支付");
+        MyToast.showToast(msg: "重复发起支付");
         break;
       case 6001:
-        Fluttertoast.showToast(msg: "您取消了支付");
+        MyToast.showToast(msg: "您取消了支付");
         break;
       case 6002:
-        Fluttertoast.showToast(msg: "网络连接出错");
+        MyToast.showToast(msg: "网络连接出错");
         break;
       default:
-        Fluttertoast.showToast(msg: "授权过程中发生未知错误");
+        MyToast.showToast(msg: "授权过程中发生未知错误");
         break;
     }
   }
@@ -80,20 +81,20 @@ class AliPayService {
             aliPaySignInAuthorizeSuccess != null) {
           aliPaySignInAuthorizeSuccess(_aliPayAuthRespInfo);
         } else {
-          Fluttertoast.showToast(msg: "授权过程中发生未知错误");
+          MyToast.showToast(msg: "授权过程中发生未知错误");
         }
         break;
       case 4000:
-        Fluttertoast.showToast(msg: "系统异常");
+        MyToast.showToast(msg: "系统异常");
         break;
       case 6001:
-        Fluttertoast.showToast(msg: "您取消了授权");
+        MyToast.showToast(msg: "您取消了授权");
         break;
       case 6002:
-        Fluttertoast.showToast(msg: "网络连接出错");
+        MyToast.showToast(msg: "网络连接出错");
         break;
       default:
-        Fluttertoast.showToast(msg: "授权过程中发生未知错误");
+        MyToast.showToast(msg: "授权过程中发生未知错误");
         break;
     }
   }

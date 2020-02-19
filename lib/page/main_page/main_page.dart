@@ -11,6 +11,7 @@ import 'package:ganglong_shop_app/data_model/theme_model.dart';
 import 'package:ganglong_shop_app/page/carts_page/carts_page.dart';
 import 'package:ganglong_shop_app/page/classify_page/classify_page.dart';
 import 'package:ganglong_shop_app/page/components/ask_whether_agree_agreement/ask_whether_agree_agreement.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/page/components/update_app/update_app.dart';
 import 'package:ganglong_shop_app/page/first_page/first_page.dart';
 import 'package:ganglong_shop_app/page/home_page/home_page.dart';
@@ -89,7 +90,7 @@ class _MainPage extends State<MainPage> {
                     Duration(seconds: 2)) {
               //两次点击间隔超过1秒则重新计时
               _lastPressedAt = DateTime.now();
-              Fluttertoast.showToast(msg: "再按一次退出"); //短提示
+              MyToast.showToast(msg: "再按一次退出"); //短提示
               return false;
             }
             await SystemChannels.platform.invokeMethod('SystemNavigator.pop');

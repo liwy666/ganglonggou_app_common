@@ -1,5 +1,6 @@
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/sqflite_model/base_sqflite.dart';
 import 'package:ganglong_shop_app/sqflite_model/sqlfite_config.dart';
 
@@ -66,7 +67,7 @@ class ThemeModel with ChangeNotifier {
     await BaseSqflite.updateOnly(
         key: 'theme_mode_following_system', value: '1');
     _appThemeModeFollowingSystem = true;
-    Fluttertoast.showToast(msg: "该设置将在软件重启后生效"); //短提示
+    MyToast.showToast(msg: "该设置将在软件重启后生效"); //短提示
     notifyListeners();
   }
 

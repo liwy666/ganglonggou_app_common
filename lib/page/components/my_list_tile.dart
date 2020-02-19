@@ -12,13 +12,15 @@ class MyListTile extends StatelessWidget {
   final Widget subtitleWidget;
   Widget iconWidget;
   final Function onTapFunction;
+  final bool hideIconWidget;
 
   MyListTile(
       {@required this.titleWidget,
       @required this.subtitleWidget,
       @required this.onTapFunction,
-      this.iconWidget}) {
-    if (this.iconWidget == null) {
+      this.iconWidget,
+      this.hideIconWidget = false}) {
+    if (this.iconWidget == null && !this.hideIconWidget) {
       this.iconWidget = Icon(Icons.more_horiz);
     }
   }
@@ -50,7 +52,7 @@ class MyListTile extends StatelessWidget {
               color: _themeModel.fontColor2,
               fontSize: SMALL_FONT_SIZE),
         ),
-        trailing: iconWidget,
+        trailing: this.iconWidget,
         dense: true,
         onTap: () {
           onTapFunction();

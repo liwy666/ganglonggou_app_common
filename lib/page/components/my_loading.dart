@@ -7,9 +7,13 @@ bool loadingStatus = false;
 
 class MyLoading {
   static BuildContext loadContext;
+  static bool loadingStatus = false;
 
   /*开启弹窗*/
   static void eject() {
+    if (loadingStatus) return;
+
+    loadingStatus = true;
     showDialog(
         context: loadContext,
         barrierDismissible: false,
@@ -33,9 +37,12 @@ class MyLoading {
           );
         });
   }
-
   /*关闭弹窗*/
   static void shut() {
+    if (!loadingStatus) return;
+    loadingStatus = false;
     Navigator.of(loadContext, rootNavigator: true).pop();
   }
+
+
 }

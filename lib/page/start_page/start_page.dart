@@ -104,4 +104,12 @@ class _StartPage extends State<StartPage> {
       _themeModel.switchDefaultMode();
     }
   }
+
+  ///检测是否安装微信
+  Future<bool> _checkWeChatInstalled() async{
+
+
+
+  }
+  ///检测是否安装支付宝
 }

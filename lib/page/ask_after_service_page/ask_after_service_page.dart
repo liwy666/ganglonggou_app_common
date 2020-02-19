@@ -83,7 +83,7 @@ class AskAfterServicePage extends StatelessWidget {
                     scrollPadding: EdgeInsets.all(0),
                     maxLength: 280,
                     maxLines: 2,
-                    textInputAction: TextInputAction.search,
+                    textInputAction: TextInputAction.done,
                     style: TextStyle(fontSize: SMALL_FONT_SIZE),
                     onChanged: (String val) {
                       askAfterServiceModel.serviceDescribe = val;

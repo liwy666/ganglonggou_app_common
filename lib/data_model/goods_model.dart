@@ -13,6 +13,7 @@ import 'package:ganglong_shop_app/models/goodsItem.dart';
 import 'package:ganglong_shop_app/models/goodsSkuItem.dart';
 import 'package:ganglong_shop_app/models/goodsSkuOptionsItem.dart';
 import 'package:ganglong_shop_app/page/components/my_loading.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/request/fetch_extra_goods_info.dart';
 import 'package:ganglong_shop_app/request/post_user_get_coupon.dart';
 import 'package:ganglong_shop_app/routes/application.dart';
@@ -68,7 +69,7 @@ class GoodsModel extends ChangeNotifier {
         notifyListeners();
       });
     } else {
-      Fluttertoast.showToast(msg: "没有查找到该商品，可能已被下架");
+      MyToast.showToast(msg: "没有查找到该商品，可能已被下架");
     }
   }
 
@@ -235,7 +236,7 @@ class GoodsModel extends ChangeNotifier {
       return;
     }
     String result = await PostUserGetCoupon.post(userToken:userInfoModel.userInfo.user_token, couponId: couponId);
-    Fluttertoast.showToast(msg: result);
+    MyToast.showToast(msg: result);
 
   }
 

@@ -3,6 +3,7 @@ import 'package:ganglong_shop_app/data_model/user_info_model.dart';
 import 'package:ganglong_shop_app/models/cartItem.dart';
 import 'package:ganglong_shop_app/models/goodsInfo.dart';
 import 'package:ganglong_shop_app/page/components/my_loading.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/request/post_check_carts.dart';
 import 'package:ganglong_shop_app/routes/application.dart';
 import 'package:ganglong_shop_app/sqflite_model/cart_sqflite.dart';
@@ -105,7 +106,7 @@ class CartDataModel extends ChangeNotifier {
     //关闭加载
     MyLoading.shut();
     //通知用户添加成功
-    Fluttertoast.showToast(msg: "已帮您将商品加入购物车");
+    MyToast.showToast(msg: "已帮您将商品加入购物车");
     //通知更新
     notifyListeners();
     return true;
@@ -119,7 +120,7 @@ class CartDataModel extends ChangeNotifier {
     if (whereCartItem == null) return false;
     //检查库存
     if (cartNumber > whereCartItem.goodsStock) {
-      Fluttertoast.showToast(msg: "哎呀，库存不足了");
+      MyToast.showToast(msg: "哎呀，库存不足了");
       return false;
     }
     //更新数量和购物车价格
@@ -208,7 +209,7 @@ class CartDataModel extends ChangeNotifier {
   ///结算购物车
   Future<bool> settlementCarts(BuildContext context) async {
     if (double.parse(this.selectionCartListAllPrice) <= 0) {
-      Fluttertoast.showToast(msg: "还没选中商品哦~~", gravity: ToastGravity.CENTER);
+      MyToast.showToast(msg: "还没选中商品哦~~", gravity: ToastGravity.CENTER);
       return false;
     }
 
@@ -232,7 +233,7 @@ class CartDataModel extends ChangeNotifier {
         //更新数据库
         await this._updateCartList();
         //提示
-        Fluttertoast.showToast(msg: "检测到您的勾选商品中包含失效商品~~");
+        MyToast.showToast(msg: "检测到您的勾选商品中包含失效商品~~");
         //更新
         notifyListeners();
         return false;

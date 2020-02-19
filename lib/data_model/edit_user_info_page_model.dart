@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:ganglong_shop_app/common_import.dart';
 import 'package:ganglong_shop_app/models/index.dart';
 import 'package:ganglong_shop_app/page/components/my_loading.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/request/post_update_user_info.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
@@ -29,17 +30,17 @@ class EditUserInfoPageModel with ChangeNotifier {
       imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
     } catch (e) {
       print(e);
-      Fluttertoast.showToast(msg: "无法访问媒体图片"); //短提示
+      MyToast.showToast(msg: "无法访问媒体图片"); //短提示
     }
 
     if (imageFile == null) {
-      Fluttertoast.showToast(msg: "没有选取图片"); //短提示
+      MyToast.showToast(msg: "没有选取图片"); //短提示
       return false;
     }
     //限制上传大小4194304bit
     int imageSize = imageFile.lengthSync();
     if (imageSize >= 4194304) {
-      Fluttertoast.showToast(msg: "上传图片过大"); //短提示
+      MyToast.showToast(msg: "上传图片过大"); //短提示
       return false;
     }
 
@@ -71,7 +72,7 @@ class EditUserInfoPageModel with ChangeNotifier {
     } //没有变化
     if (!checkUserName(_userInfo.user_name)) return false;
     if (userInfo.user_img == null || userInfo.user_img.isEmpty) {
-      Fluttertoast.showToast(msg: "无效头像"); //短提示
+      MyToast.showToast(msg: "无效头像"); //短提示
     }
     //提交用户信息
     MyLoading.eject();

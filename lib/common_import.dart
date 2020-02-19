@@ -4,11 +4,14 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/routes/application.dart';
 
 const bool DEBUG = true;
 const String INTO_TYPE = 'wx';
-const String SON_INTO_TYPE = 'android';
+const String SON_INTO_TYPE = 'ios';
+//超时时间
+const int OVERTIME_MILLISECOND = 3000;
 //工行图标地址
 const String SON_FIRST_PAGE_ICBC_ICON =
     "https://mate.ganglonggou.com/lib/images/wx_icbc_icon_20190813.png";
@@ -151,7 +154,7 @@ bool checkPhoneNumber(String phoneNumber) {
   RegExp mobile = new RegExp(
       r"(0|86|17951)?(13[0-9]|15[0-35-9]|17[0678]|18[0-9]|14[57])[0-9]{8}");
   if (phoneNumber.isEmpty || !mobile.hasMatch(phoneNumber)) {
-    Fluttertoast.showToast(msg: "填写的手机号不符合规范"); //短提示
+    MyToast.showToast(msg: "填写的手机号不符合规范"); //短提示
     return false;
   }
 
@@ -161,7 +164,7 @@ bool checkPhoneNumber(String phoneNumber) {
 bool checkName(String name) {
   RegExp mobile = new RegExp(r"(^[\u4E00-\u9FA5]{2,6}$)");
   if (name.isEmpty || !mobile.hasMatch(name)) {
-    Fluttertoast.showToast(msg: "填写的姓名不符合规范"); //短提示
+    MyToast.showToast(msg: "填写的姓名不符合规范"); //短提示
     return false;
   }
 
@@ -174,7 +177,7 @@ bool checkInvoicePhoneNumber(String phoneNumber) {
   if (phoneNumber == null ||
       phoneNumber.isEmpty ||
       !mobile.hasMatch(phoneNumber)) {
-    Fluttertoast.showToast(msg: "发票信息：填写的手机号不符合规范"); //短提示
+    MyToast.showToast(msg: "发票信息：填写的手机号不符合规范"); //短提示
     return false;
   }
 
@@ -183,7 +186,7 @@ bool checkInvoicePhoneNumber(String phoneNumber) {
 
 bool checkInvoiceCompanyName(String name) {
   if (name == null || name.isEmpty) {
-    Fluttertoast.showToast(msg: "发票信息：填写的企业名称不符合规范"); //短提示
+    MyToast.showToast(msg: "发票信息：填写的企业名称不符合规范"); //短提示
     return false;
   }
 
@@ -192,7 +195,7 @@ bool checkInvoiceCompanyName(String name) {
 
 bool checkInvoiceTaxNumber(String number) {
   if (number.length != 15 && number.length != 18 && number.length != 20) {
-    Fluttertoast.showToast(msg: "发票信息：纳税人识别号不符合规范"); //短提示
+    MyToast.showToast(msg: "发票信息：纳税人识别号不符合规范"); //短提示
     return false;
   }
 
@@ -201,7 +204,7 @@ bool checkInvoiceTaxNumber(String number) {
 
 bool checkInvoiceAddress(String name) {
   if (name == null || name.isEmpty) {
-    Fluttertoast.showToast(msg: "发票信息：开票地址不符合规范"); //短提示
+    MyToast.showToast(msg: "发票信息：开票地址不符合规范"); //短提示
     return false;
   }
 
@@ -210,7 +213,7 @@ bool checkInvoiceAddress(String name) {
 
 bool checkInvoiceFixedPhoneNumber(String name) {
   if (name == null || name.isEmpty) {
-    Fluttertoast.showToast(msg: "发票信息：座机号不符合规范"); //短提示
+    MyToast.showToast(msg: "发票信息：座机号不符合规范"); //短提示
     return false;
   }
 
@@ -219,7 +222,7 @@ bool checkInvoiceFixedPhoneNumber(String name) {
 
 bool checkInvoiceBankName(String name) {
   if (name == null || name.isEmpty) {
-    Fluttertoast.showToast(msg: "发票信息：开户行不符合规范"); //短提示
+    MyToast.showToast(msg: "发票信息：开户行不符合规范"); //短提示
     return false;
   }
 
@@ -228,7 +231,7 @@ bool checkInvoiceBankName(String name) {
 
 bool checkInvoiceBankNumber(String name) {
   if (name == null || name.isEmpty) {
-    Fluttertoast.showToast(msg: "发票信息：银行账户不符合规范"); //短提示
+    MyToast.showToast(msg: "发票信息：银行账户不符合规范"); //短提示
     return false;
   }
 
@@ -241,7 +244,7 @@ bool checkEmailAddress(String emailAddress) {
   if (emailAddress == null ||
       emailAddress.isEmpty ||
       !mobile.hasMatch(emailAddress)) {
-    Fluttertoast.showToast(msg: "填写的邮箱地址不符合规范"); //短提示
+    MyToast.showToast(msg: "填写的邮箱地址不符合规范"); //短提示
     return false;
   }
 
@@ -251,7 +254,7 @@ bool checkEmailAddress(String emailAddress) {
 bool checkPasswordHard(String password) {
   RegExp mobile = new RegExp(r"(^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$)");
   if (password == null || password.isEmpty || !mobile.hasMatch(password)) {
-    Fluttertoast.showToast(msg: "填写的密码强度不符合规范"); //短提示
+    MyToast.showToast(msg: "填写的密码强度不符合规范"); //短提示
     return false;
   }
 
@@ -261,7 +264,7 @@ bool checkPasswordHard(String password) {
 bool checkUserName(String userName) {
   RegExp mobile = new RegExp(r"(^([^#$@/\\()<>{}[\] ]){5,20}$)");
   if (userName == null || userName.isEmpty || !mobile.hasMatch(userName)) {
-    Fluttertoast.showToast(msg: "用户名不符合规范"); //短提示
+    MyToast.showToast(msg: "用户名不符合规范"); //短提示
     return false;
   }
 

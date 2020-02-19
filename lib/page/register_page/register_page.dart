@@ -1,16 +1,29 @@
+import 'package:flutter/gestures.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/config_model.dart';
 import 'package:ganglong_shop_app/data_model/register_page_model.dart';
 import 'package:ganglong_shop_app/data_model/user_info_model.dart';
 import 'package:ganglong_shop_app/models/index.dart';
 import 'package:ganglong_shop_app/page/components/my_loading.dart';
 import 'package:ganglong_shop_app/page/components/my_tab_bar.dart';
+import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/provider/provider_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class RegisterPage extends StatelessWidget {
+  final TapGestureRecognizer _recognizerUser = TapGestureRecognizer();
+  final TapGestureRecognizer _recognizerPrivacy = TapGestureRecognizer();
+
   @override
   Widget build(BuildContext context) {
+    _recognizerUser.onTap = () {
+      openUserAgreement(context);
+    };
+    _recognizerPrivacy.onTap = () {
+      openPrivacyAgreement(context);
+    };
     // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.white,
@@ -115,9 +128,9 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Consumer<UserInfoModel>(
-                  builder:
-                      (BuildContext context, UserInfoModel userInfoModel, _) {
+                Consumer2<UserInfoModel, ConfigModel>(
+                  builder: (BuildContext context, UserInfoModel userInfoModel,
+                      ConfigModel configModel, _) {
                     return RaisedButton(
                       child: Container(
                         padding: EdgeInsets.symmetric(vertical: 10),
@@ -132,6 +145,13 @@ class RegisterPage extends StatelessWidget {
                       ),
                       color: Theme.of(context).accentColor,
                       onPressed: () async {
+                        if (!configModel.agreeAllAgreement) {
+                          MyToast.showToast(
+                              msg: "您必须同意协议,才能进行账号注册",
+                              gravity: ToastGravity.CENTER);
+                          return;
+                        }
+
                         MyLoading.eject();
                         try {
                           UserInfo userInfo =
@@ -158,14 +178,40 @@ class RegisterPage extends StatelessWidget {
                 ), //注册按钮
                 Row(
                   children: <Widget>[
-                    Checkbox(
-                      onChanged: (bool value) {},
-                      value: true,
+                    Consumer<ConfigModel>(
+                      builder:
+                          (BuildContext context, ConfigModel configModel, _) {
+                        return Checkbox(
+                          onChanged: (bool value) {
+                            if (value) {
+                              configModel.agreeAgreementFunction();
+                            } else {
+                              configModel.notAgreeAgreementFunction();
+                            }
+                          },
+                          value: configModel.agreeAllAgreement,
+                        );
+                      },
                     ),
-                    Text("我已阅读并同意"),
-                    Text(
-                      "《岗隆用户协议》",
-                      style: TextStyle(color: Colors.blue),
+                    DefaultTextStyle(
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: SMALL_FONT_SIZE,
+                      ),
+                      child: Text.rich(TextSpan(children: [
+                        TextSpan(text: "我已经阅读并同意"),
+                        TextSpan(
+                          text: "《用户协议》",
+                          style: TextStyle(color: Colors.blue),
+                          recognizer: _recognizerUser,
+                        ),
+                        TextSpan(text: "和"),
+                        TextSpan(
+                          text: "《隐私政策》",
+                          style: TextStyle(color: Colors.blue),
+                          recognizer: _recognizerPrivacy,
+                        ),
+                      ])),
                     ),
                   ],
                 ), //用户协议
