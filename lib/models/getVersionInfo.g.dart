@@ -16,7 +16,8 @@ GetVersionInfo _$GetVersionInfoFromJson(Map<String, dynamic> json) {
     ..file_size = json['file_size'] as String
     ..download_url = json['download_url'] as String
     ..describe = json['describe'] as String
-    ..result_code = json['result_code'] as String;
+    ..result_code = json['result_code'] as String
+    ..ios_app_id = json['ios_app_id'] as String;
 }
 
 Map<String, dynamic> _$GetVersionInfoToJson(GetVersionInfo instance) =>
@@ -29,5 +30,6 @@ Map<String, dynamic> _$GetVersionInfoToJson(GetVersionInfo instance) =>
       'file_size': instance.file_size,
       'download_url': instance.download_url,
       'describe': instance.describe,
-      'result_code': instance.result_code
+      'result_code': instance.result_code,
+      'ios_app_id': instance.ios_app_id
     };

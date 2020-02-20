@@ -15,6 +15,7 @@ class GetVersionInfo {
     String download_url;
     String describe;
     String result_code;
+    String ios_app_id;
     
     factory GetVersionInfo.fromJson(Map<String,dynamic> json) => _$GetVersionInfoFromJson(json);
     Map<String, dynamic> toJson() => _$GetVersionInfoToJson(this);

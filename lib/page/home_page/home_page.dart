@@ -91,7 +91,7 @@ class _NotLogonHomePage extends StatelessWidget {
           HomeCoupon(),
           HomeConfig(),
           HomeLogonButton(),
-          HomeTestButton(),
+          //HomeTestButton(),
         ],
       ),
     );

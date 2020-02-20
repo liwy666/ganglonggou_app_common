@@ -8,11 +8,11 @@ class NotFoundRoutePage extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: MyTabBar(
-        tabBarName: '错误',
+        tabBarName: '遇到了一点问题',
       ),
       body: Center(
           child: MyPageTips(
-            title: '没有找到页面',
+            title: '页面走丢咯～～～',
             imgRoute: 'static_images/browser-404.png',
           )),
     );

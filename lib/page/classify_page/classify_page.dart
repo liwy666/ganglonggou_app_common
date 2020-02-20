@@ -149,10 +149,13 @@ class _ClassifyChild extends StatelessWidget {
             padding: EdgeInsets.only(top: 10),
             child: Column(
               children: <Widget>[
-                MyExtendedImage.network(
-                  classifyItem.logo_img,
-                  width: ScreenUtil().setWidth(80),
-                  height: ScreenUtil().setWidth(80),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(5.0),
+                  child: MyExtendedImage.network(
+                    classifyItem.logo_img,
+                    width: ScreenUtil().setWidth(80),
+                    height: ScreenUtil().setWidth(80),
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 5),

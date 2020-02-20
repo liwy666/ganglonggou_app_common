@@ -33,7 +33,7 @@ class PreviewSupplier extends StatelessWidget {
                       MyExtendedImage.asset(
 //                        goodsModel
 //                            .extraGoodsInfo.supplier_preview_info.logo_img,
-                      'static_images/logo_320.png',
+                        'static_images/logo_320.png',
                         width: ScreenUtil().setWidth(150),
                       ),
                       Column(
@@ -73,7 +73,7 @@ class PreviewSupplier extends StatelessWidget {
                         )),
                         color: Colors.red,
                         onPressed: () {
-                         /*
+                          /*
                           ///导航到供应商详情
                           Map<String, dynamic> SupplierInfoMap = goodsModel
                               .extraGoodsInfo.supplier_preview_info
@@ -82,7 +82,6 @@ class PreviewSupplier extends StatelessWidget {
                           Application.router.navigateTo(context,
                               "/supplier?supplierPreviewInfoJson=${base64UrlEncode(utf8.encode(jsonEncode(SupplierInfoMap)))}");*/
                           Application.router.navigateTo(context, '/main');
-
                         },
                       )
                     ],
@@ -166,10 +165,13 @@ class _PreviewSupplierGoodsItem extends StatelessWidget {
         width: itemWidth,
         child: Column(
           children: <Widget>[
-            MyExtendedImage.network(
-              goodsItem.goods_img,
-              width: itemWidth * 0.8,
-              fit: BoxFit.fitWidth,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(5.0),
+              child: MyExtendedImage.network(
+                goodsItem.goods_img,
+                width: itemWidth * 0.8,
+                fit: BoxFit.fitWidth,
+              ),
             ),
             Container(
               width: itemWidth,

@@ -71,6 +71,10 @@ class _ManyBanner extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.95 * 0.49,
                 ),
               ),
+              onTap: () {
+                FirstPageModel.toControl(
+                    indexAdItem: indexAdItem, context: context);
+              },
             );
           }).toList()),
     );

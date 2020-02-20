@@ -49,7 +49,7 @@ class NewGoodsSwiperComponent extends StatelessWidget {
                       ),
                     );
                   },
-                  viewportFraction: 1/3,
+                  viewportFraction: 1 / 3,
                   scale: 1,
                 ));
           },
@@ -76,27 +76,28 @@ class _NewGoodsSwiperComponentItem extends StatelessWidget {
     final _themeModel = Provider.of<ThemeModel>(context);
     if (updateHeightFlag) {
       WidgetsBinding.instance.addPostFrameCallback((callback) {
-        updateHeight(context.size.height +5);
+        updateHeight(context.size.height + 5);
       });
     }
 
     // TODO: implement build
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 0,horizontal: 2),
-      color:_themeModel.pageBackgroundColor2,
+      margin: EdgeInsets.symmetric(vertical: 0, horizontal: 2),
+      color: _themeModel.pageBackgroundColor2,
       child: Container(
-        padding: EdgeInsets.symmetric(
-            vertical: 3,
-            horizontal: 3),
+        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Container(
               height: ScreenUtil().setWidth(200),
-              child: MyExtendedImage.network(item.ad_img, fit: BoxFit.fitHeight),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5.0),
+                  child: MyExtendedImage.network(item.ad_img,
+                      fit: BoxFit.fitWidth)),
             ),
             Container(
-              margin: EdgeInsets.only(top:5),
+              margin: EdgeInsets.only(top: 5),
               constraints: BoxConstraints(
                 minWidth: double.infinity,
               ),

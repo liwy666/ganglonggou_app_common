@@ -148,8 +148,11 @@ class _SonClassifyPage extends State<SonClassifyPage> {
       return _ClassifyPreview(
         key: ValueKey(classifyItem.classify_name),
         classifyPreviewName: classifyItem.classify_name,
-        classifyPreviewImg: MyExtendedImage.network(classifyItem.logo_img,
-            fit: BoxFit.fitWidth),
+        classifyPreviewImg: ClipRRect(
+          borderRadius: BorderRadius.circular(5.0),
+          child: MyExtendedImage.network(classifyItem.logo_img,
+              fit: BoxFit.fitWidth),
+        ),
         updateGoodsList: () {
           this._goodsList = goodsListDataModel.getGoodsListByKeyWord(
               keyWord: classifyItem.classify_name);
@@ -160,9 +163,11 @@ class _SonClassifyPage extends State<SonClassifyPage> {
     classifyPreviewList.add(_ClassifyPreview(
       key: ValueKey("全部"),
       classifyPreviewName: "全部",
-      classifyPreviewImg: MyExtendedImage.asset(
-          "static_images/all_class_preview_logo.png",
-          fit: BoxFit.fitWidth),
+      classifyPreviewImg: ClipRRect(
+        borderRadius: BorderRadius.circular(5.0),
+        child: MyExtendedImage.asset("static_images/all_class_preview_logo.png",
+            fit: BoxFit.fitWidth),
+      ),
       updateGoodsList: () {
         this._goodsList = goodsListDataModel.getGoodsListByKeyWord(
             keyWord: widget.parentClassifyItem.classify_name);

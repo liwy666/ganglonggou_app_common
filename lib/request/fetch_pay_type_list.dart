@@ -5,6 +5,7 @@ const FETCH_INDEX_INFO_URL = '/user_get_pay_list';
 
 class FetchPayTypeList{
   static Future<PayTypeList> fetch({@required String userToken}) async {
+    print(userToken);
     final response = await dio
         .get(FETCH_INDEX_INFO_URL, queryParameters: {'user_token': userToken});
     final Map<String, dynamic> data = {"data": response.data};

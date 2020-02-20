@@ -129,7 +129,7 @@ class _MainGoodsList extends StatelessWidget {
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
             crossAxisCount: 2,
-            childAspectRatio: 337 / 450),
+            childAspectRatio: 337 / 480),
         delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
           return AnimationConfiguration.staggeredGrid(
             position: index,
@@ -191,4 +191,3 @@ class _LoadFinish extends StatelessWidget {
     );
   }
 }
-

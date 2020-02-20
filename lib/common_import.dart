@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/routes/application.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 const bool DEBUG = true;
 const String INTO_TYPE = 'wx';
@@ -135,6 +136,8 @@ Future<void> openUrl(
     if (regExtractRoute.hasMatch(url)) {
       _urlExtractRoute(url: url, context: context);
     }
+  } else {
+    launch(url);
   }
 }
 

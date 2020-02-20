@@ -6,6 +6,7 @@ import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/page/components/update_app/components/download_dialog_box_child.dart';
 import 'package:ganglong_shop_app/page/components/update_app/components/if_update_dialog_box_child.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:open_appstore/open_appstore.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -32,7 +33,12 @@ class UpdateApp {
               child: IfUpdateDialogBoxChild(
                 getVersionInfo: getVersionInfo,
                 immediateUpdate: () {
-                  _ejectDownloadDialogBox();
+                  if (SON_INTO_TYPE == 'ios') {
+                    OpenAppstore.launch(
+                        androidAppId: "", iOSAppId: getVersionInfo.ios_app_id);
+                  } else {
+                    _ejectDownloadDialogBox();
+                  }
                 },
               ),
             ),
