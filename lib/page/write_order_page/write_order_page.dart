@@ -35,7 +35,7 @@ class WriteOrderPage extends StatelessWidget {
               WriteOrderPayType(),
               WriteOrderInvoice(),
               WriteOrderCoupon(),
-              WriteOrderIntegral(),
+              //WriteOrderIntegral(),
               WriteOrderList(),
               Container(
                 height: ScreenUtil().setWidth(MY_BOTTOM_BUTTON_HEIGHT),

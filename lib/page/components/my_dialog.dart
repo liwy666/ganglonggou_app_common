@@ -25,12 +25,12 @@ class MyDialog {
                     color: _themeModel.pageBackgroundColor2,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black54,
-                        offset: Offset(0.0, -0.2),
+                        color: Colors.black12,
+                        offset: Offset(0.0, -0.1),
                       )
                     ],
                     borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(15))),
+                        BorderRadius.vertical(top: Radius.circular(0))),
                 width: MediaQuery.of(context).size.width,
                 constraints: BoxConstraints(
                   minWidth: MediaQuery.of(context).size.height * 0.1,
@@ -40,10 +40,7 @@ class MyDialog {
                     Container(
                       child: Row(
                         children: <Widget>[
-                          Expanded(
-                            flex: 1,
-                            child: Container()
-                          ),
+                          Expanded(flex: 1, child: Container()),
                           Expanded(
                             flex: 3,
                             child: Text(
