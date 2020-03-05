@@ -23,10 +23,10 @@ class WriteOrderList extends StatelessWidget {
                 label: "使用优惠券减免：",
                 value: Text("-￥${writeOrderPageModel.couponPrice}"),
               ),
-              MyOderListItem(
-                label: "使用积分减免：",
-                value: Text("-￥${writeOrderPageModel.integralPrice}"),
-              ),
+//              MyOderListItem(
+//                label: "使用积分减免：",
+//                value: Text("-￥${writeOrderPageModel.integralPrice}"),
+//              ),
               MyOderListItem(
                 label: "支付方式减免：",
                 value: Text(
