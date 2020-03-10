@@ -30,6 +30,14 @@ class ConfigModel with ChangeNotifier {
 
   bool get whetherInstalledAliPay => _whetherInstalledAliPay;
 
+  set whetherInstalledWeChat(bool value) {
+    _whetherInstalledWeChat = value;
+  }
+
+  set whetherInstalledAliPay(bool value) {
+    _whetherInstalledAliPay = value;
+  }
+
   ///初始化
   void init(
       {@required String initialInstallation,

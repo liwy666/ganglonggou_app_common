@@ -8,6 +8,8 @@ import 'package:ganglong_shop_app/request/fetch_version_info.dart';
 import 'package:flutter_ios_dark_mode/flutter_ios_dark_mode.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ganglong_shop_app/routes/application.dart';
+import 'package:ganglong_shop_app/service/alipay_service.dart';
+import 'package:ganglong_shop_app/service/wechat_service.dart';
 import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
 
@@ -42,6 +44,10 @@ class _StartPage extends State<StartPage> {
       _checkDarkModel();
       //等待
       await Future.delayed(Duration(seconds: 1));
+      //微信检测
+      await _checkWeChatInstalled();
+      //支付宝检测
+      await _checkAliPayInstalled();
       //跳转
       Navigator.popAndPushNamed(context,
           '/main?needUpdateApp=$needUpdateApp&whetherInitialInstallation=$initialInstallation');
@@ -106,10 +112,21 @@ class _StartPage extends State<StartPage> {
   }
 
   ///检测是否安装微信
-  Future<bool> _checkWeChatInstalled() async{
-
-
-
+  Future<void> _checkWeChatInstalled() async {
+    final WeChatService _weChatService = WeChatService();
+    final _configModel = Provider.of<ConfigModel>(context);
+    _configModel.whetherInstalledWeChat =
+        await _weChatService.weChat.isWechatInstalled() &&
+            await _weChatService.weChat.isWechatSupportApi();
+    _weChatService.cancel();
   }
+
   ///检测是否安装支付宝
+  Future<void> _checkAliPayInstalled() async {
+    final AliPayService _aliPayService = AliPayService();
+    final _configModel = Provider.of<ConfigModel>(context);
+    _configModel.whetherInstalledAliPay =
+        await _aliPayService.aliPay.isAlipayInstalled();
+    _aliPayService.cancel();
+  }
 }

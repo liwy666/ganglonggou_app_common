@@ -39,7 +39,7 @@ class LogonDataModel with ChangeNotifier {
 
   LogonDataModel({@required this.pageContext, @required this.userInfoModel});
 
-  /*登录成功*/
+  ///登录成功
   Future<void> _logonSuccess(String userToken) async {
     if (userToken.length == USER_TOKEN_LENGTH) {
       MyLoading.eject();
@@ -106,8 +106,6 @@ class LogonDataModel with ChangeNotifier {
         _logonSuccess(userToken);
       }
     });
-
-    print(await _weChatService.weChat.isWechatInstalled());
 
     if (!await _weChatService.weChat.isWechatInstalled() ||
         !await _weChatService.weChat.isWechatSupportApi()) {

@@ -14,6 +14,7 @@ class WriteOrderList extends StatelessWidget {
         builder: (BuildContext context, WriteOrderPageModel writeOrderPageModel,
             CartDataModel cartDataModel, _) {
           return MyOrderList(
+
             children: <MyOderListItem>[
               MyOderListItem(
                 label: "订单总金额：",

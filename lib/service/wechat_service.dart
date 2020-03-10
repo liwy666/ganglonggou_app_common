@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:fake_wechat/fake_wechat.dart';
 import 'package:ganglong_shop_app/common_import.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ganglong_shop_app/page/components/my_toast.dart';
 
 class WeChatService {
@@ -14,7 +13,7 @@ class WeChatService {
   final Wechat weChat = Wechat()
     ..registerApp(
       appId: WECHAT_APPID,
-      universalLink: "",
+      universalLink: UNIVERSAL_LINK,
     );
 
   WeChatService({
@@ -28,7 +27,6 @@ class WeChatService {
 
   void _listenShareMsg(WechatSdkResp resp) {
     String content = 'share: ${resp.errorCode} ${resp.errorMsg}';
-    print("listenShareMsg:$content");
   }
 
   void _listenWeChatLogon(WechatAuthResp resp) {
@@ -49,7 +47,6 @@ class WeChatService {
         break;
       default:
         MyToast.showToast(msg: "发生未知错误");
-        print(content);
         break;
     }
   }
@@ -70,10 +67,8 @@ class WeChatService {
         break;
       default:
         MyToast.showToast(msg: "发生未知错误");
-        print(content);
         break;
     }
-    print("监听支付结果$content");
   }
 
   void cancel() {

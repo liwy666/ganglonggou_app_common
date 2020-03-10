@@ -1,15 +1,10 @@
-import 'dart:math';
-
-import 'package:extended_image/extended_image.dart';
 import 'package:flutter/gestures.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ganglong_shop_app/common_import.dart';
-import 'package:ganglong_shop_app/data_model/config_model.dart';
 import 'package:ganglong_shop_app/data_model/logon_data_model.dart';
 import 'package:ganglong_shop_app/data_model/user_info_model.dart';
-import 'package:ganglong_shop_app/models/index.dart';
-import 'package:ganglong_shop_app/page/components/my_loading.dart';
 import 'package:ganglong_shop_app/page/components/my_tab_bar.dart';
+import 'package:ganglong_shop_app/page/logon_page/components/logon_logon_button.dart';
+import 'package:ganglong_shop_app/page/logon_page/components/logon_other_logon_button.dart';
 import 'package:ganglong_shop_app/provider/provider_widget.dart';
 import 'package:ganglong_shop_app/routes/application.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -74,7 +69,7 @@ class LogonPage extends StatelessWidget {
                         logonDataModel.setPassword = value;
                       },
                     ),
-                    _LogonButton(), //登录按钮
+                    LoGonLoGonButton(), //登录按钮
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -123,107 +118,11 @@ class LogonPage extends StatelessWidget {
                         ),
                       ])),
                     ),
-                    Row(
-                      children: <Widget>[
-                        Text("第三方帐号登录",
-                            style: TextStyle(
-                                color: Colors.black54,
-                                fontSize: ScreenUtil().setWidth(22))),
-                      ],
-                    ), //第三方登录文字
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 0),
-                      child: Wrap(
-                        children: <Widget>[
-                          FlatButton(
-                            child: Container(
-                              width: ScreenUtil().setWidth(80),
-                              height: ScreenUtil().setWidth(80),
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                  color: Colors.black12,
-                                  borderRadius: BorderRadius.circular(40)),
-                              child: ExtendedImage.asset(
-                                "static_images/wechat_logo_black.png",
-                                width: ScreenUtil().setWidth(80),
-                                fit: BoxFit.fitWidth,
-                              ),
-                            ),
-                            onPressed: () {
-                              logonDataModel.weChatLogon();
-                            }, // ,
-                          ), //微信
-                          FlatButton(
-                            child: Container(
-                              width: ScreenUtil().setWidth(80),
-                              height: ScreenUtil().setWidth(80),
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                  color: Colors.black12,
-                                  borderRadius: BorderRadius.circular(40)),
-                              child: ExtendedImage.asset(
-                                "static_images/alpay_logo_black.png",
-                                width: ScreenUtil().setWidth(80),
-                                fit: BoxFit.fitWidth,
-                              ),
-                            ),
-                            onPressed: () {
-                              logonDataModel.aliApyLogon();
-                            },
-                          ), //支付宝
-                        ],
-                      ),
-                    ), //第三方登录按钮
+                    LogonOtherLogonButton(),
                   ],
                 ),
               ),
             );
-          },
-        );
-      },
-    );
-  }
-}
-
-class _LogonButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Consumer3<LogonDataModel, UserInfoModel, ConfigModel>(
-      builder: (BuildContext context, LogonDataModel logonDataModel,
-          UserInfoModel userInfoModel, ConfigModel configModel, Widget _) {
-        return RaisedButton(
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            width: double.infinity,
-            child: Text(
-              "登 录",
-              style: TextStyle(
-                color: Colors.white,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          color: Theme.of(context).accentColor,
-          onPressed: () async {
-            MyLoading.eject();
-            try {
-              //登录
-              UserInfo userInfo = await logonDataModel.logon();
-              if (userInfo.user_token.length == USER_TOKEN_LENGTH) {
-                //更新全局UserModel
-                await userInfoModel.userLogonSuccess(userInfo: userInfo);
-                MyLoading.shut();
-                //跳转主页
-                Navigator.of(context)
-                    .pushReplacementNamed('/main?currentIndex=$HOME_INDEX');
-              } else {
-                MyLoading.shut();
-              }
-            } catch (e) {
-              print(e);
-              MyLoading.shut();
-            }
           },
         );
       },

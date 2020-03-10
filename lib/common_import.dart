@@ -8,7 +8,7 @@ import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/routes/application.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-const bool DEBUG = true;
+const bool DEBUG = false;
 const String INTO_TYPE = 'wx';
 const String SON_INTO_TYPE = 'ios';
 //超时时间
@@ -99,6 +99,8 @@ const String ABOUT_WE_URL =
 //反馈
 const String FEED_BACK_URL =
     'https://mate.ganglonggou.com/app_web_extend/#/feedback';
+//universalLink
+const String UNIVERSAL_LINK = 'https://mate.ganglonggou.com/app_web_extend/universal_links/';
 
 ///深拷贝
 List<T> listDeepCopy<T>(List list) {

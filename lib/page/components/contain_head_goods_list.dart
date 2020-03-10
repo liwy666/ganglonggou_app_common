@@ -133,6 +133,7 @@ class _ContainHeadGoodsList extends State<ContainHeadGoodsList> {
         widget.headWidget == null? Container():widget.headWidget,
         Container(
 //      padding: EdgeInsets.symmetric(vertical: 5),
+        margin: EdgeInsets.only(bottom: 8),
           color: Colors.white,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

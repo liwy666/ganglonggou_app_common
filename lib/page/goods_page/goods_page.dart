@@ -1,6 +1,7 @@
 import 'package:fake_wechat/fake_wechat.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ganglong_shop_app/common_import.dart';
+import 'package:ganglong_shop_app/data_model/config_model.dart';
 import 'package:ganglong_shop_app/data_model/goods_list_data_model.dart';
 import 'package:ganglong_shop_app/data_model/goods_model.dart';
 import 'package:ganglong_shop_app/data_model/page_position_model.dart';
@@ -214,52 +215,55 @@ class _RightIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Consumer<GoodsModel>(
-      builder: (BuildContext context, GoodsModel goodsModel, _) {
-        return PopupMenuButton(
-          icon: Icon(
-            Icons.share,
-            color: Colors.blue,
-          ),
-          itemBuilder: (BuildContext context) {
-            return <PopupMenuItem<String>>[
-              PopupMenuItem<String>(
-                child: ListTile(
-                  contentPadding: EdgeInsets.all(5),
-                  leading: Image.asset(
-                    "static_images/wechat_friend_logo.png",
-                  ),
-                  title: Text(
-                    '微信好友',
-                    style: TextStyle(fontSize: COMMON_FONT_SIZE),
-                  ),
+    return Consumer2<GoodsModel, ConfigModel>(
+      builder: (BuildContext context, GoodsModel goodsModel,
+          ConfigModel configModel, _) {
+        return configModel.whetherInstalledWeChat
+            ? PopupMenuButton(
+                icon: Icon(
+                  Icons.share,
+                  color: Colors.blue,
                 ),
-                value: "shareWeChatFriend",
-              ),
-              PopupMenuItem<String>(
-                child: ListTile(
-                  contentPadding: EdgeInsets.all(5),
-                  leading: Image.asset(
-                    "static_images/wechat_friend_circle_logo.png",
-                  ),
-                  title:
-                      Text('朋友圈', style: TextStyle(fontSize: COMMON_FONT_SIZE)),
-                ),
-                value: "shareWeChatFriendCircle",
-              ),
-            ];
-          },
-          onSelected: (String action) {
-            switch (action) {
-              case "shareWeChatFriend":
-                goodsModel.shareWeChatFriend(WechatScene.SESSION);
-                break;
-              case "shareWeChatFriendCircle":
-                goodsModel.shareWeChatFriend(WechatScene.TIMELINE);
-                break;
-            }
-          },
-        );
+                itemBuilder: (BuildContext context) {
+                  return <PopupMenuItem<String>>[
+                    PopupMenuItem<String>(
+                      child: ListTile(
+                        contentPadding: EdgeInsets.all(5),
+                        leading: Image.asset(
+                          "static_images/wechat_friend_logo.png",
+                        ),
+                        title: Text(
+                          '微信好友',
+                          style: TextStyle(fontSize: COMMON_FONT_SIZE),
+                        ),
+                      ),
+                      value: "shareWeChatFriend",
+                    ),
+                    PopupMenuItem<String>(
+                      child: ListTile(
+                        contentPadding: EdgeInsets.all(5),
+                        leading: Image.asset(
+                          "static_images/wechat_friend_circle_logo.png",
+                        ),
+                        title: Text('朋友圈',
+                            style: TextStyle(fontSize: COMMON_FONT_SIZE)),
+                      ),
+                      value: "shareWeChatFriendCircle",
+                    ),
+                  ];
+                },
+                onSelected: (String action) {
+                  switch (action) {
+                    case "shareWeChatFriend":
+                      goodsModel.shareWeChatFriend(WechatScene.SESSION);
+                      break;
+                    case "shareWeChatFriendCircle":
+                      goodsModel.shareWeChatFriend(WechatScene.TIMELINE);
+                      break;
+                  }
+                },
+              )
+            : Container();
       },
     );
   }

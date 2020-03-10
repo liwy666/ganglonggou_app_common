@@ -2,6 +2,7 @@ import 'package:ganglong_shop_app/common_import.dart';
 import 'package:ganglong_shop_app/models/goodsItem.dart';
 import 'package:ganglong_shop_app/page/components/my_goods_list/my_goods_list_card.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:waterfall_flow/waterfall_flow.dart';
 
 // ignore: must_be_immutable
 class MyGoodsList extends StatefulWidget {
@@ -102,6 +103,7 @@ class _MyGoodsList extends State<MyGoodsList> {
         ),
         _MainGoodsList(
           goodsList: _goodsList,
+          tempGoodsList: _tempGoodsList,
         ),
         SliverList(
           delegate: SliverChildListDelegate([
@@ -111,13 +113,20 @@ class _MyGoodsList extends State<MyGoodsList> {
         ),
       ],
     );
+    return _MainGoodsList(
+      goodsList: _goodsList,
+      tempGoodsList: _tempGoodsList,
+    );
   }
 }
 
 class _MainGoodsList extends StatelessWidget {
   final List<GoodsItem> goodsList;
+  final List<GoodsItem> tempGoodsList;
 
-  const _MainGoodsList({Key key, @required this.goodsList}) : super(key: key);
+  const _MainGoodsList(
+      {Key key, @required this.goodsList, @required this.tempGoodsList})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -147,6 +156,7 @@ class _MainGoodsList extends StatelessWidget {
         }, childCount: goodsList.length),
       ),
     );
+
   }
 }
 

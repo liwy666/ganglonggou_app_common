@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>岗隆购</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -18,8 +20,37 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>alipay</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>alipay2017110609764829</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>weixin</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wxaea0312f1b660706</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>alipay</string>
+		<string>weixin</string>
+		<string>weixinULAPI</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -30,11 +61,25 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Used to demonstrate image picker plugin</string>
+	<string>我们需要读取您的访问您的相机</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Used to capture audio for image picker plugin</string>
+	<string>我们需要读取您的访问您的麦克风</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Used to demonstrate image picker plugin</string>
+	<string>我们需要读取您的访问您的相册</string>
+    <key>NSContactsUsageDescription</key>
+    <string>我们需要读取您的访问您的日历</string>
+    <key>NSCalendarsUsageDescription</key>
+    <string>我们需要读取您的访问您的相册</string>
+    <key>NSAppleMusicUsageDescription</key>
+    <string>我们需要读取您的访问您的媒体资料库</string>
+    <key>NSMotionUsageDescription</key>
+    <string>我们需要读取您的访问您的运动与健身</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>我们需要读取您的访问您的语音识别权限</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>我们需要读取您的访问您的位置地理</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>我们需要读取您的访问您的位置地理</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
