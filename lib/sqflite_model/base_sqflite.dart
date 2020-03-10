@@ -65,14 +65,13 @@ abstract class BaseSqflite {
 
   ///如果在调用openDatabase之前数据库不存在，则调用 。您可以借此机会根据您的模式在数据库中创建所需的表
   static Future<void> _onCreate(Database db, int version) async {
-    print("执行：_onCreate创建数据库");
     //1.创建数据表
     CREATE_SQL_CODE_LIST.forEach((String code) async {
       await db.execute(code);
     });
     //2.插入配置表数据
-    _initConfigTableSqlCode.forEach((Map<String, String> mapItem) {
-      db.insert(CONFIG_TABLE_NAME, mapItem);
+    _initConfigTableSqlCode.forEach((Map<String, String> mapItem) async {
+      await db.insert(CONFIG_TABLE_NAME, mapItem);
     });
   }
 

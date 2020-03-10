@@ -27,30 +27,33 @@ class _StartPage extends State<StartPage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((callback) async {
-      //初始化
-      await _startModel.init();
       //loading组件写入全局context
       MyLoading.loadContext = context;
       //Application写入全局context
       Application.startPageContext = context;
       //初始化页面高宽
       ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
-      //检查版本更新
+      //检查版本更新，android需要进行检测
       //bool needUpdateApp = await _checkVersion();
       bool needUpdateApp = false;
       //检查是否初次安装
       bool initialInstallation = _checkInitialInstallation();
       //检测主题模式
       _checkDarkModel();
-      //等待
-      await Future.delayed(Duration(seconds: 1));
       //微信检测
       await _checkWeChatInstalled();
       //支付宝检测
       await _checkAliPayInstalled();
-      //跳转
-      Navigator.popAndPushNamed(context,
-          '/main?needUpdateApp=$needUpdateApp&whetherInitialInstallation=$initialInstallation');
+
+      //如果是初次安装就跳转引导页面
+      if (!initialInstallation) {
+        await _startModel.init();
+        await Future.delayed(Duration(seconds: 1));
+        Navigator.popAndPushNamed(
+            context, '/main?needUpdateApp=$needUpdateApp');
+      } else {
+        Navigator.popAndPushNamed(context, '/boot');
+      }
     });
     // TODO: implement initState
     super.initState();

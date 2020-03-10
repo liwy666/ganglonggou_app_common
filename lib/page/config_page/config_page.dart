@@ -180,6 +180,12 @@ class ConfigPage extends StatelessWidget {
                 },
                 child: Text("反馈"),
               ),
+              MySingleRowTile(
+                onTapFunction: () async {
+                  Application.router.navigateTo(context, '/test');
+                },
+                child: Text("岗隆实验室"),
+              ),
             ],
           );
         },

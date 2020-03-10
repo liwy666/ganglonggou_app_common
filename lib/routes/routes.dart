@@ -32,6 +32,11 @@ class Routes {
   static String couponList = '/coupon_list';
   static String notFoundRoute = '/not_found_route';
   static String activityOnePage = '/activity01';
+  static String boot = '/boot';
+
+  ///功能测试
+  static String test = '/test';
+  static String testBoot = '/test_boot';
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = Handler(
@@ -140,5 +145,17 @@ class Routes {
     router.define(notFoundRoute,
         handler: notFoundRouteHandler,
         transitionType: TransitionType.cupertino); //没有找到路由
+
+    router.define(boot,
+        handler: bootHandler,
+        transitionType: TransitionType.inFromRight); //初次引导页
+
+    ///功能测试
+    router.define(test,
+        handler: testHandler,
+        transitionType: TransitionType.inFromRight); //测试页面
+    router.define(testBoot,
+        handler: testBootHandler,
+        transitionType: TransitionType.cupertino); //启动页测试页面
   }
 }

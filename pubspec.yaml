@@ -123,6 +123,11 @@ flutter:
     - static_images/wx_conpou_icon_20190813.png
     - static_images/user_not_logon_head.png
     - static_images/browser-404.png
+    - static_images/boot_img1.jpeg
+    - static_images/boot_img2.jpeg
+    - static_images/boot_img3.jpeg
+    - static_images/boot_img4.jpeg
+    - static_images/boot_img5.jpeg
     - static_jsons/address_options.json
 
 

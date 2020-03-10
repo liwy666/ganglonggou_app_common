@@ -6,6 +6,7 @@ import 'package:ganglong_shop_app/models/index.dart';
 import 'package:ganglong_shop_app/page/activity_page/activity_one_page.dart';
 import 'package:ganglong_shop_app/page/address_list_page/address_list_page.dart';
 import 'package:ganglong_shop_app/page/ask_after_service_page/ask_after_service_page.dart';
+import 'package:ganglong_shop_app/page/carts_page/boot_page.dart';
 import 'package:ganglong_shop_app/page/carts_page/carts_page.dart';
 import 'package:ganglong_shop_app/page/config_page/config_page.dart';
 import 'package:ganglong_shop_app/page/coupon_list_page/coupon_list_page.dart';
@@ -26,6 +27,8 @@ import 'package:ganglong_shop_app/page/search_goods_page/search_goods_page.dart'
 import 'package:ganglong_shop_app/page/start_page/start_page.dart';
 import 'package:ganglong_shop_app/page/submit_evaluate_page/submit_evaluate_page.dart';
 import 'package:ganglong_shop_app/page/supplier_page/supplier_page.dart';
+import 'package:ganglong_shop_app/page/test_page/components/test_boot_page.dart';
+import 'package:ganglong_shop_app/page/test_page/test_page.dart';
 import 'package:ganglong_shop_app/page/user_coupon_list_page/user_coupon_list_page.dart';
 import 'package:ganglong_shop_app/page/web_view_page/web_view_page.dart';
 import 'package:ganglong_shop_app/page/write_order_page/write_order_page.dart';
@@ -269,4 +272,22 @@ Handler activityOneHandler = Handler(
 Handler notFoundRouteHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
   return NotFoundRoutePage();
+});
+
+/*启动引导页*/
+Handler bootHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  return BootPage();
+});
+
+///功能测试
+/*测试页面*/
+Handler testHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  return TestPage();
+});
+/*启动页测试*/
+Handler testBootHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  return TestBootPage();
 });

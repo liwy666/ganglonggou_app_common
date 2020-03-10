@@ -46,7 +46,7 @@ PODS:
 DEPENDENCIES:
   - fake_alipay (from `.symlinks/plugins/fake_alipay/ios`)
   - fake_wechat (from `.symlinks/plugins/fake_wechat/ios`)
-  - Flutter (from `.symlinks/flutter/ios-release`)
+  - Flutter (from `.symlinks/flutter/ios`)
   - flutter_custom_dialog (from `.symlinks/plugins/flutter_custom_dialog/ios`)
   - flutter_des (from `.symlinks/plugins/flutter_des/ios`)
   - flutter_downloader (from `.symlinks/plugins/flutter_downloader/ios`)
@@ -75,7 +75,7 @@ EXTERNAL SOURCES:
   fake_wechat:
     :path: ".symlinks/plugins/fake_wechat/ios"
   Flutter:
-    :path: ".symlinks/flutter/ios-release"
+    :path: ".symlinks/flutter/ios"
   flutter_custom_dialog:
     :path: ".symlinks/plugins/flutter_custom_dialog/ios"
   flutter_des:

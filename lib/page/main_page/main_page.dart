@@ -56,7 +56,6 @@ class _MainPage extends State<MainPage> {
         final _configModel = Provider.of<ConfigModel>(context);
         _configModel.alreadyInstallation();
         AskWhetherAgreeAgreement(context: context);
-        print("是否初次安装：${widget.whetherInitialInstallation}");
       }
     });
     super.initState();
