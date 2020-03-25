@@ -47,6 +47,7 @@ class LogonOtherLogonButton extends StatelessWidget {
                                   ),
                                 ),
                                 onPressed: () {
+                                  print("xixi");
                                   logonDataModel.weChatLogon();
                                 }, // ,
                               )

@@ -3,6 +3,7 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:ganglong_shop_app/common_import.dart';
 import 'package:ganglong_shop_app/data_model/start_model.dart';
 import 'package:ganglong_shop_app/page/components/my_extended_image.dart';
+import 'package:ganglong_shop_app/request/fetch_version_info.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:provider/provider.dart';
 
@@ -55,6 +56,18 @@ class _BootPageItem extends StatefulWidget {
 class __BootPageItem extends State<_BootPageItem> {
   String _buttonValue = "立即体验";
   bool _clickButton = false;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((callback){
+      ///预请求
+      FetchVersionInfo.fetch();
+      //print("预请求结束");
+    });
+
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

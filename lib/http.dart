@@ -12,7 +12,7 @@ void initHttp() {
   //配置
   dio.options.receiveTimeout = OVERTIME_MILLISECOND; //超时时间ms
   dio.options.baseUrl = DEBUG
-      ? 'https://test-api.ganglonggou.com/api/v1'
+      ? 'http://192.168.0.164:3002/api/v1'
       : 'https://api.ganglonggou.com/api/v1';
   //拦截器
   dio.interceptors.add(InterceptorsWrapper(onRequest: (RequestOptions options) {

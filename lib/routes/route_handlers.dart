@@ -6,7 +6,7 @@ import 'package:ganglong_shop_app/models/index.dart';
 import 'package:ganglong_shop_app/page/activity_page/activity_one_page.dart';
 import 'package:ganglong_shop_app/page/address_list_page/address_list_page.dart';
 import 'package:ganglong_shop_app/page/ask_after_service_page/ask_after_service_page.dart';
-import 'package:ganglong_shop_app/page/carts_page/boot_page.dart';
+import 'package:ganglong_shop_app/page/boot_page/boot_page.dart';
 import 'package:ganglong_shop_app/page/carts_page/carts_page.dart';
 import 'package:ganglong_shop_app/page/config_page/config_page.dart';
 import 'package:ganglong_shop_app/page/coupon_list_page/coupon_list_page.dart';
