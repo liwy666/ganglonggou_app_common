@@ -10,6 +10,15 @@ class EvaluatePreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((callback) {
+      RenderBox renderBox = context.findRenderObject();
+      Offset offset = renderBox.localToGlobal(Offset.zero);
+      if (goodsModel.widgetOffset["evaluate"] == 0) {
+        goodsModel.widgetOffset["evaluate"] =
+            offset.dy - renderBox.size.height - 100;
+      }
+    });
+
     // TODO: implement build
     return MyListTile(
       titleWidget: Text("评价"),

@@ -25,6 +25,8 @@ class HomeUserInfoPreview extends StatelessWidget {
                     child: MyExtendedImage.network(
                       userInfoModel.userInfo.user_img,
                       width: ScreenUtil().setWidth(120),
+                      loadingWidth: ScreenUtil().setWidth(120),
+                      loadingHeight: ScreenUtil().setWidth(120),
                       fit: BoxFit.fitWidth,
                     ),
                   ),

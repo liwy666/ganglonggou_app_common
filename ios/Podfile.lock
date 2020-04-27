@@ -46,7 +46,7 @@ PODS:
 DEPENDENCIES:
   - fake_alipay (from `.symlinks/plugins/fake_alipay/ios`)
   - fake_wechat (from `.symlinks/plugins/fake_wechat/ios`)
-  - Flutter (from `.symlinks/flutter/ios`)
+  - Flutter (from `Flutter`)
   - flutter_custom_dialog (from `.symlinks/plugins/flutter_custom_dialog/ios`)
   - flutter_des (from `.symlinks/plugins/flutter_des/ios`)
   - flutter_downloader (from `.symlinks/plugins/flutter_downloader/ios`)
@@ -75,7 +75,7 @@ EXTERNAL SOURCES:
   fake_wechat:
     :path: ".symlinks/plugins/fake_wechat/ios"
   Flutter:
-    :path: ".symlinks/flutter/ios"
+    :path: Flutter
   flutter_custom_dialog:
     :path: ".symlinks/plugins/flutter_custom_dialog/ios"
   flutter_des:
@@ -130,6 +130,6 @@ SPEC CHECKSUMS:
   url_launcher: a1c0cc845906122c4784c542523d8cacbded5626
   WechatOpenSDK: 368ae03b72ee3ea1328c4f11326fbb5d2721d118
 
-PODFILE CHECKSUM: 10ae9c18d12c9ffc2275c9a159a3b1e281990db0
+PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
 
 COCOAPODS: 1.8.4

@@ -1,7 +1,10 @@
 import 'package:extended_image/extended_image.dart';
+import 'package:fluro/fluro.dart';
 import 'package:ganglong_shop_app/common_import.dart';
 import 'package:ganglong_shop_app/data_model/theme_model.dart';
 import 'package:ganglong_shop_app/models/goodsItem.dart';
+import 'package:ganglong_shop_app/page/components/my_cupertino_page_route.dart';
+import 'package:ganglong_shop_app/page/goods_page/goods_page.dart';
 import 'package:ganglong_shop_app/routes/application.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -25,9 +28,7 @@ class MyGoodsListCard extends StatelessWidget {
             left: index % 2 == 0 ? 10 : 0, right: index % 2 == 0 ? 0 : 10),
         color: _themeModel.pageBackgroundColor2,
         child: Container(
-          padding: EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 10),
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           child: Column(
             children: <Widget>[
               ClipRRect(
@@ -81,8 +82,17 @@ class MyGoodsListCard extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Application.router
-            .navigateTo(context, '/goods?goodsId=${item.goods_id}');
+//        Application.router.navigateTo(context,
+//            '/goods?goodsId=${item.goods_id}&goodsImgShowDirection=${index % 2 == 0 ? 'left' : 'right'}',
+//            transition: TransitionType.fadeIn);
+        Navigator.push(context, MyCupertinoPageRoute(builder: (context) {
+          return GoodsPage(
+            goodsId: item.goods_id,
+            goodsImgShowDirection: index % 2 == 0
+                ? GoodsImgShowDirection.left
+                : GoodsImgShowDirection.right,
+          );
+        }));
       },
     );
   }

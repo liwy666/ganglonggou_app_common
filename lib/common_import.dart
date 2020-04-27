@@ -12,7 +12,7 @@ const bool DEBUG = true;
 const String INTO_TYPE = 'wx';
 const String SON_INTO_TYPE = 'ios';
 //超时时间
-const int OVERTIME_MILLISECOND = 3000;
+const int OVERTIME_MILLISECOND = 6000;
 //工行图标地址
 const String SON_FIRST_PAGE_ICBC_ICON =
     "https://mate.ganglonggou.com/lib/images/wx_icbc_icon_20190813.png";
@@ -100,7 +100,8 @@ const String ABOUT_WE_URL =
 const String FEED_BACK_URL =
     'https://mate.ganglonggou.com/app_web_extend/#/feedback';
 //universalLink
-const String UNIVERSAL_LINK = 'https://mate.ganglonggou.com/app_web_extend/universal_links/';
+const String UNIVERSAL_LINK =
+    'https://mate.ganglonggou.com/app_web_extend/universal_links/';
 
 ///深拷贝
 List<T> listDeepCopy<T>(List list) {
@@ -275,3 +276,5 @@ bool checkUserName(String userName) {
 
   return true;
 }
+
+

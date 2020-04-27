@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:convert';
 
+import 'package:dio_log/overlay_draggable_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ganglong_shop_app/common_import.dart';
@@ -11,6 +13,7 @@ import 'package:ganglong_shop_app/data_model/theme_model.dart';
 import 'package:ganglong_shop_app/page/carts_page/carts_page.dart';
 import 'package:ganglong_shop_app/page/classify_page/classify_page.dart';
 import 'package:ganglong_shop_app/page/components/ask_whether_agree_agreement/ask_whether_agree_agreement.dart';
+import 'package:ganglong_shop_app/page/components/global_back_button.dart';
 import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/page/components/update_app/update_app.dart';
 import 'package:ganglong_shop_app/page/first_page/first_page.dart';
@@ -45,6 +48,9 @@ class _MainPage extends State<MainPage> {
 
   @override
   void initState() {
+    if (DEBUG) {
+      GlobalBackButton.show(context);
+    }
     // TODO: implement initState
     WidgetsBinding.instance.addPostFrameCallback((callback) {
       //检查是否需要更新
@@ -52,7 +58,7 @@ class _MainPage extends State<MainPage> {
         UpdateApp(context: context, getVersionInfo: _startModel.getVersionInfo);
       }
       //检查是否是第一次安装
-      if (widget.whetherInitialInstallation || DEBUG) {
+      if (widget.whetherInitialInstallation) {
         final _configModel = Provider.of<ConfigModel>(context);
         _configModel.alreadyInstallation();
         AskWhetherAgreeAgreement(context: context);

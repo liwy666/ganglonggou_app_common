@@ -13,8 +13,7 @@ class GoodsSkuPreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return goodsModel.loadFinish
-        ? MyListTile(
+    return MyListTile(
       titleWidget: Text('已选'),
       subtitleWidget: Text(
           '${goodsModel.goodsInfo.attrDesc},${goodsModel.goodsInfo.goodsNumber}件'),
@@ -25,7 +24,6 @@ class GoodsSkuPreview extends StatelessWidget {
               clickType: SkuButtonClickType.addShoppingCart,
             ));
       },
-    )
-        : Container();
+    );
   }
 }

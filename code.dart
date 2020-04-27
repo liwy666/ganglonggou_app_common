@@ -10,7 +10,6 @@ class _CODE {
   /// flutter_webview_plugin
 
   BuildContext get context => null;
-
   /*常用组件*/
   _CODE() {
     final _themeModel = Provider.of<ThemeModel>(context);

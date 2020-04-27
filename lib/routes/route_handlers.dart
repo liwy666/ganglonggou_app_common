@@ -27,6 +27,7 @@ import 'package:ganglong_shop_app/page/search_goods_page/search_goods_page.dart'
 import 'package:ganglong_shop_app/page/start_page/start_page.dart';
 import 'package:ganglong_shop_app/page/submit_evaluate_page/submit_evaluate_page.dart';
 import 'package:ganglong_shop_app/page/supplier_page/supplier_page.dart';
+import 'package:ganglong_shop_app/page/test_page/components/test_animation_page.dart';
 import 'package:ganglong_shop_app/page/test_page/components/test_boot_page.dart';
 import 'package:ganglong_shop_app/page/test_page/test_page.dart';
 import 'package:ganglong_shop_app/page/user_coupon_list_page/user_coupon_list_page.dart';
@@ -64,7 +65,23 @@ Handler rootHandler = Handler(
 Handler goodsHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
   int goodsId = int.parse(params["goodsId"]?.first);
-  return GoodsPage(goodsId: goodsId);
+  String goodsImgShowDirectionStr =
+      params["goodsImgShowDirection"]?.first.toString();
+  GoodsImgShowDirection goodsImgShowDirection;
+  switch (goodsImgShowDirectionStr) {
+    case "left":
+      goodsImgShowDirection = GoodsImgShowDirection.left;
+      break;
+    case "right":
+      goodsImgShowDirection = GoodsImgShowDirection.right;
+      break;
+    default:
+      goodsImgShowDirection = GoodsImgShowDirection.left;
+  }
+  return GoodsPage(
+    goodsId: goodsId,
+    goodsImgShowDirection: goodsImgShowDirection,
+  );
 });
 
 /*商品评价列表*/
@@ -290,4 +307,9 @@ Handler testHandler = Handler(
 Handler testBootHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
   return TestBootPage();
+});
+/*动画页测试*/
+Handler testAnimationHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  return TestAnimationPage();
 });

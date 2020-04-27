@@ -8,12 +8,14 @@ import 'package:ganglong_shop_app/data_model/user_info_model.dart';
 import 'package:ganglong_shop_app/models/attributeValueItem.dart';
 import 'package:ganglong_shop_app/models/extraGoodsInfo.dart';
 import 'package:ganglong_shop_app/models/goodsAttribute.dart';
+import 'package:ganglong_shop_app/models/goodsGalleryItem.dart';
 import 'package:ganglong_shop_app/models/goodsInfo.dart';
 import 'package:ganglong_shop_app/models/goodsItem.dart';
 import 'package:ganglong_shop_app/models/goodsSkuItem.dart';
 import 'package:ganglong_shop_app/models/goodsSkuOptionsItem.dart';
 import 'package:ganglong_shop_app/page/components/my_loading.dart';
 import 'package:ganglong_shop_app/page/components/my_toast.dart';
+import 'package:ganglong_shop_app/page/goods_page/goods_page.dart';
 import 'package:ganglong_shop_app/request/fetch_extra_goods_info.dart';
 import 'package:ganglong_shop_app/request/post_user_get_coupon.dart';
 import 'package:ganglong_shop_app/routes/application.dart';
@@ -35,6 +37,12 @@ class GoodsModel extends ChangeNotifier {
   List<GoodsSkuOptionsItem> _goodsSkuOptions = [];
   bool _loadFinish = false;
   WeChatService _weChatService;
+  Map<String, double> widgetOffset = {
+    "goods": 0,
+    "evaluate": 0,
+    "recommend": 0,
+    "described": 0,
+  };
 
   GoodsInfo get goodsInfo => _goodsInfo;
 
@@ -50,7 +58,11 @@ class GoodsModel extends ChangeNotifier {
 
   List<GoodsSkuOptionsItem> get goodsSkuOptions => _goodsSkuOptions;
 
-  GoodsModel({@required this.goodsList, @required this.goodsId,@required this.userInfoModel,@required this.pageContext }) {
+  GoodsModel(
+      {@required this.goodsList,
+      @required this.goodsId,
+      @required this.userInfoModel,
+      @required this.pageContext}) {
     this._goodsItem = this.goodsList.firstWhere(
         (element) => (element.goods_id == this.goodsId),
         orElse: () => null);
@@ -64,6 +76,14 @@ class GoodsModel extends ChangeNotifier {
       //获取额外信息
       FetchExtraGoodsInfo.fetch(goodsId: this.goodsId).then((result) {
         this._extraGoodsInfo = result;
+        this.extraGoodsInfo.goods_gallery.insert(
+            0,
+            GoodsGalleryItem.fromJson({
+              "goods_gallery_id": null,
+              "goods_id": this.goodsId,
+              "img_url": _goodsItem.goods_img,
+              "img_original": _goodsItem.goods_img,
+            }));
         this._updateGoodsInfo();
         this._loadFinish = true;
         notifyListeners();
@@ -108,13 +128,13 @@ class GoodsModel extends ChangeNotifier {
     }
     this._goodsDetails = goodsDetails;
 
-    const string =
-        "Java, android, ios, get the same result by DES encryption and decryption.";
-    const key = "u1BvOHzUOcklgNpn1MaWvdn9DT4LyzSX";
-    const iv = "12345678";
-    FlutterDes.encryptToBase64(string, key, iv: iv).then((val) {
-      print("FlutterDes:$val");
-    });
+//    const string =
+//        "Java, android, ios, get the same result by DES encryption and decryption.";
+//    const key = "u1BvOHzUOcklgNpn1MaWvdn9DT4LyzSX";
+//    const iv = "12345678";
+//    FlutterDes.encryptToBase64(string, key, iv: iv).then((val) {
+//      print("FlutterDes:$val");
+//    });
   }
 
   /*初始化商品sku*/
@@ -230,14 +250,14 @@ class GoodsModel extends ChangeNotifier {
   }
 
   ///领取优惠券
-  Future<void> userGetCoupon(int couponId) async{
-    if(!userInfoModel.isLogon){
+  Future<void> userGetCoupon(int couponId) async {
+    if (!userInfoModel.isLogon) {
       Application.router.navigateTo(pageContext, "/logon?showBar=true");
       return;
     }
-    String result = await PostUserGetCoupon.post(userToken:userInfoModel.userInfo.user_token, couponId: couponId);
+    String result = await PostUserGetCoupon.post(
+        userToken: userInfoModel.userInfo.user_token, couponId: couponId);
     MyToast.showToast(msg: result);
-
   }
 
   @override

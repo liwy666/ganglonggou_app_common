@@ -10,6 +10,7 @@ import 'package:ganglong_shop_app/data_model/order_data_model.dart';
 import 'package:ganglong_shop_app/data_model/start_model.dart';
 import 'package:ganglong_shop_app/data_model/theme_model.dart';
 import 'package:ganglong_shop_app/data_model/user_info_model.dart';
+import 'package:ganglong_shop_app/page/components/global_back_button.dart';
 import 'package:ganglong_shop_app/page/error_page/not_found_route_page.dart';
 import 'package:ganglong_shop_app/routes/application.dart';
 import 'package:ganglong_shop_app/routes/routes.dart';
@@ -20,7 +21,7 @@ import 'package:ganglong_shop_app/common_import.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  setCustomErrorPage();
+  if (!DEBUG) setCustomErrorPage();
   _runApp();
 }
 
@@ -108,7 +109,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //home: HomeContent(),
       theme: ThemeData(
-        primarySwatch: _themeModel.themeColor,
+        primarySwatch: Colors.orange,
         //platform: TargetPlatform.iOS //右滑返回
       ),
       onGenerateRoute: Application.router.generator,
@@ -117,8 +118,8 @@ class MyApp extends StatelessWidget {
 }
 
 ///错误页面
-void setCustomErrorPage(){
-  ErrorWidget.builder = (FlutterErrorDetails flutterErrorDetails){
+void setCustomErrorPage() {
+  ErrorWidget.builder = (FlutterErrorDetails flutterErrorDetails) {
     print(flutterErrorDetails.toString());
     return NotFoundRoutePage();
   };

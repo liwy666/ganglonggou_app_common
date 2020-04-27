@@ -16,9 +16,21 @@ class TestPage extends StatelessWidget {
         children: <Widget>[
           MySingleRowTile(
             onTapFunction: () async {
-              Application.router.navigateTo(context, '/test_boot');
+              Application.router.navigateTo(context, '/boot');
             },
             child: Text("启动页测试"),
+          ),
+          MySingleRowTile(
+            onTapFunction: () async {
+              Application.router.navigateTo(context, '/main');
+            },
+            child: Text("启动首页"),
+          ),
+          MySingleRowTile(
+            onTapFunction: () async {
+              Application.router.navigateTo(context, '/test_animation');
+            },
+            child: Text("动画页"),
           ),
         ],
       ),

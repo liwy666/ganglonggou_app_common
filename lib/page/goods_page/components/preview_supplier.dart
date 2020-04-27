@@ -17,6 +17,19 @@ class PreviewSupplier extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _themeModel = Provider.of<ThemeModel>(context);
+    WidgetsBinding.instance.addPostFrameCallback((callback) {
+      RenderBox renderBox = context.findRenderObject();
+      Offset offset = renderBox.localToGlobal(Offset.zero);
+      if (goodsModel.widgetOffset["recommend"] == 0) {
+        print(offset.dy);
+        goodsModel.widgetOffset["recommend"] = offset.dy;
+      }
+      if (goodsModel.widgetOffset["described"] == 0) {
+        goodsModel.widgetOffset["described"] =
+            offset.dy + renderBox.size.height;
+      }
+    });
+
     // TODO: implement build
     return this.goodsModel.loadFinish
         ? Card(

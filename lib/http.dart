@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:dio_log/interceptor/dio_log_interceptor.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ganglong_shop_app/page/components/my_loading.dart';
 import 'package:ganglong_shop_app/page/components/my_toast.dart';
@@ -9,10 +10,12 @@ Dio dio = new Dio();
 
 //初始化Http
 void initHttp() {
+  //添加监听
+  dio.interceptors.add(DioLogInterceptor());
   //配置
   dio.options.receiveTimeout = OVERTIME_MILLISECOND; //超时时间ms
   dio.options.baseUrl = DEBUG
-      ? 'http://192.168.0.164:3002/api/v1'
+      ? 'https://test-api.ganglonggou.com/api/v1'
       : 'https://api.ganglonggou.com/api/v1';
   //拦截器
   dio.interceptors.add(InterceptorsWrapper(onRequest: (RequestOptions options) {

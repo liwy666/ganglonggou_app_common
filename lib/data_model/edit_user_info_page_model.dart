@@ -43,14 +43,11 @@ class EditUserInfoPageModel with ChangeNotifier {
       MyToast.showToast(msg: "上传图片过大"); //短提示
       return false;
     }
-
-    FormData formData = FormData.from({
-      "portrait_img": UploadFileInfo(
-          File(imageFile.path),
-          imageFile.path.substring(
-              imageFile.path.lastIndexOf("/") + 1, imageFile.path.length))
+    FormData formData = FormData.fromMap({
+      "portrait_img": await MultipartFile.fromFile(imageFile.path,
+          filename:
+              imageFile.path.substring(imageFile.path.lastIndexOf("/") + 1))
     });
-
     MyLoading.eject();
     try {
       Response response = await dio.post("/user_upd_portrait", data: formData);

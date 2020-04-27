@@ -37,6 +37,7 @@ class Routes {
   ///功能测试
   static String test = '/test';
   static String testBoot = '/test_boot';
+  static String testAnimation = '/test_animation';
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = Handler(
@@ -49,7 +50,8 @@ class Routes {
 
     router.define(start, handler: startHandler); //启动页
 
-    router.define(main, handler: rootHandler); //主页
+    router.define(main,
+        handler: rootHandler, transitionType: TransitionType.fadeIn); //主页
 
     router.define(goods,
         handler: goodsHandler, transitionType: TransitionType.cupertino); //商品详情
@@ -157,5 +159,8 @@ class Routes {
     router.define(testBoot,
         handler: testBootHandler,
         transitionType: TransitionType.cupertino); //启动页测试页面
+    router.define(testAnimation,
+        handler: testAnimationHandler,
+        transitionType: TransitionType.cupertino); //动画页测试页面
   }
 }

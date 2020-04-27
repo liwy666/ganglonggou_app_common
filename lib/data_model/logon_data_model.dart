@@ -98,11 +98,13 @@ class LogonDataModel with ChangeNotifier {
       MyLoading.eject();
       String userToken;
       try {
+        print(resp.code);
         userToken = await PostUserWeChatLogon.post(code: resp.code);
       } catch (e) {
         print(e);
       } finally {
         MyLoading.shut();
+        print(userToken);
         _logonSuccess(userToken);
       }
     });

@@ -37,12 +37,11 @@ class MyLoading {
           );
         });
   }
+
   /*关闭弹窗*/
   static void shut() {
     if (!loadingStatus) return;
     loadingStatus = false;
     Navigator.of(loadContext, rootNavigator: true).pop();
   }
-
-
 }

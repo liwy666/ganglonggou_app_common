@@ -1,15 +1,18 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:ganglong_shop_app/common_import.dart';
 import 'package:ganglong_shop_app/data_model/start_model.dart';
 import 'package:ganglong_shop_app/data_model/theme_model.dart';
 import 'package:ganglong_shop_app/models/getVersionInfo.dart';
+import 'package:ganglong_shop_app/page/components/my_dialog.dart';
 import 'package:ganglong_shop_app/page/components/my_extended_image.dart';
 import 'package:ganglong_shop_app/page/components/my_loading.dart';
 import 'package:ganglong_shop_app/page/components/my_single_row_tile.dart';
 import 'package:ganglong_shop_app/page/components/my_tab_bar.dart';
 import 'package:ganglong_shop_app/page/components/my_toast.dart';
 import 'package:ganglong_shop_app/page/components/update_app/update_app.dart';
+import 'package:ganglong_shop_app/page/test_page/components/test_verify_component.dart';
 import 'package:ganglong_shop_app/request/fetch_version_info.dart';
 import 'package:ganglong_shop_app/routes/application.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -182,7 +185,33 @@ class ConfigPage extends StatelessWidget {
               ),
               MySingleRowTile(
                 onTapFunction: () async {
-                  Application.router.navigateTo(context, '/test');
+                  //Application.router.navigateTo(context, '/test');
+                  MyDialog().showBottomDialog(
+                      context: context, child: TestVerifyComponent());
+                  /**
+                   * iosDialog
+                      showCupertinoDialog<int>(
+                      context: context,
+                      builder: (context) {
+                      return CupertinoAlertDialog(
+                      title: Text("Alert"),
+                      content: TextField(),
+                      actions: <Widget>[
+                      CupertinoDialogAction(
+                      child: Text("Sure"),
+                      onPressed: () {
+                      Navigator.pop(context, 1);
+                      },
+                      ),
+                      CupertinoDialogAction(
+                      child: Text("Cancel"),
+                      onPressed: () {
+                      Navigator.pop(context, 2);
+                      },
+                      )
+                      ],
+                      );
+                      });*/
                 },
                 child: Text("岗隆实验室"),
               ),

@@ -14,8 +14,7 @@ class GoodsTopSwiper extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.width,
+//      width: MediaQuery.of(context).size.width,
       color: Colors.white,
       child: Consumer<GoodsModel>(
         builder: (BuildContext context, GoodsModel goodsModel, _) {
